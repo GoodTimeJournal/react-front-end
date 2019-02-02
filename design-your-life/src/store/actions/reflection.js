@@ -1,0 +1,5 @@
+import axios from 'axios';
+
+export const ADD_REFLECTION = 'ADD_REFLECTION';
+export const ADD_REFLECTION_COMPLETE = 'ADD_REFLECTION_COMPLETE';
+export const ADD_REFLECTION_FAIL = 'ADD_REFLECTION_FAIL';
