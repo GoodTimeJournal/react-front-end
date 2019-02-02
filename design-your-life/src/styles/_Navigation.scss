@@ -1,0 +1,16 @@
+nav {
+  border-bottom: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  text-transform: uppercase;
+
+  .primary-nav {
+    display: flex;
+
+    h5 {
+      margin: 0 15px;
+    }
+  }
+}
