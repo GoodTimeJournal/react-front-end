@@ -13,17 +13,14 @@ import {
 
 const initialState = {
   reflections: [],
-  isLoading: '',
+  isLoading: false,
   error: ''
 };
 
 export default function(state = initialState, action) {
-  const loading = { ...state, isLoading: true, error: '' };
-  const hasError = { ...state, isLoading, error: action.payload };
-
   switch (action.type) {
     case ADD_REFLECTION:
-      return loading;
+      return { ...state, isLoading: true, error: '' };
 
     case ADD_REFLECTION_COMPLETE:
       return {
@@ -34,10 +31,10 @@ export default function(state = initialState, action) {
       };
 
     case ADD_REFLECTION_FAIL:
-      return hasError;
+      return { ...state, isLoading: false, error: action.payload };
 
     case UPDATE_REFLECTION:
-      return loading;
+      return { ...state, isLoading: true, error: '' };
 
     case UPDATE_REFLECTION_COMPLETE:
       return {
@@ -48,10 +45,10 @@ export default function(state = initialState, action) {
       };
 
     case UPDATE_REFLECTION_FAIL:
-      return hasError;
+      return { ...state, isLoading: false, error: action.payload };
 
     case DELETE_REFLECTION:
-      return loading;
+      return { ...state, isLoading: true, error: '' };
 
     case DELETE_REFLECTION_COMPLETE:
       return {
@@ -62,7 +59,7 @@ export default function(state = initialState, action) {
       };
 
     case DELETE_REFLECTION_FAIL:
-      return hasError;
+      return { ...state, isLoading: false, error: action.payload };
 
     default:
       return state;

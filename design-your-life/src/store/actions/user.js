@@ -12,13 +12,13 @@ export const getUser = () => dispatch => {
     .get('http://localhost:5000/api/user')
     .then(res =>
       dispatch({
-        type: GET_USER_COMPLETED,
+        type: GET_USER_COMPLETE,
         payload: res.data
       })
     )
     .catch(err =>
       dispatch({
-        type: GET_USER_FAILED,
+        type: GET_USER_FAIL,
         error: err
       })
     );

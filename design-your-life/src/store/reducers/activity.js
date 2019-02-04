@@ -13,17 +13,14 @@ import {
 
 const initialState = {
   activities: [],
-  isLoading: '',
+  isLoading: false,
   error: ''
 };
 
 export default function(state = initialState, action) {
-  const loading = { ...state, isLoading: true, error: '' };
-  const hasError = { ...state, isLoading, error: action.payload };
-
   switch (action.type) {
     case ADD_ACTIVITY:
-      return loading;
+      return { ...state, isLoading: true, error: '' };
 
     case ADD_ACTIVITY_COMPLETE:
       return {
@@ -34,10 +31,10 @@ export default function(state = initialState, action) {
       };
 
     case ADD_ACTIVITY_FAIL:
-      return hasError;
+      return { ...state, isLoading: false, error: action.payload };
 
     case UPDATE_ACTIVITY:
-      return loading;
+      return { ...state, isLoading: true, error: '' };
 
     case UPDATE_ACTIVITY_COMPLETE:
       return {
@@ -48,10 +45,10 @@ export default function(state = initialState, action) {
       };
 
     case UPDATE_ACTIVITY_FAIL:
-      return hasError;
+      return { ...state, isLoading: false, error: action.payload };
 
     case DELETE_ACTIVITY:
-      return loading;
+      return { ...state, isLoading: true, error: '' };
 
     case DELETE_ACTIVITY_COMPLETE:
       return {
@@ -60,9 +57,8 @@ export default function(state = initialState, action) {
         isLoading: false,
         error: ''
       };
-
     case DELETE_ACTIVITY_FAIL:
-      return hasError;
+      return { ...state, isLoading: false, error: action.payload };
 
     default:
       return state;

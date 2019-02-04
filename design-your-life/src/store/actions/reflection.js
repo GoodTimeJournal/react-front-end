@@ -11,7 +11,7 @@ export const DELETE_REFLECTION = 'DELETE_REFLECTION';
 export const DELETE_REFLECTION_COMPLETE = 'DELETE_REFLECTION_COMPLETE';
 export const DELETE_REFLECTION_FAIL = 'DELETE_REFLECTION_FAIL';
 
-export const addReflection = activity => dispatch => {
+export const addReflection = reflection => dispatch => {
   dispatch({
     type: ADD_REFLECTION
   });
@@ -59,7 +59,7 @@ export const updateReflection = reflection => dispatch => {
 };
 
 export const deleteReflection = id => dispatch => {
-  axios.delete('http://localhost:5000/api/user/reflection/${id}').then(res =>
+  axios.delete(`http://localhost:5000/api/user/reflection/${id}`).then(res =>
     dispatch({
       type: DELETE_REFLECTION,
       payload: res.data

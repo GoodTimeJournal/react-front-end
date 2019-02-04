@@ -1,13 +1,12 @@
 import React from 'react';
+import logo from '../../styles/nav-logo.png';
 
 const Navigation = () => {
   return (
     <nav>
-      <h1>Logo</h1>
+      <img className="logo" src={logo} alt="Good Time Journal" />
       <div className="primary-nav">
         <h5>Home</h5>
-        <h5>Add Activity</h5>
-        <h5>Add Reflection</h5>
         <h5>View Logs</h5>
       </div>
     </nav>
