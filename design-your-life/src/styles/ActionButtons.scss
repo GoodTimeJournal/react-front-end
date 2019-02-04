@@ -1,0 +1,16 @@
+.buttons {
+  position: relative;
+  .add-button {
+    position: fixed;
+    top: 85%;
+    left: 5%;
+    background: #4e6d79;
+    color: white;
+    margin: 10px;
+
+    &:hover {
+      background: #e75449;
+      color: #4e6d79;
+    }
+  }
+}

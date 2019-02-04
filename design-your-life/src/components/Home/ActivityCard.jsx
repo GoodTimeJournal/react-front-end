@@ -5,7 +5,7 @@ const ActivityCard = props => {
   return (
     <div className="activity-card">
       <div className="title-date">
-        <h4>{props.title}</h4>
+        <h4 className="title">{props.title}</h4>
         <h4>{props.timestamp}</h4>
       </div>
       <div className="ratings rating-titles">
@@ -18,6 +18,10 @@ const ActivityCard = props => {
         <p>{props.enjoyment}</p>
         <p>{props.engagement}</p>
       </div>
+      {/* <div className="buttons">
+        <button>Edit</button>
+        <button>Delete</button>
+      </div> */}
     </div>
   );
 };

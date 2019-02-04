@@ -1,15 +1,29 @@
 nav {
-  border-bottom: 2px solid black;
+  border-bottom: 1px solid lightgrey;
+  box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  margin-bottom: 40px;
+  padding: 0 20px;
   text-transform: uppercase;
+
+  .logo {
+    height: 70px;
+  }
 
   .primary-nav {
     display: flex;
     h5 {
       margin: 0 15px;
+      font-weight: 600;
+      font-size: 1.4rem;
+      color: #2b3039;
+
+      &:hover {
+        color: #e75449;
+        cursor: pointer;
+      }
     }
   }
 }

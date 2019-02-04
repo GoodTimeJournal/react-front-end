@@ -9,7 +9,7 @@ export const getUser = () => dispatch => {
     type: GET_USER
   });
   axios
-    .get('http://localhost:5000/api/user')
+    .get('http://localhost:5000/api/users/123')
     .then(res =>
       dispatch({
         type: GET_USER_COMPLETE,

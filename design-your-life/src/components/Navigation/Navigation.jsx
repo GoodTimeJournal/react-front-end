@@ -7,7 +7,7 @@ const Navigation = () => {
       <img className="logo" src={logo} alt="Good Time Journal" />
       <div className="primary-nav">
         <h5>Home</h5>
-        <h5>View Logs</h5>
+        <h5>Account</h5>
       </div>
     </nav>
   );

@@ -56,7 +56,7 @@ export const updateActivity = activity => dispatch => {
 };
 
 export const deleteActivity = id => dispatch => {
-  axios.delete(`http://localhost:5000/api/user/activity/${id}`).then(res =>
+  axios.delete(`http://localhost:5000/api/users/activity/${id}`).then(res =>
     dispatch({
       type: DELETE_ACTIVITY,
       payload: res.data
