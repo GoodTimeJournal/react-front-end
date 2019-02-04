@@ -34,7 +34,6 @@ class ActivityFormView extends Component {
   };
 
   render() {
-    console.log(this.props.activeEdit);
     return (
       <ActivityForm
         name={this.state.activity.name}
