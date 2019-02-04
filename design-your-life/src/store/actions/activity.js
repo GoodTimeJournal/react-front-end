@@ -55,11 +55,13 @@ export const updateActivity = activity => dispatch => {
     );
 };
 
-export const deleteActivity = id => dispatch => {
-  axios.delete(`http://localhost:5000/api/users/activity/${id}`).then(res =>
-    dispatch({
-      type: DELETE_ACTIVITY,
-      payload: res.data
-    })
-  );
+export const deleteActivity = (userId, id) => dispatch => {
+  axios
+    .delete(`http://localhost:5000/api/users/${userId}/activity/${id}`)
+    .then(res =>
+      dispatch({
+        type: DELETE_ACTIVITY,
+        payload: res.data
+      })
+    );
 };
