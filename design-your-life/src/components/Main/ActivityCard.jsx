@@ -1,11 +1,10 @@
 import React from 'react';
-import moment from 'moment';
 
 const ActivityCard = props => {
   return (
     <div className="activity-card">
       <div className="title-date">
-        <h4 className="title">{props.title}</h4>
+        <h4 className="title">{props.name}</h4>
         <h4>{props.timestamp}</h4>
       </div>
       <div className="ratings rating-titles">
@@ -14,14 +13,14 @@ const ActivityCard = props => {
         <p>Enjoyment</p>
       </div>
       <div className="ratings rating-numbers">
-        <p>{props.energy}</p>
-        <p>{props.enjoyment}</p>
+        <p>{props.energyLevel}</p>
+        <p>{props.enjoymentRating}</p>
         <p>{props.engagement}</p>
       </div>
-      {/* <div className="buttons">
-        <button>Edit</button>
+      <div className="buttons">
+        <button onClick={() => props.editActivity(props.id)}>Edit</button>
         <button>Delete</button>
-      </div> */}
+      </div>
     </div>
   );
 };

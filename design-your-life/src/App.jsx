@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import NavigationView from './views/NavigationView';
 import './styles/App.scss';
-import FeedView from './views/FeedView';
-import ActionButtons from './components/Home/ActionButtons';
+import MainView from './views/MainView';
+import ActionButtons from './components/Main/ActionButtons';
+import ActivityFormView from './views/ActivityFormView';
 import LoginView from './views/LoginView';
+import { Route } from 'react-router';
+import { Link } from 'react-router-dom';
 
 class App extends Component {
   state = {
-    isLoggedIn: false
+    isLoggedIn: true
   };
 
   logIn = e => {
@@ -25,10 +28,20 @@ class App extends Component {
     return this.state.isLoggedIn ? (
       <>
         <NavigationView logOut={this.logOut} />
-        <div className="app">
-          <FeedView activityLog={this.props.activityLog} />
-        </div>
-        <ActionButtons />
+        <Route
+          exact
+          path="/"
+          render={props => (
+            <MainView {...props} activityLog={this.props.activityLog} />
+          )}
+        />
+        <Route
+          path="/activity"
+          render={props => <ActivityFormView {...props} />}
+        />
+        <Link to="/activity">
+          <ActionButtons />
+        </Link>
       </>
     ) : (
       <LoginView logIn={this.logIn} />

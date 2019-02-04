@@ -15,6 +15,11 @@ nav {
 
   .primary-nav {
     display: flex;
+
+    .active {
+      text-decoration: none;
+    }
+
     h5 {
       margin: 0 15px;
       font-weight: 600;

@@ -15,84 +15,84 @@ let users = [
 
     activityLog: [
       {
-        title: 'Running',
-        enjoyment: 4,
-        energy: 6,
+        name: 'Running',
+        enjoymentRating: 4,
+        energyLevel: 6,
         engagement: 4,
         timestamp: '02/2 06:15 pm',
         id: 66
       },
       {
-        title: 'Journaling',
-        enjoyment: 8,
-        energy: 9,
+        name: 'Journaling',
+        enjoymentRating: 8,
+        energyLevel: 9,
         engagement: 10,
         timestamp: '01/30 02:05 pm',
         id: 25
       },
       {
-        title: 'TV',
-        enjoyment: 6,
-        energy: 2,
+        name: 'TV',
+        enjoymentRating: 6,
+        energyLevel: 2,
         engagement: 7,
         timestamp: '01/28 09:20 pm',
         id: 266
       },
       {
-        title: 'Biking',
-        enjoyment: 8,
-        energy: 6,
+        name: 'Biking',
+        enjoymentRating: 8,
+        energyLevel: 6,
         engagement: 9,
         timestamp: '01/23 04:45 pm',
         id: 26634
       },
       {
-        title: 'Swimming',
-        enjoyment: 6,
-        energy: 7,
+        name: 'Swimming',
+        enjoymentRating: 6,
+        energyLevel: 7,
         engagement: 6,
         timestamp: '01/13 12:45 pm',
         id: 26543
       },
       {
-        title: 'Running',
-        enjoyment: 4,
-        energy: 6,
+        name: 'Running',
+        enjoymentRating: 4,
+        energyLevel: 6,
         engagement: 4,
         timestamp: '02/2 06:15 pm',
-        id: 66
+        id: 6611
       },
       {
-        title: 'Journaling',
-        enjoyment: 8,
-        energy: 9,
+        name: 'Journaling',
+        enjoymentRating: 8,
+        energyLevel: 9,
         engagement: 10,
         timestamp: '01/30 02:05 pm',
-        id: 25
+        id: 2511
       },
       {
-        title: 'TV',
-        enjoyment: 6,
-        energy: 2,
+        name: 'TV',
+        enjoymentRating: 6,
+        energyLevel: 2,
         engagement: 7,
         timestamp: '01/28 09:20 pm',
-        id: 266
+        id: 26611
       },
       {
-        title: 'Biking',
-        enjoyment: 8,
-        energy: 6,
+        name: 'Biking',
+        enjoymentRating: 8,
+        energyLevel: 6,
         engagement: 9,
         timestamp: '01/23 04:45 pm',
-        id: 26634
+        id: 2663411
       },
       {
-        title: 'Swimming',
-        enjoyment: 6,
-        energy: 7,
+        name: 'Swimming',
+        enjoymentRating: 6,
+        energyLevel: 7,
         engagement: 6,
         timestamp: '01/13 12:45 pm',
-        id: 26543
+        id: 2654311
       }
     ],
 
@@ -114,33 +114,33 @@ let users = [
 
     activityLog: [
       {
-        title: `It's working!`,
-        enjoyment: 8,
-        energy: 6,
+        name: `It's working!`,
+        enjoymentRating: 8,
+        energyLevel: 6,
         engagement: 9,
         timestamp: '02/2 06:15 pm', // Date.now() or moment.js
         id: 22
       },
       {
-        title: 'Testing',
-        enjoyment: 6,
-        energy: 2,
+        name: 'Testing',
+        enjoymentRating: 6,
+        energyLevel: 2,
         engagement: 7,
         timestamp: '01/28 09:20 pm',
         id: 2
       },
       {
-        title: 'Testing Works',
-        enjoyment: 8,
-        energy: 6,
+        name: 'Testing Works',
+        enjoymentRating: 8,
+        energyLevel: 6,
         engagement: 9,
         timestamp: '01/23 04:45 pm',
         id: 3
       },
       {
-        title: 'Woo!',
-        enjoyment: 6,
-        energy: 7,
+        name: 'Woo!',
+        enjoymentRating: 6,
+        energyLevel: 7,
         engagement: 6,
         timestamp: '01/13 12:45 pm',
         id: 4
