@@ -39,9 +39,7 @@ class App extends Component {
           path="/activity"
           render={props => <ActivityFormView {...props} />}
         />
-        <Link to="/activity">
-          <ActionButtons />
-        </Link>
+        <ActionButtons />
       </>
     ) : (
       <LoginView logIn={this.logIn} />

@@ -1,9 +1,8 @@
 .buttons {
-  position: relative;
+  position: fixed;
+  bottom: 3%;
+  left: 3%;
   .add-button {
-    position: fixed;
-    bottom: 3%;
-    left: 3%;
     background: #4e6d79;
     color: white;
     margin: 10px;
