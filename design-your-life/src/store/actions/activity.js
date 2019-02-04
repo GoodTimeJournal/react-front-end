@@ -3,7 +3,7 @@ import axios from 'axios';
 export const ADD_ACTIVITY = 'ADD_ACTIVITY';
 export const ADD_ACTIVITY_COMPLETE = 'ADD_ACTIVITY_COMPLETE';
 export const ADD_ACTIVITY_FAIL = 'ADD_ACTIVITY_FAIL';
-export const OPEN_ACTIVITY = 'OPEN_ACTIVITY';
+export const EDIT_ACTIVITY = 'EDIT_ACTIVITY';
 export const UPDATE_ACTIVITY = 'UPDATE_ACTIVITY';
 export const UPDATE_ACTIVITY_COMPLETE = 'UPDATE_ACTIVITY_COMPLETE';
 export const UPDATE_ACTIVITY_FAIL = 'UPDATE_ACTIVITY_FAIL';
@@ -31,9 +31,9 @@ export const addActivity = activity => dispatch => {
     );
 };
 
-export const openActivity = activity => {
+export const editActivity = activity => {
   return {
-    type: OPEN_ACTIVITY,
+    type: EDIT_ACTIVITY,
     payload: activity
   };
 };

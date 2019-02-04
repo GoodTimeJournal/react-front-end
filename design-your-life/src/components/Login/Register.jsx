@@ -5,7 +5,7 @@ import Logo from '../../styles/nav-logo.png';
 const Register = props => {
   return (
     <LoginPageStyles>
-      <LoginMenuStyles onSubmit={props.handleUsername}>
+      <LoginMenuStyles onSubmit={props.switchView}>
         <LogoImage src={Logo} />
         <LoginInputStyles
           placeholder="Full Name"
@@ -40,7 +40,7 @@ const Register = props => {
           required
           minLength="6"
         />
-        <LoginButton onClick={props.switchView}>Create Account</LoginButton>
+        <LoginButton>Create Account</LoginButton>
         <LoginPageText>
           By signing up, you agree to our Terms, Data Policy. We take your
           privacy seriously.

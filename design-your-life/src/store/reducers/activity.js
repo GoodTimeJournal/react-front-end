@@ -3,6 +3,7 @@ import {
   ADD_ACTIVITY,
   ADD_ACTIVITY_COMPLETE,
   ADD_ACTIVITY_FAIL,
+  EDIT_ACTIVITY,
   UPDATE_ACTIVITY,
   UPDATE_ACTIVITY_COMPLETE,
   UPDATE_ACTIVITY_FAIL,
@@ -13,8 +14,10 @@ import {
 
 const initialState = {
   activities: [],
+  activeEdit: {},
   isLoading: false,
-  error: ''
+  error: '',
+  isEditing: false
 };
 
 export default function(state = initialState, action) {
@@ -32,6 +35,14 @@ export default function(state = initialState, action) {
 
     case ADD_ACTIVITY_FAIL:
       return { ...state, isLoading: false, error: action.payload };
+
+    case EDIT_ACTIVITY:
+      return {
+        ...state,
+        isEditing: true,
+        error: '',
+        activeEdit: action.payload
+      };
 
     case UPDATE_ACTIVITY:
       return { ...state, isLoading: true, error: '' };
