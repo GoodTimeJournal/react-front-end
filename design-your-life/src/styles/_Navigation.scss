@@ -1,6 +1,5 @@
 nav {
   border-bottom: 1px solid lightgrey;
-  box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -24,14 +23,13 @@ nav {
       text-decoration: none;
     }
 
-    h5 {
+    i {
       margin: 0 15px;
-      font-weight: 600;
-      font-size: 1.4rem;
-      color: #2b3039;
+      font-size: 2.4rem;
+      color: #4f86ec;
 
       &:hover {
-        color: #e75449;
+        color: #b8edcb;
         cursor: pointer;
       }
     }

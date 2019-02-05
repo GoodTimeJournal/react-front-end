@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import Fab from "@material-ui/core/Fab";
@@ -54,7 +53,7 @@ class ActionButtons extends React.Component {
             >
               <DirectionsRun />
             </Fab>
-            <p className="activity-text">Journal</p>
+            <p className="activity-text">Activity</p>
           </>
         ) : (
           <Fab
