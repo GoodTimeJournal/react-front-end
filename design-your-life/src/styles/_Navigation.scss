@@ -4,10 +4,14 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   padding: 0 20px;
   text-transform: uppercase;
   background: white;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
 
   .logo {
     height: 70px;
