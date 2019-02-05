@@ -13,7 +13,6 @@ const Register = props => {
           fullWidth
           label="Full Name"
           placeholder="Full Name"
-          margin="normal"
           onChange={props.handleChange}
           name="fullname"
           type="text"
@@ -25,19 +24,16 @@ const Register = props => {
           fullWidth
           label="Email"
           placeholder="Email"
-          margin="normal"
           onChange={props.handleChange}
           name="email"
           value={props.currentUsername}
           required
           minLength="4"
         />
-
         <TextField
           fullWidth
           label="Username"
           placeholder="Username"
-          margin="normal"
           onChange={props.handleChange}
           name="username"
           value={props.currentUsername}
@@ -48,7 +44,6 @@ const Register = props => {
           fullWidth
           label="Password"
           placeholder="Password"
-          margin="normal"
           onChange={props.handleChange}
           name="password"
           value={props.currentPassword}
@@ -94,6 +89,7 @@ const LoginMenuStyles = styles.form`
   background: #FFFFFF;
   padding: 10px 0;
   padding: 0 40px;
+  
 `;
 
 // const LoginInputStyles = styles.input`
@@ -114,11 +110,11 @@ const LoginButton = styles.button`
   border: 1px solid #4e6d79;
   border-radius: 4px;
   padding: 10px;
-  margin-top: 10px;
+  margin-top: 30px;
   color: white;
   font-weight: 700;
   font-size: 14px;
-  background: #4e6d79;
+  background: #4F86EC;
 
   &:hover {
     cursor: pointer;
@@ -146,10 +142,13 @@ const SwitchMenuStyles = styles.form`
   padding: 20px 0;
   margin-top: 15px;
 `;
+const SignUpText = styles.h2`
+  font-size: 28px;
+  margin-top: 25px;
+`;
 
 const LogoImage = styles.img`
   width: 200px;
-  margin-bottom: 10px;
 `;
 
 const GoBackContainer = styles.div`
