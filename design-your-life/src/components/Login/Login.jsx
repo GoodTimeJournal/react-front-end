@@ -30,6 +30,7 @@ const Login = props => {
           value={props.currentPassword}
           required
           minLength="6"
+          type="password"
         />
         <LoginButton>Login</LoginButton>
         <br />
