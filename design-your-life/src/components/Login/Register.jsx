@@ -1,44 +1,60 @@
 import React from "react";
 import styles from "styled-components";
 import Logo from "../../styles/nav-logo.png";
+import TextField from "@material-ui/core/TextField";
 
 const Register = props => {
+  console.log(props);
   return (
     <LoginPageStyles>
-      <LoginMenuStyles onSubmit={props.switchView}>
+      <LoginMenuStyles autoComplete="false" onSubmit={props.switchView}>
         <LogoImage src={Logo} />
-        <LoginInputStyles
+        <TextField
+          fullWidth
+          label="Full Name"
           placeholder="Full Name"
+          margin="normal"
           onChange={props.handleChange}
-          name="currentName"
+          name="fullname"
+          type="text"
           value={props.currentName}
           required
           minLength="2"
         />
-        <LoginInputStyles
+        <TextField
+          fullWidth
+          label="Email"
           placeholder="Email"
+          margin="normal"
           onChange={props.handleChange}
-          name="currentUsername"
+          name="email"
           value={props.currentUsername}
           required
           minLength="4"
         />
 
-        <LoginInputStyles
+        <TextField
+          fullWidth
+          label="Username"
           placeholder="Username"
+          margin="normal"
           onChange={props.handleChange}
-          name="currentUsername"
+          name="username"
           value={props.currentUsername}
           required
           minLength="4"
         />
-        <LoginInputStyles
+        <TextField
+          fullWidth
+          label="Password"
           placeholder="Password"
+          margin="normal"
           onChange={props.handleChange}
-          name="currentPassword"
+          name="password"
           value={props.currentPassword}
           required
           minLength="6"
+          type="password"
         />
         <LoginButton>Create Account</LoginButton>
         <LoginPageText>
@@ -77,20 +93,21 @@ const LoginMenuStyles = styles.form`
   width: 340px;
   background: #FFFFFF;
   padding: 10px 0;
+  padding: 0 40px;
 `;
 
-const LoginInputStyles = styles.input`
-  border: 1px solid #EFEFEF;
-  border-radius: 3px;
-  margin-bottom: 7px;
-  padding: 10px 0 10px 7px;
-  width: 270px;
-  background: #FAFAFA;
+// const LoginInputStyles = styles.input`
+//   border: 1px solid #EFEFEF;
+//   border-radius: 3px;
+//   margin-bottom: 7px;
+//   padding: 10px 0 10px 7px;
+//   width: 270px;
+//   background: #FAFAFA;
 
-  &:focus {
-    outline: none;
-  }
-`;
+//   &:focus {
+//     outline: none;
+//   }
+// `;
 
 const LoginButton = styles.button`
   width: 272px;

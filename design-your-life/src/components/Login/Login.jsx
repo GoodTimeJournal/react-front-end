@@ -1,6 +1,6 @@
-import React from 'react';
-import styles from 'styled-components';
-import Logo from '../../styles/nav-logo.png';
+import React from "react";
+import styles from "styled-components";
+import Logo from "../../styles/nav-logo.png";
 
 const Login = props => {
   return (
@@ -105,4 +105,5 @@ const CreateAccount = styles.p`
   font-size: 1.2rem;
   font-weight: 600;
   padding: 0;
+  cursor: pointer;
 `;
