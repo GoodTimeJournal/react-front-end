@@ -1,44 +1,55 @@
-import React from 'react';
-import styles from 'styled-components';
-import Logo from '../../styles/nav-logo.png';
+import React from "react";
+import styles from "styled-components";
+import Logo from "../../styles/nav-logo.png";
+import TextField from "@material-ui/core/TextField";
 
 const Register = props => {
+  console.log(props);
   return (
     <LoginPageStyles>
-      <LoginMenuStyles onSubmit={props.switchView}>
+      <LoginMenuStyles autoComplete="false" onSubmit={props.switchView}>
         <LogoImage src={Logo} />
-        <LoginInputStyles
+        <TextField
+          fullWidth
+          label="Full Name"
           placeholder="Full Name"
           onChange={props.handleChange}
-          name="currentName"
+          name="fullname"
+          type="text"
           value={props.currentName}
           required
           minLength="2"
         />
-        <LoginInputStyles
+        <TextField
+          fullWidth
+          label="Email"
           placeholder="Email"
           onChange={props.handleChange}
-          name="currentUsername"
+          name="email"
           value={props.currentUsername}
           required
           minLength="4"
         />
-
-        <LoginInputStyles
+        <TextField
+          fullWidth
+          label="Username"
           placeholder="Username"
           onChange={props.handleChange}
-          name="currentUsername"
+          name="username"
           value={props.currentUsername}
           required
           minLength="4"
         />
-        <LoginInputStyles
+        <TextField
+          fullWidth
+          label="Password"
           placeholder="Password"
           onChange={props.handleChange}
-          name="currentPassword"
+          name="password"
           value={props.currentPassword}
           required
           minLength="6"
+          type="password"
         />
         <LoginButton>Create Account</LoginButton>
         <LoginPageText>
@@ -47,7 +58,10 @@ const Register = props => {
         </LoginPageText>
       </LoginMenuStyles>
       <SwitchMenuStyles>
-        <CreateAccount onClick={props.switchView}>Login</CreateAccount>
+        <GoBackContainer onClick={props.switchView}>
+          <GobackIcon className="fas fa-arrow-left" />
+          <CreateAccount>Go Back</CreateAccount>
+        </GoBackContainer>
       </SwitchMenuStyles>
     </LoginPageStyles>
   );
@@ -74,31 +88,33 @@ const LoginMenuStyles = styles.form`
   width: 340px;
   background: #FFFFFF;
   padding: 10px 0;
+  padding: 0 40px;
+  
 `;
 
-const LoginInputStyles = styles.input`
-  border: 1px solid #EFEFEF;
-  border-radius: 3px;
-  margin-bottom: 7px;
-  padding: 10px 0 10px 7px;
-  width: 270px;
-  background: #FAFAFA;
+// const LoginInputStyles = styles.input`
+//   border: 1px solid #EFEFEF;
+//   border-radius: 3px;
+//   margin-bottom: 7px;
+//   padding: 10px 0 10px 7px;
+//   width: 270px;
+//   background: #FAFAFA;
 
-  &:focus {
-    outline: none;
-  }
-`;
+//   &:focus {
+//     outline: none;
+//   }
+// `;
 
 const LoginButton = styles.button`
   width: 272px;
   border: 1px solid #4e6d79;
   border-radius: 4px;
   padding: 10px;
-  margin-top: 10px;
+  margin-top: 30px;
   color: white;
   font-weight: 700;
   font-size: 14px;
-  background: #4e6d79;
+  background: #4F86EC;
 
   &:hover {
     cursor: pointer;
@@ -126,14 +142,29 @@ const SwitchMenuStyles = styles.form`
   padding: 20px 0;
   margin-top: 15px;
 `;
+const SignUpText = styles.h2`
+  font-size: 28px;
+  margin-top: 25px;
+`;
 
 const LogoImage = styles.img`
   width: 200px;
-  margin-bottom: 10px;
+`;
+
+const GoBackContainer = styles.div`
+  cursor: pointer;
+  width: 60%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 `;
 
 const CreateAccount = styles.p`
   font-size: 1.2rem;
   font-weight: 600;
   padding: 0;
+  margin-left: 5px;
+`;
+const GobackIcon = styles.i`
+  font-size: 24px
 `;
