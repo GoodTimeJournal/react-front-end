@@ -13,9 +13,6 @@ function ActionButtons(props) {
           <AddIcon />
         </Fab>
       </Link>
-      <Fab aria-label="Add" className="add-button add-reflection">
-        <AddIcon />
-      </Fab>
     </div>
   );
 }
