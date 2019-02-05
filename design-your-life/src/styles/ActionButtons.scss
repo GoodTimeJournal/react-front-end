@@ -24,6 +24,9 @@
       color: #aaefc8;
     }
   }
+  p {
+    font-size: 10px;
+  }
   .reflection-icon {
     position: fixed;
     bottom: 25px;
@@ -36,9 +39,14 @@
       color: #aaefc8;
     }
   }
+  .reflection-text {
+    position: fixed;
+    bottom: 8px;
+    left: 99px;
+  }
   .activity-icon {
     position: fixed;
-    bottom: 80px;
+    bottom: 85px;
     left: 25px;
     background: #aaefc8;
     color: white;
@@ -47,5 +55,10 @@
       background: #5987e5;
       color: #aaefc8;
     }
+  }
+  .activity-text {
+    position: fixed;
+    bottom: 69px;
+    left: 44px;
   }
 }

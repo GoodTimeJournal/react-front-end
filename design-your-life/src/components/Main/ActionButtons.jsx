@@ -33,9 +33,11 @@ class ActionButtons extends React.Component {
             <Fab aria-label="Add" className="reflection-icon">
               <NaturePeople />
             </Fab>
+            <p className="reflection-text">Reflection</p>
             <Fab aria-label="Add" className="activity-icon">
               <DirectionsRun />
             </Fab>
+            <p className="activity-text">Journal</p>
           </>
         ) : (
           <Fab
