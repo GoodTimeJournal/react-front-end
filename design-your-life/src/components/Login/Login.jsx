@@ -81,7 +81,7 @@ const LoginInputStyles = styles.input`
 
 const LoginButton = styles.button`
   width: 272px;
-  border: 1px solid #4e6d79;
+  border: 1px solid #4F86EC;
   border-radius: 4px;
   padding: 10px;
   margin: 10px 0;
@@ -89,7 +89,6 @@ const LoginButton = styles.button`
   font-weight: 700;
   font-size: 14px;
   background: #4F86EC;
-
   &:hover {
     cursor: pointer;
   }
