@@ -1,13 +1,12 @@
-
 import React, { Component } from "react";
 import NavigationView from "./views/NavigationView";
 import "./styles/App.scss";
 import MainView from "./views/MainView";
 import ActivityFormView from "./views/ActivityFormView";
 import LoginView from "./views/LoginView";
+import ReflectionFormView from "./views/ReflectionFormView";
 import { Route } from "react-router";
 import { Link } from "react-router-dom";
-
 
 class App extends Component {
   state = {
@@ -39,6 +38,10 @@ class App extends Component {
         <Route
           path="/activity"
           render={props => <ActivityFormView {...props} />}
+        />
+        <Route
+          path="/reflection"
+          render={props => <ReflectionFormView {...props} />}
         />
       </>
     ) : (
