@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Fab from "@material-ui/core/Fab";
 import {
   AddCircle,
@@ -6,6 +7,7 @@ import {
   NaturePeople,
   DirectionsRun
 } from "@material-ui/icons/";
+
 import "../../styles/ActionButtons.scss";
 
 class ActionButtons extends React.Component {
@@ -18,7 +20,13 @@ class ActionButtons extends React.Component {
     this.setState({ isButtonsOpen: !this.state.isButtonsOpen });
   };
 
+  routeToForm = (e, route) => {
+    e.preventDefault();
+    this.props.history.push(`${route}`);
+  };
+
   render() {
+    console.log(this.props);
     return (
       <div className="buttons">
         {this.state.isButtonsOpen ? (
@@ -30,11 +38,19 @@ class ActionButtons extends React.Component {
             >
               <RemoveCircle />
             </Fab>
-            <Fab aria-label="Add" className="reflection-icon">
+            <Fab
+              onClick={e => this.routeToForm(e, "/reflection")}
+              aria-label="Add"
+              className="reflection-icon"
+            >
               <NaturePeople />
             </Fab>
             <p className="reflection-text">Reflection</p>
-            <Fab aria-label="Add" className="activity-icon">
+            <Fab
+              onClick={e => this.routeToForm(e, "/activity")}
+              aria-label="Add"
+              className="activity-icon"
+            >
               <DirectionsRun />
             </Fab>
             <p className="activity-text">Journal</p>

@@ -52,7 +52,7 @@ class MainView extends Component {
     ) : (
       <>
         <div className="app">{mappedActivities}</div>
-        <ActionButtons />
+        <ActionButtons history={this.props.history} />
       </>
     );
   }
