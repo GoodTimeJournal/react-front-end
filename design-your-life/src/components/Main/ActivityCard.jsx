@@ -17,7 +17,7 @@ const ActivityCard = props => {
         <p>{props.enjoymentRating}</p>
         <p>{props.engagement}</p>
       </div>
-      <div className="buttons">
+      <div className="card-buttons">
         <button onClick={() => props.editActivity(props.id)}>Edit</button>
         <button>Delete</button>
       </div>
