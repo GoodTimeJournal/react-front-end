@@ -32,7 +32,11 @@ class App extends Component {
           exact
           path="/"
           render={props => (
-            <MainView {...props} activityLog={this.props.activityLog} />
+            <MainView
+              {...props}
+              reflectionLog={this.props.reflectionLog}
+              activityLog={this.props.activityLog}
+            />
           )}
         />
         <Route
