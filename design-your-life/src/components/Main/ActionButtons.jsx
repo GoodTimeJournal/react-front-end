@@ -26,7 +26,6 @@ class ActionButtons extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div className="buttons">
         {this.state.isButtonsOpen ? (

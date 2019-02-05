@@ -3,6 +3,7 @@ import { GET_USER, GET_USER_COMPLETE, GET_USER_FAIL } from '../actions/user';
 const initialState = {
   user: {},
   activityLog: [],
+  reflectionLog: [],
   isLoading: false,
   error: ''
 };
@@ -15,6 +16,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         user: action.payload,
+        reflectionLog: action.payload.reflectionLog,
         activityLog: action.payload.activityLog,
         isLoading: false,
         error: ''

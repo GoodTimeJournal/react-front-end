@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import ActivityCard from '../components/Main/ActivityCard';
-import Loader from 'react-loader-spinner';
-import { connect } from 'react-redux';
-import { getUser } from '../store/actions/user';
-import { deleteActivity, editActivity } from '../store/actions/activity';
-import ActionButtons from '../components/Main/ActionButtons';
-import SidebarLeft from '../components/Main/SidebarLeft';
-import SearchBar from '../components/Main/SearchBar';
-import '../styles/Feed.scss';
+import React, { Component } from "react";
+import ActivityCard from "../components/Main/ActivityCard";
+import Loader from "react-loader-spinner";
+import { connect } from "react-redux";
+import { getUser } from "../store/actions/user";
+import { deleteActivity, editActivity } from "../store/actions/activity";
+import ActionButtons from "../components/Main/ActionButtons";
+import SidebarLeft from "../components/Main/SidebarLeft";
+import SearchBar from "../components/Main/SearchBar";
+import "../styles/Feed.scss";
 
 class MainView extends Component {
   componentDidMount() {
@@ -22,11 +22,12 @@ class MainView extends Component {
     const selected = this.props.activityLog.find(
       activity => activity.id === id
     );
-    this.props.history.push('/activity');
+    this.props.history.push("/activity");
     this.props.editActivity(selected);
   };
 
   render() {
+    console.log(this.props);
     const mappedActivities = this.props.activityLog.map(activity => (
       <ActivityCard
         key={activity.id}
@@ -54,7 +55,7 @@ class MainView extends Component {
     ) : (
       <>
         <div className="home-display">
-          <SidebarLeft />
+          <SidebarLeft reflections={this.props.reflectionLog} />
           <div className="feed">
             <SearchBar />
             {mappedActivities}
@@ -69,6 +70,7 @@ class MainView extends Component {
 const mapStateToProps = state => {
   return {
     activityLog: state.user.activityLog,
+    reflectionLog: state.user.reflectionLog,
     isLoading: state.user.isLoading,
     activeEdit: state.activity.activeEdit
   };
