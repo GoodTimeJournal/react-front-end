@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import NavigationView from "./views/NavigationView";
 import "./styles/App.scss";
@@ -6,6 +7,7 @@ import ActivityFormView from "./views/ActivityFormView";
 import LoginView from "./views/LoginView";
 import { Route } from "react-router";
 import { Link } from "react-router-dom";
+
 
 class App extends Component {
   state = {
