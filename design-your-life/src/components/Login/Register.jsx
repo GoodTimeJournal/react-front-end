@@ -1,6 +1,6 @@
-import React from 'react';
-import styles from 'styled-components';
-import Logo from '../../styles/nav-logo.png';
+import React from "react";
+import styles from "styled-components";
+import Logo from "../../styles/nav-logo.png";
 
 const Register = props => {
   return (
@@ -47,7 +47,10 @@ const Register = props => {
         </LoginPageText>
       </LoginMenuStyles>
       <SwitchMenuStyles>
-        <CreateAccount onClick={props.switchView}>Login</CreateAccount>
+        <GoBackContainer onClick={props.switchView}>
+          <GobackIcon className="fas fa-arrow-left" />
+          <CreateAccount>Go Back</CreateAccount>
+        </GoBackContainer>
       </SwitchMenuStyles>
     </LoginPageStyles>
   );
@@ -132,8 +135,20 @@ const LogoImage = styles.img`
   margin-bottom: 10px;
 `;
 
+const GoBackContainer = styles.div`
+  cursor: pointer;
+  width: 60%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+`;
+
 const CreateAccount = styles.p`
   font-size: 1.2rem;
   font-weight: 600;
   padding: 0;
+  margin-left: 5px;
+`;
+const GobackIcon = styles.i`
+  font-size: 24px
 `;
