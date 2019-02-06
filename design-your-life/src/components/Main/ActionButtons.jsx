@@ -1,14 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Fab from "@material-ui/core/Fab";
+import React from 'react';
+import Fab from '@material-ui/core/Fab';
 import {
   AddCircle,
   RemoveCircle,
   NaturePeople,
   DirectionsRun
-} from "@material-ui/icons/";
+} from '@material-ui/icons/';
 
-import "../../styles/ActionButtons.scss";
+import '../../styles/ActionButtons.scss';
 
 class ActionButtons extends React.Component {
   state = {
@@ -38,7 +37,7 @@ class ActionButtons extends React.Component {
               <RemoveCircle />
             </Fab>
             <Fab
-              onClick={e => this.routeToForm(e, "/reflection")}
+              onClick={e => this.routeToForm(e, '/reflection')}
               aria-label="Add"
               className="reflection-icon"
             >
@@ -46,7 +45,7 @@ class ActionButtons extends React.Component {
             </Fab>
             <p className="reflection-text">Reflection</p>
             <Fab
-              onClick={e => this.routeToForm(e, "/activity")}
+              onClick={e => this.routeToForm(e, '/activity')}
               aria-label="Add"
               className="activity-icon"
             >

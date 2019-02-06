@@ -7,35 +7,54 @@ class ActivityFormView extends Component {
   state = {
     activity: {
       name: '',
+      fk: '',
       enjoymentRating: '',
       energyLevel: '',
-      engagement: '',
-      fk: ''
+      engagement: ''
     }
   };
 
   componentDidMount = () => {
-    this.setState({ activity: this.props.activeEdit });
-  };
-
-  handleChange = e => {
     this.setState({
       ...this.state,
-      activity: { ...this.state.activity, [e.target.name]: e.target.value }
+      activity: {
+        ...this.state.activity,
+        fk: localStorage.getItem('id')
+      }
     });
   };
 
+  handleChange = e => {
+    if (isNaN(e.target.value)) {
+      this.setState({
+        ...this.state,
+        activity: {
+          ...this.state.activity,
+          [e.target.name]: e.target.value
+        }
+      });
+    } else
+      this.setState({
+        ...this.state,
+        activity: {
+          ...this.state.activity,
+          [e.target.name]: parseInt(e.target.value)
+        }
+      });
+  };
+
   handleSubmit = e => {
+    const token = localStorage.getItem('token');
     e.preventDefault();
     this.props.isEditing // isEditing coming from Redux store
       ? this.props.updateActivity(this.state.activity)
-      : this.props.addActivity(this.state.activity);
-    this.setState({ fk: this.props.fk });
+      : this.props.addActivity(token, this.state.activity);
+
     this.props.history.push('/');
   };
 
   render() {
-    console.log(this.props.fk);
+    console.log(this.state.activity);
     return (
       <ActivityForm
         name={this.state.activity.name}
@@ -54,8 +73,7 @@ class ActivityFormView extends Component {
 const mapStateToProps = state => {
   return {
     isEditing: state.activity.isEditing,
-    activeEdit: state.activity.activeEdit,
-    fk: state.user.user
+    activeEdit: state.activity.activeEdit
   };
 };
 

@@ -20,7 +20,7 @@ const ActivityCard = props => {
       <div className="edit-icon">
         <i
           className="fas fa-ellipsis-h"
-          // onClick={() => props.expandCardMenu(props.id)}
+          onClick={() => props.expandCardMenu(props.id)}
         />
       </div>
       <div
