@@ -1,29 +1,47 @@
 import React from 'react';
 import styles from 'styled-components';
 import Logo from '../../styles/nav-logo.png';
+import Loader from 'react-loader-spinner';
+// import GoogleSignIn from '../../styles/btn_google_signin_dark_normal_web@2x.png';
 
 const Login = props => {
   return (
     <LoginPageStyles>
-      <LoginMenuStyles onSubmit={props.logIn}>
+      <LoginMenuStyles onSubmit={props.loginUser}>
         <LogoImage src={Logo} />
+        {/* <br />
+        {/* <LogoImage src={GoogleSignIn} />
+        <SeperateContent>
+          <hr />
+          <p>or</p>
+          <hr />
+        </SeperateContent> */}
         <LoginInputStyles
           placeholder="Username"
           onChange={props.handleChange}
-          name="currentUsername"
-          value={props.currentUsername}
+          name="username"
+          value={props.username}
           required
           minLength="4"
         />
         <LoginInputStyles
           placeholder="Password"
           onChange={props.handleChange}
-          name="currentPassword"
-          value={props.currentPassword}
+          name="password"
+          value={props.password}
           required
           minLength="6"
+          type="password"
         />
-        <LoginButton>Login</LoginButton>
+        <LoginButton>
+          {props.isLoading ? (
+            <Loader type="TailSpin" color="white" height={18} width={18} />
+          ) : (
+            'Login'
+          )}
+        </LoginButton>
+        <br />
+        <LoginPageText>Forgot your password?</LoginPageText>
       </LoginMenuStyles>
       <SwitchMenuStyles>
         <CreateAccount onClick={props.switchView}>Create Account</CreateAccount>
@@ -52,7 +70,7 @@ const LoginMenuStyles = styles.form`
   border-radius: 2px;
   width: 340px;
   background: #FFFFFF;
-  padding: 10px 0;
+  padding: 20px 0;
 `;
 
 const LoginInputStyles = styles.input`
@@ -70,14 +88,28 @@ const LoginInputStyles = styles.input`
 
 const LoginButton = styles.button`
   width: 272px;
-  border: 1px solid #4e6d79;
+  height: 40px;
+  border: 1px solid #44e6d79;
   border-radius: 4px;
-  padding: 10px;
+  padding: 0 10px;
   margin: 10px 0;
   color: white;
   font-weight: 700;
   font-size: 14px;
   background: #4e6d79;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const LoginPageText = styles.h2`
+  font-size: 12px;
+  font-weight: 700;
+  color: #9A9A9A;
+  margin: 10px 0;
+  padding: 0 10px;
+  text-align: center;
+  line-height: 1.5;
 
   &:hover {
     cursor: pointer;
@@ -105,4 +137,5 @@ const CreateAccount = styles.p`
   font-size: 1.2rem;
   font-weight: 600;
   padding: 0;
+  cursor: pointer;
 `;

@@ -1,13 +1,16 @@
 nav {
   border-bottom: 1px solid lightgrey;
-  box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   padding: 0 20px;
   text-transform: uppercase;
   background: white;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  width: 100%;
 
   .logo {
     height: 70px;
@@ -20,11 +23,10 @@ nav {
       text-decoration: none;
     }
 
-    h5 {
+    i {
       margin: 0 15px;
-      font-weight: 600;
-      font-size: 1.4rem;
-      color: #2b3039;
+      color: #4e6d79;
+      font-size: 2.2rem;
 
       &:hover {
         color: #e75449;

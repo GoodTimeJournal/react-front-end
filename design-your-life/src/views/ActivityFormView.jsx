@@ -10,7 +10,7 @@ class ActivityFormView extends Component {
       enjoymentRating: '',
       energyLevel: '',
       engagement: '',
-      timestamp: ''
+      fk: ''
     }
   };
 
@@ -30,10 +30,12 @@ class ActivityFormView extends Component {
     this.props.isEditing // isEditing coming from Redux store
       ? this.props.updateActivity(this.state.activity)
       : this.props.addActivity(this.state.activity);
+    this.setState({ fk: this.props.fk });
     this.props.history.push('/');
   };
 
   render() {
+    console.log(this.props.fk);
     return (
       <ActivityForm
         name={this.state.activity.name}
@@ -52,7 +54,8 @@ class ActivityFormView extends Component {
 const mapStateToProps = state => {
   return {
     isEditing: state.activity.isEditing,
-    activeEdit: state.activity.activeEdit
+    activeEdit: state.activity.activeEdit,
+    fk: state.user.user
   };
 };
 

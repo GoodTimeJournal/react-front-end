@@ -11,12 +11,13 @@ export const DELETE_ACTIVITY = 'DELETE_ACTIVITY';
 export const DELETE_ACTIVITY_COMPLETE = 'DELETE_ACTIVITY_COMPLETE';
 export const DELETE_ACTIVITY_FAIL = 'DELETE_ACTIVITY_FAIL';
 
+const baseURL = 'https://polar-plateau-24996.herokuapp.com';
 export const addActivity = activity => dispatch => {
   dispatch({
     type: ADD_ACTIVITY
   });
   axios
-    .post(`http://localhost:5000/api/user/activity`, activity)
+    .post(`${baseURL}/activities}`, activity)
     .then(res =>
       dispatch({
         type: ADD_ACTIVITY_COMPLETE,
