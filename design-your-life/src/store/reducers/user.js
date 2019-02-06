@@ -4,15 +4,16 @@ import {
   LOGIN_USER_FAIL,
   REGISTER_USER,
   REGISTER_USER_COMPLETE,
-  REGISTER_USER_FAIL
+  REGISTER_USER_FAIL,
+  LOG_OUT
 } from '../actions/user';
 
 const initialState = {
   user: {},
-  activityLog: [],
-  reflectionLog: [],
   isLoading: false,
-  error: ''
+  error: '',
+  token: '',
+  loggedIn: false
 };
 
 export default (state = initialState, action) => {
@@ -24,12 +25,13 @@ export default (state = initialState, action) => {
         ...state,
         token: action.payload,
         isLoading: false,
+        loggedIn: true,
         error: ''
       };
-
     case LOGIN_USER_FAIL:
       return { ...state, isLoading: false, error: action.payload };
-
+    case LOG_OUT:
+      return { ...state, loggedIn: false, token: '' };
     case REGISTER_USER:
       return { ...state, isLoading: true, error: '' };
     case REGISTER_USER_COMPLETE:

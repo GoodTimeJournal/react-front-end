@@ -6,6 +6,7 @@ export const LOGIN_USER_FAIL = 'LOGIN_USER_FAIL';
 export const REGISTER_USER = 'REGISTER_USER';
 export const REGISTER_USER_COMPLETE = 'REGISTER_USER_COMPLETE';
 export const REGISTER_USER_FAIL = 'REGISTER_USER_FAIL';
+export const LOG_OUT = 'LOG_OUT';
 
 const baseURL = 'https://polar-plateau-24996.herokuapp.com';
 export const loginUser = user => dispatch => {
@@ -17,7 +18,7 @@ export const loginUser = user => dispatch => {
     .then(res =>
       dispatch({
         type: LOGIN_USER_COMPLETE,
-        payload: res
+        payload: res.data.token
       })
     )
     .catch(err =>
@@ -26,6 +27,12 @@ export const loginUser = user => dispatch => {
         error: err
       })
     );
+};
+
+export const logout = () => {
+  return {
+    type: LOG_OUT
+  };
 };
 
 export const registerUser = user => dispatch => {

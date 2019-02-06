@@ -1,6 +1,6 @@
-import React from "react";
-import logo from "../../styles/nav-logo.png";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import logo from '../../styles/nav-logo.png';
+import { NavLink } from 'react-router-dom';
 
 const Navigation = props => {
   return (
@@ -9,7 +9,7 @@ const Navigation = props => {
         <img className="logo" src={logo} alt="Good Time Journal" />
       </NavLink>
       <div className="primary-nav">
-        <i onClick={props.logOut} class="fas fa-sign-out-alt" />
+        <i onClick={props.logout} class="fas fa-sign-out-alt" />
       </div>
     </nav>
   );

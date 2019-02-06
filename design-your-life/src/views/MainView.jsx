@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ActivityCard from '../components/Main/ActivityCard';
 import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
-// import { getUser } from '../store/actions/user';
 import { deleteActivity, editActivity } from '../store/actions/activity';
 import ActionButtons from '../components/Main/ActionButtons';
 import SidebarLeft from '../components/Main/SidebarLeft';
@@ -10,10 +9,6 @@ import SearchBar from '../components/Main/SearchBar';
 import '../styles/Feed.scss';
 
 class MainView extends Component {
-  componentDidMount() {
-    // this.props.getUser();
-  }
-
   deleteActivity = id => {
     this.props.deleteActivity(id);
   };
@@ -69,8 +64,6 @@ class MainView extends Component {
 
 const mapStateToProps = state => {
   return {
-    activityLog: state.user.activityLog,
-    reflectionLog: state.user.reflectionLog,
     isLoading: state.user.isLoading,
     activeEdit: state.activity.activeEdit
   };

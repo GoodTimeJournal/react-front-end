@@ -6,20 +6,18 @@ import ActivityFormView from './views/ActivityFormView';
 import LoginView from './views/LoginView';
 import ReflectionFormView from './views/ReflectionFormView';
 import { Route } from 'react-router';
+import { connect } from 'react-redux';
+import { logout } from './store/actions/user';
 
 class App extends Component {
-  state = {
-    isLoggedIn: false
-  };
-
-  logOut = () => {
-    this.setState({ isLoggedIn: false });
+  logout = () => {
+    this.props.logout();
   };
 
   render() {
-    return this.state.isLoggedIn ? (
+    return this.props.loggedIn ? (
       <>
-        <NavigationView logOut={this.logOut} />
+        <NavigationView logout={this.logout} />
         <Route
           exact
           path="/"
@@ -41,9 +39,18 @@ class App extends Component {
         />
       </>
     ) : (
-      <LoginView logIn={this.logIn} />
+      <LoginView />
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    loggedIn: state.user.loggedIn
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { logout }
+)(App);
