@@ -18,7 +18,7 @@ const ActivityForm = props => {
           type="number"
           name="enjoymentRating"
           placeholder="Enjoyment Rating (1-5)"
-          value={parseInt(props.enjoymentRating)}
+          value={props.enjoymentRating}
           onChange={props.handleChange}
           min="1"
           max="5"

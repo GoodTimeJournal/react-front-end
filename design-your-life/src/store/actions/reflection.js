@@ -17,7 +17,6 @@ export const DELETE_REFLECTION_FAIL = 'DELETE_REFLECTION_FAIL';
 const baseURL = 'https://polar-plateau-24996.herokuapp.com';
 
 export const getReflections = token => dispatch => {
-  console.log(token);
   dispatch({
     type: GET_REFLECTIONS
   });

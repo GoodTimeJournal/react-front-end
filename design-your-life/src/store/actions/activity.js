@@ -17,7 +17,6 @@ export const DELETE_ACTIVITY_FAIL = 'DELETE_ACTIVITY_FAIL';
 const baseURL = 'https://polar-plateau-24996.herokuapp.com';
 
 export const getActivities = token => dispatch => {
-  console.log(token);
   dispatch({
     type: GET_ACTIVITIES
   });
@@ -39,9 +38,8 @@ export const addActivity = (token, activity) => dispatch => {
     type: ADD_ACTIVITY
   });
   axios
-    .post(`${baseURL}/activities`, {
-      headers: { Authorization: token },
-      activity
+    .post(`${baseURL}/activities`, activity, {
+      headers: { Authorization: token }
     })
     .then(res =>
       dispatch({
@@ -64,9 +62,11 @@ export const editActivity = activity => {
   };
 };
 
-export const updateActivity = activity => dispatch => {
+export const updateActivity = (token, activity) => dispatch => {
   axios
-    .put(`http://localhost:5000/api/user/activity/${activity.id}`, activity)
+    .put(`${baseURL}/activities${activity.id}`, activity, {
+      headers: { Authorization: token }
+    })
     .then(res =>
       dispatch({
         type: UPDATE_ACTIVITY_COMPLETE,
@@ -81,9 +81,11 @@ export const updateActivity = activity => dispatch => {
     );
 };
 
-export const deleteActivity = (userId, id) => dispatch => {
+export const deleteActivity = (token, id) => dispatch => {
   axios
-    .delete(`http://localhost:5000/api/users/${userId}/activity/${id}`)
+    .delete(`${baseURL}/activities/${id}`, {
+      headers: { Authorization: token }
+    })
     .then(res =>
       dispatch({
         type: DELETE_ACTIVITY,

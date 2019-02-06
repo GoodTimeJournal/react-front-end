@@ -31,7 +31,8 @@ class MainView extends Component {
   };
 
   deleteActivity = id => {
-    this.props.deleteActivity(id);
+    const token = localStorage.getItem('token');
+    this.props.deleteActivity(token, id);
   };
 
   editActivity = id => {

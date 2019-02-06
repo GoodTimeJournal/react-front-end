@@ -19,7 +19,7 @@ class ActivityFormView extends Component {
       ...this.state,
       activity: {
         ...this.state.activity,
-        fk: localStorage.getItem('id')
+        fk: parseInt(localStorage.getItem('id'))
       }
     });
   };

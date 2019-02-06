@@ -31,7 +31,12 @@ const ActivityCard = props => {
         <button className="edit" onClick={() => props.editActivity(props.id)}>
           Edit
         </button>
-        <button className="delete">Delete</button>
+        <button
+          className="delete"
+          onClick={() => props.deleteActivity(props.id)}
+        >
+          Delete
+        </button>
       </div>
     </div>
   );
