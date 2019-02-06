@@ -36,15 +36,12 @@ class MainView extends Component {
   };
 
   editActivity = id => {
-    const selected = this.props.activityLog.find(
-      activity => activity.id === id
-    );
+    const selected = this.props.activities.find(activity => activity.id === id);
     this.props.history.push('/activity');
     this.props.editActivity(selected);
   };
 
   render() {
-    console.log(this.props.activities);
     let mappedActivities;
     if (Array.isArray(this.props.activities)) {
       mappedActivities = this.props.activities.map(activity => (

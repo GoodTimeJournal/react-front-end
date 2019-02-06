@@ -63,14 +63,18 @@ export const editActivity = activity => {
 };
 
 export const updateActivity = (token, activity) => dispatch => {
+  dispatch({
+    type: UPDATE_ACTIVITY
+  });
   axios
-    .put(`${baseURL}/activities${activity.id}`, activity, {
+    .put(`${baseURL}/activities/${activity.id}`, activity, {
       headers: { Authorization: token }
     })
     .then(res =>
       dispatch({
         type: UPDATE_ACTIVITY_COMPLETE,
-        payload: res.data
+        payload: res.data,
+        isEditing: false
       })
     )
     .catch(err =>
