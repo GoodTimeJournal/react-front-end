@@ -5,15 +5,15 @@
 @import './Navigation';
 
 .home-display {
-  // border: 1px solid red;
   display: flex;
-  justify-content: space-evenly;
-  max-width: 1000px;
-  margin: auto;
+  justify-content: space-between;
+  margin-left: calc((100vw / 2) - (300px / 2 ) - (600px / 2) - 20px);
+  // max-width: 1000px;
+  // margin: auto;
 }
 
 .sidebar-fixed {
-  // position: relative;
+  position: relative;
 
   .sidebar {
     // position: fixed;
