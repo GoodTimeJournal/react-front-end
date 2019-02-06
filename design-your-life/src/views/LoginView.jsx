@@ -24,6 +24,9 @@ class LoginView extends Component {
   registerUser = e => {
     e.preventDefault();
     this.props.registerUser(this.state.user);
+    this.setState({
+      isNewUser: false
+    });
   };
 
   loginUser = e => {
@@ -31,10 +34,6 @@ class LoginView extends Component {
     this.props.loginUser(this.state.user);
   };
 
-  saveRegisterData = e => {
-    //Change the view after registered
-    this.switchView();
-  };
   handleChange = e => {
     e.preventDefault();
     this.setState({
@@ -55,12 +54,19 @@ class LoginView extends Component {
         switchView={this.switchView}
         loginUser={this.loginUser}
         handleChange={this.handleChange}
+        isLoading={this.props.isLoading}
       />
     );
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    isLoading: state.user.isLoading
+  };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   { registerUser, loginUser }
 )(LoginView);

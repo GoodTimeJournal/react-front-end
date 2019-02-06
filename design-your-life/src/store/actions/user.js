@@ -18,7 +18,7 @@ export const loginUser = user => dispatch => {
     .then(res =>
       dispatch({
         type: LOGIN_USER_COMPLETE,
-        payload: res.data.token
+        payload: res.data
       })
     )
     .catch(err =>

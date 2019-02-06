@@ -9,7 +9,11 @@ const Navigation = props => {
         <img className="logo" src={logo} alt="Good Time Journal" />
       </NavLink>
       <div className="primary-nav">
-        <i onClick={props.logout} class="fas fa-sign-out-alt" />
+        <i
+          onClick={props.logout}
+          className="fas fa-sign-out-alt"
+          title="Logout"
+        />
       </div>
     </nav>
   );

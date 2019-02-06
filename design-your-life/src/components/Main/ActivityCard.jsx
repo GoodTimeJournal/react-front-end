@@ -17,9 +17,21 @@ const ActivityCard = props => {
         <p>{props.enjoymentRating}</p>
         <p>{props.engagement}</p>
       </div>
-      <div className="card-buttons">
-        <button onClick={() => props.editActivity(props.id)}>Edit</button>
-        <button>Delete</button>
+      <div className="edit-icon">
+        <i
+          className="fas fa-ellipsis-h"
+          // onClick={() => props.expandCardMenu(props.id)}
+        />
+      </div>
+      <div
+        className={
+          props.isExpanded ? 'card-buttons-on-hover' : 'hide-card-button'
+        }
+      >
+        <button className="edit" onClick={() => props.editActivity(props.id)}>
+          Edit
+        </button>
+        <button className="delete">Delete</button>
       </div>
     </div>
   );

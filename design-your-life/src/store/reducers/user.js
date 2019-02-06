@@ -12,8 +12,7 @@ const initialState = {
   user: {},
   isLoading: false,
   error: '',
-  token: '',
-  loggedIn: false
+  loggedIn: true
 };
 
 export default (state = initialState, action) => {
@@ -23,7 +22,7 @@ export default (state = initialState, action) => {
     case LOGIN_USER_COMPLETE:
       return {
         ...state,
-        token: action.payload,
+        user: action.payload,
         isLoading: false,
         loggedIn: true,
         error: ''
