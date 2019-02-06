@@ -1,23 +1,15 @@
-import React, { Component } from "react";
-import NavigationView from "./views/NavigationView";
-import "./styles/App.scss";
-import MainView from "./views/MainView";
-import ActivityFormView from "./views/ActivityFormView";
-import LoginView from "./views/LoginView";
-import ReflectionFormView from "./views/ReflectionFormView";
-import { Route } from "react-router";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import NavigationView from './views/NavigationView';
+import './styles/App.scss';
+import MainView from './views/MainView';
+import ActivityFormView from './views/ActivityFormView';
+import LoginView from './views/LoginView';
+import ReflectionFormView from './views/ReflectionFormView';
+import { Route } from 'react-router';
 
 class App extends Component {
   state = {
-    isLoggedIn: true
-  };
-
-  logIn = e => {
-    e.preventDefault();
-    this.setState({
-      isLoggedIn: true
-    });
+    isLoggedIn: false
   };
 
   logOut = () => {

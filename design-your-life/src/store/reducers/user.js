@@ -1,4 +1,11 @@
-import { GET_USER, GET_USER_COMPLETE, GET_USER_FAIL } from '../actions/user';
+import {
+  LOGIN_USER,
+  LOGIN_USER_COMPLETE,
+  LOGIN_USER_FAIL,
+  REGISTER_USER,
+  REGISTER_USER_COMPLETE,
+  REGISTER_USER_FAIL
+} from '../actions/user';
 
 const initialState = {
   user: {},
@@ -10,19 +17,29 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_USER:
+    case LOGIN_USER:
       return { ...state, isLoading: true, error: '' };
-    case GET_USER_COMPLETE:
+    case LOGIN_USER_COMPLETE:
       return {
         ...state,
-        user: action.payload,
-        reflectionLog: action.payload.reflectionLog,
-        activityLog: action.payload.activityLog,
+        token: action.payload,
         isLoading: false,
         error: ''
       };
 
-    case GET_USER_FAIL:
+    case LOGIN_USER_FAIL:
+      return { ...state, isLoading: false, error: action.payload };
+
+    case REGISTER_USER:
+      return { ...state, isLoading: true, error: '' };
+    case REGISTER_USER_COMPLETE:
+      return {
+        ...state,
+        user: action.payload,
+        isLoading: false,
+        error: ''
+      };
+    case REGISTER_USER_FAIL:
       return { ...state, isLoading: false, error: action.payload };
 
     default:

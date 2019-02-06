@@ -1,33 +1,33 @@
-import React from "react";
-import styles from "styled-components";
-import Logo from "../../styles/nav-logo.png";
-import GoogleSignIn from "../../styles/btn_google_signin_dark_normal_web@2x.png";
+import React from 'react';
+import styles from 'styled-components';
+import Logo from '../../styles/nav-logo.png';
+// import GoogleSignIn from '../../styles/btn_google_signin_dark_normal_web@2x.png';
 
 const Login = props => {
   return (
     <LoginPageStyles>
-      <LoginMenuStyles onSubmit={props.logIn}>
+      <LoginMenuStyles onSubmit={props.loginUser}>
         <LogoImage src={Logo} />
-        <br />
-        <LogoImage src={GoogleSignIn} />
+        {/* <br />
+        {/* <LogoImage src={GoogleSignIn} />
         <SeperateContent>
           <hr />
           <p>or</p>
           <hr />
-        </SeperateContent>
+        </SeperateContent> */}
         <LoginInputStyles
           placeholder="Username"
           onChange={props.handleChange}
-          name="currentUsername"
-          value={props.currentUsername}
+          name="username"
+          value={props.username}
           required
           minLength="4"
         />
         <LoginInputStyles
           placeholder="Password"
           onChange={props.handleChange}
-          name="currentPassword"
-          value={props.currentPassword}
+          name="password"
+          value={props.password}
           required
           minLength="6"
           type="password"

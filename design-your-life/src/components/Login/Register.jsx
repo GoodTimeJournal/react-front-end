@@ -1,22 +1,21 @@
-import React from "react";
-import styles from "styled-components";
-import Logo from "../../styles/nav-logo.png";
-import TextField from "@material-ui/core/TextField";
+import React from 'react';
+import styles from 'styled-components';
+import Logo from '../../styles/nav-logo.png';
+import TextField from '@material-ui/core/TextField';
 
 const Register = props => {
-  console.log(props);
   return (
     <LoginPageStyles>
-      <LoginMenuStyles autoComplete="false" onSubmit={props.switchView}>
+      <LoginMenuStyles autoComplete="false" onSubmit={props.registerUser}>
         <LogoImage src={Logo} />
         <TextField
           fullWidth
           label="Full Name"
           placeholder="Full Name"
-          onChange={props.handleChange}
+          // onChange={props.handleChange}
           name="fullname"
           type="text"
-          value={props.currentName}
+          // value={props.currentName}
           required
           minLength="2"
         />
@@ -24,9 +23,9 @@ const Register = props => {
           fullWidth
           label="Email"
           placeholder="Email"
-          onChange={props.handleChange}
+          // onChange={props.handleChange}
           name="email"
-          value={props.currentUsername}
+          // value={props.currentUsername}
           required
           minLength="4"
         />
@@ -59,7 +58,7 @@ const Register = props => {
       </LoginMenuStyles>
       <SwitchMenuStyles>
         <GoBackContainer onClick={props.switchView}>
-          <GobackIcon className="fas fa-arrow-left" />
+          <GoBackIcon className="fas fa-arrow-left" />
           <CreateAccount>Go Back</CreateAccount>
         </GoBackContainer>
       </SwitchMenuStyles>
@@ -165,6 +164,6 @@ const CreateAccount = styles.p`
   padding: 0;
   margin-left: 5px;
 `;
-const GobackIcon = styles.i`
+const GoBackIcon = styles.i`
   font-size: 24px
 `;
