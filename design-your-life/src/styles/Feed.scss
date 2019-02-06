@@ -5,7 +5,8 @@
 }
 
 .feed {
-  position: absolute;
+  overflow-y: scroll;
+  height: calc(100vh - 100px);
   right: 5%;
   margin-top: 100px;
 
