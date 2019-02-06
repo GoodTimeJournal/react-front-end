@@ -49,12 +49,10 @@ class ActivityFormView extends Component {
     this.props.isEditing // isEditing coming from Redux store
       ? this.props.updateActivity(token, this.state.activity)
       : this.props.addActivity(token, this.state.activity);
-
-    this.props.history.push('/');
+    setTimeout((this.props.history.push('/'), 2000));
   };
 
   render() {
-    console.log('state', this.state.activity);
     return (
       <ActivityForm
         name={this.state.activity.name}

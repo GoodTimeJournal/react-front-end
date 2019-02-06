@@ -12,6 +12,7 @@ import ActionButtons from '../components/Main/ActionButtons';
 import SidebarLeft from '../components/Main/SidebarLeft';
 import SearchBar from '../components/Main/SearchBar';
 import '../styles/Feed.scss';
+import moment from 'moment';
 
 class MainView extends Component {
   state = {
@@ -33,6 +34,8 @@ class MainView extends Component {
   deleteActivity = id => {
     const token = localStorage.getItem('token');
     this.props.deleteActivity(token, id);
+    this.props.history.push('/');
+    this.props.getActivities(token);
   };
 
   editActivity = id => {
@@ -43,22 +46,27 @@ class MainView extends Component {
 
   render() {
     let mappedActivities;
-    if (Array.isArray(this.props.activities)) {
-      mappedActivities = this.props.activities.map(activity => (
-        <ActivityCard
-          key={activity.id}
-          id={activity.id}
-          name={activity.name}
-          enjoymentRating={activity.enjoymentRating}
-          energyLevel={activity.energyLevel}
-          engagement={activity.engagement}
-          timestamp={activity.timestamp}
-          editActivity={this.editActivity}
-          deleteActivity={this.deleteActivity}
-          expandCardMenu={this.expandCardMenu}
-          isExpanded={this.state.isExpanded}
-        />
-      ));
+    if (
+      Array.isArray(this.props.activities) &&
+      this.props.activities.length > 0
+    ) {
+      mappedActivities = this.props.activities
+        .sort((a, b) => a.id > b.id)
+        .map(activity => (
+          <ActivityCard
+            key={activity.id}
+            id={activity.id}
+            name={activity.name}
+            enjoymentRating={activity.enjoymentRating}
+            energyLevel={activity.energyLevel}
+            engagement={activity.engagement}
+            timestamp={moment(activity.timestamp).format('M/D')}
+            editActivity={this.editActivity}
+            deleteActivity={this.deleteActivity}
+            expandCardMenu={this.expandCardMenu}
+            isExpanded={this.state.isExpanded}
+          />
+        ));
     }
 
     return this.props.isLoading ? (

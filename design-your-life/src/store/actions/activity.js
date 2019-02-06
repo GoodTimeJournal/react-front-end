@@ -20,7 +20,6 @@ export const getActivities = token => dispatch => {
   dispatch({
     type: GET_ACTIVITIES
   });
-
   axios
     .get(`${baseURL}/activities`, { headers: { Authorization: token } })
     .then(res =>
@@ -28,8 +27,7 @@ export const getActivities = token => dispatch => {
         type: GET_ACTIVITIES_COMPLETE,
         payload: res.data
       })
-    )
-    .catch(err => console.log(err));
+    );
 };
 
 export const addActivity = (token, activity) => dispatch => {
@@ -73,8 +71,7 @@ export const updateActivity = (token, activity) => dispatch => {
     .then(res =>
       dispatch({
         type: UPDATE_ACTIVITY_COMPLETE,
-        payload: res.data,
-        isEditing: false
+        payload: res.data
       })
     )
     .catch(err =>
@@ -86,14 +83,21 @@ export const updateActivity = (token, activity) => dispatch => {
 };
 
 export const deleteActivity = (token, id) => dispatch => {
+  dispatch({ type: DELETE_ACTIVITY });
   axios
     .delete(`${baseURL}/activities/${id}`, {
       headers: { Authorization: token }
     })
     .then(res =>
       dispatch({
-        type: DELETE_ACTIVITY,
+        type: DELETE_ACTIVITY_COMPLETE,
         payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: DELETE_ACTIVITY_FAIL,
+        payload: err
       })
     );
 };
