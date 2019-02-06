@@ -44,14 +44,6 @@ class ReflectionFormView extends Component {
 
   render() {
     switch (this.state.page) {
-      case 1:
-        return (
-          <ReflectionFormOne
-            handleChange={this.handleChange}
-            nextStep={this.nextStep}
-            q1={this.state.reflection.q1}
-          />
-        );
       case 2:
         return (
           <ReflectionFormTwo
@@ -77,6 +69,14 @@ class ReflectionFormView extends Component {
             addReflection={this.addReflection}
             summary={this.state.reflection.summary}
             previousStep={this.previousStep}
+          />
+        );
+      default:
+        return (
+          <ReflectionFormOne
+            handleChange={this.handleChange}
+            nextStep={this.nextStep}
+            q1={this.state.reflection.q1}
           />
         );
     }
