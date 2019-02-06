@@ -44,21 +44,25 @@ class MainView extends Component {
   };
 
   render() {
-    const mappedActivities = this.props.activities.map(activity => (
-      <ActivityCard
-        key={activity.id}
-        id={activity.id}
-        name={activity.name}
-        enjoymentRating={activity.enjoymentRating}
-        energyLevel={activity.energyLevel}
-        engagement={activity.engagement}
-        timestamp={activity.timestamp}
-        editActivity={this.editActivity}
-        deleteActivity={this.deleteActivity}
-        expandCardMenu={this.expandCardMenu}
-        isExpanded={this.state.isExpanded}
-      />
-    ));
+    console.log(this.props.activities);
+    let mappedActivities;
+    if (Array.isArray(this.props.activities)) {
+      mappedActivities = this.props.activities.map(activity => (
+        <ActivityCard
+          key={activity.id}
+          id={activity.id}
+          name={activity.name}
+          enjoymentRating={activity.enjoymentRating}
+          energyLevel={activity.energyLevel}
+          engagement={activity.engagement}
+          timestamp={activity.timestamp}
+          editActivity={this.editActivity}
+          deleteActivity={this.deleteActivity}
+          expandCardMenu={this.expandCardMenu}
+          isExpanded={this.state.isExpanded}
+        />
+      ));
+    }
 
     return this.props.isLoading ? (
       <div className="loader-div">

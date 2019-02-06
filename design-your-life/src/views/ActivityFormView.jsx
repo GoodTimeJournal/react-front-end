@@ -25,7 +25,7 @@ class ActivityFormView extends Component {
   };
 
   handleChange = e => {
-    if (isNaN(e.target.value)) {
+    if (isNaN(e.target.value) || e.target.value === '') {
       this.setState({
         ...this.state,
         activity: {
