@@ -8,7 +8,7 @@ import {
 	editActivity,
 	getActivities
 } from '../store/actions/activity';
-import { getReflections } from '../store/actions/reflection';
+import { getReflections, deleteReflection } from '../store/actions/reflection';
 import ActionButtons from '../components/Main/ActionButtons';
 import SidebarLeft from '../components/Main/SidebarLeft';
 import SearchBar from '../components/Main/SearchBar';
@@ -40,6 +40,11 @@ class MainView extends Component {
 	deleteActivity = id => {
 		this.props.deleteActivity(token, id);
 		setTimeout(() => this.props.getActivities(token), 300);
+	};
+
+	deleteReflection = id => {
+		this.props.deleteReflection(token, id);
+		setTimeout(() => this.props.getReflections(token), 300);
 	};
 
 	editActivity = id => {
@@ -89,7 +94,7 @@ class MainView extends Component {
 					timestamp={moment(reflection.timestamp).format('LLL')}
 					sortedTimestamp={moment(reflection.timestamp).format('LT')}
 					// editReflection={this.editReflection}
-					// deleteReflection={this.deleteReflection}
+					deleteReflection={this.deleteReflection}
 				/>
 			));
 		}
@@ -205,5 +210,5 @@ const mapStateToProps = state => {
 
 export default connect(
 	mapStateToProps,
-	{ deleteActivity, editActivity, getActivities, getReflections }
+	{ deleteActivity, editActivity, getActivities, getReflections, deleteReflection }
 )(MainView);
