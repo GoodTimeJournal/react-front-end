@@ -56,25 +56,28 @@ class MainView extends Component {
   render() {
     let mappedActivities;
     let mappedReflections;
-
+    let recentReflection;
     let timestamp;
 
     // Recent Reflection Card Logic
-    let getRecentReflection = () => {
-      let reflection;
-      if (this.props.reflections.length !== 0) {
-        reflection = this.props.reflections[this.props.reflections.length - 1]
-          .journalEntry;
-      }
-      return reflection;
-    };
+    console.log(this.props.reflections);
 
-    // timestamp = moment(
-    //   this.props.reflections[this.props.reflections.length - 1].timestamp
-    // ).format('M/D');
+    if (
+      Array.isArray(this.props.reflections) &&
+      this.props.reflections.length > 0
+    ) {
+      recentReflection = this.props.reflections[
+        this.props.reflections.length - 1
+      ].journalEntry;
+      timestamp = moment(
+        this.props.reflections[this.props.reflections.length - 1].timestamp
+      ).format('M/D');
+    }
 
-    let recentReflection = getRecentReflection();
-    console.log(recentReflection);
+    // let recentReflection =
+    //   this.props.reflections.length === 0
+    //     ? this.props.reflections[this.props.reflections.length - 1].journalEntry
+    //     : 'working';
 
     // Map Reflections Logic
     if (Array.isArray(this.props.reflections)) {
@@ -174,7 +177,10 @@ class MainView extends Component {
     ) : (
       <>
         <div className="home-display">
-          <SidebarLeft recentReflection={recentReflection} />
+          <SidebarLeft
+            recentReflection={recentReflection}
+            timestamp={timestamp}
+          />
           <div className="feed">
             <SearchBar handleChange={this.handleChange} />
             {this.state.searchInput !== '' || null
