@@ -47,9 +47,7 @@ const Login = props => {
         <LoginPageText>Forgot your password?</LoginPageText>
       </LoginMenuStyles>
       <SwitchMenuStyles>
-        <CreateAccount onClick={() => props.switchView}>
-          Create Account
-        </CreateAccount>
+        <CreateAccount onClick={props.switchView}>Create Account</CreateAccount>
       </SwitchMenuStyles>
     </LoginPageStyles>
   );
