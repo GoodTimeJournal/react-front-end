@@ -1,5 +1,5 @@
-import React from 'react';
-import { TextField } from '@material-ui/core';
+import React from "react";
+import { TextField } from "@material-ui/core";
 
 const ReflectionFormSubmit = props => {
   return (
@@ -29,6 +29,7 @@ const ReflectionFormSubmit = props => {
           name="journalEntry"
           value={props.journalEntry}
           onChange={props.handleChange}
+          inputProps={{ minLength: 10, maxLength: 150 }}
         />
         <div className="reflection-buttons">
           <button onClick={props.previousStep}>Previous Step</button>
