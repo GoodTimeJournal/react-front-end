@@ -1,26 +1,26 @@
-import React, { Component } from 'react';
-import ActivityCard from '../components/Main/ActivityCard';
-import ReflectionCard from '../components/Main/ReflectionCard';
-import Loader from 'react-loader-spinner';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import ActivityCard from "../components/Main/ActivityCard";
+import ReflectionCard from "../components/Main/ReflectionCard";
+import Loader from "react-loader-spinner";
+import { connect } from "react-redux";
 import {
   deleteActivity,
   editActivity,
   getActivities
-} from '../store/actions/activity';
-import { getReflections } from '../store/actions/reflection';
-import ActionButtons from '../components/Main/ActionButtons';
-import SidebarLeft from '../components/Main/SidebarLeft';
-import SearchBar from '../components/Main/SearchBar';
-import '../styles/Feed.scss';
-import moment from 'moment';
+} from "../store/actions/activity";
+import { getReflections } from "../store/actions/reflection";
+import ActionButtons from "../components/Main/ActionButtons";
+import SidebarLeft from "../components/Main/SidebarLeft";
+import SearchBar from "../components/Main/SearchBar";
+import "../styles/Feed.scss";
+import moment from "moment";
 
-const token = localStorage.getItem('token');
+const token = localStorage.getItem("token");
 
 class MainView extends Component {
   state = {
     isExpanded: false,
-    searchInput: ''
+    searchInput: ""
   };
 
   componentDidMount = () => {
@@ -44,7 +44,7 @@ class MainView extends Component {
 
   editActivity = id => {
     const selected = this.props.activities.find(activity => activity.id === id);
-    this.props.history.push('/activity');
+    this.props.history.push("/activity");
     this.props.editActivity(selected);
   };
 
@@ -63,7 +63,8 @@ class MainView extends Component {
           key={reflection.id}
           id={reflection.id}
           journalEntry={reflection.journalEntry}
-          timestamp={moment(reflection.timestamp).format('M/D')}
+          timestamp={moment(reflection.timestamp).format("LLL")}
+          sortedTimestamp={moment(reflection.timestamp).format("LT")}
           // editReflection={this.editReflection}
           // deleteReflection={this.deleteReflection}
         />
@@ -78,7 +79,8 @@ class MainView extends Component {
           enjoymentRating={activity.enjoymentRating}
           energyLevel={activity.energyLevel}
           engagement={activity.engagement}
-          timestamp={moment(activity.timestamp).format('M/D')}
+          timestamp={moment(activity.timestamp).format("LLL")}
+          sortedTimestamp={moment(activity.timestamp).format("LT")}
           editActivity={this.editActivity}
           deleteActivity={this.deleteActivity}
           toggleCardMenu={this.toggleCardMenu}
@@ -104,7 +106,8 @@ class MainView extends Component {
                 enjoymentRating={activity.props.enjoymentRating}
                 energyLevel={activity.props.energyLevel}
                 engagement={activity.props.engagement}
-                timestamp={moment(activity.props.timestamp).format('M/D')}
+                timestamp={moment(activity.props.timestamp).format("LLL")}
+                sortedTimestamp={moment(activity.props.timestamp).format("LT")}
                 editActivity={this.editActivity}
                 deleteActivity={this.deleteActivity}
                 expandCardMenu={this.expandCardMenu}
@@ -114,7 +117,6 @@ class MainView extends Component {
           });
       }
     }
-    // console.log(filteredActivities);
     let combineActivitiesAndReflections;
     if (mappedActivities === undefined || mappedReflections === undefined) {
       setTimeout(() => {
@@ -125,7 +127,13 @@ class MainView extends Component {
         ...mappedActivities,
         ...mappedReflections
       ];
+      combineActivitiesAndReflections.sort((a, b) => {
+        if (a.props.sortedTimestamp < b.props.sortedTimestamp) return 1;
+        if (a.props.sortedTimestamp > b.props.sortedTimestamp) return -1;
+        return 0;
+      });
     }
+    console.log(combineActivitiesAndReflections);
 
     return this.props.isLoading ? (
       <div className="loader-div">
@@ -143,7 +151,7 @@ class MainView extends Component {
           <SidebarLeft reflections={this.props.reflectionLog} />
           <div className="feed">
             <SearchBar handleChange={this.handleChange} />
-            {this.state.searchInput !== '' || null
+            {this.state.searchInput !== "" || null
               ? filteredActivities
               : combineActivitiesAndReflections}
           </div>
