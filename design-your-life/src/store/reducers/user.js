@@ -12,7 +12,7 @@ const initialState = {
   user: {},
   isLoading: false,
   error: '',
-  loggedIn: true
+  loggedIn: false
 };
 
 export default (state = initialState, action) => {
