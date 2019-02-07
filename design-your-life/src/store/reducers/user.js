@@ -12,7 +12,7 @@ const initialState = {
   user: {},
   isLoading: false,
   error: '',
-  loggedIn: true
+  loggedIn: false
 };
 
 export default (state = initialState, action) => {
@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
     case LOGIN_USER_COMPLETE:
       localStorage.setItem('token', action.payload.token);
       localStorage.setItem('id', action.payload.userId);
-      window.location.reload(true);
+      // window.location.reload(true);
       return {
         ...state,
         user: action.payload,
@@ -31,7 +31,12 @@ export default (state = initialState, action) => {
         error: ''
       };
     case LOGIN_USER_FAIL:
-      return { ...state, isLoading: false, error: 'fail' };
+      return { state: {
+        user: {},
+        isLoading: false,
+        error: '',
+        loggedIn: true
+      }, isLoading: false, error: 'fail' };
     case LOG_OUT:
       localStorage.clear()
       return { ...state, loggedIn: false, token: ''  };
