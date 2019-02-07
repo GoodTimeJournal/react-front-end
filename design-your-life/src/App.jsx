@@ -12,6 +12,7 @@ import { logout } from "./store/actions/user";
 class App extends Component {
   logout = () => {
     this.props.logout();
+    // localStorage.clear();
   };
 
   render() {
