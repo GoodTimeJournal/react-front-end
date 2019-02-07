@@ -1,5 +1,8 @@
 // import CONSTANT_VARIABLE from actions
 import {
+  GET_ACTIVITIES,
+  GET_ACTIVITIES_COMPLETE,
+  GET_ACTIVITIES_FAIL,
   ADD_ACTIVITY,
   ADD_ACTIVITY_COMPLETE,
   ADD_ACTIVITY_FAIL,
@@ -22,9 +25,20 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case GET_ACTIVITIES:
+      return { ...state, isLoading: true, error: '' };
+    case GET_ACTIVITIES_COMPLETE:
+      console.log(action.payload);
+      return {
+        ...state,
+        activities: action.payload,
+        isLoading: false,
+        error: ''
+      };
+    case GET_ACTIVITIES_FAIL:
+      return { ...state, isLoading: false, error: action.payload };
     case ADD_ACTIVITY:
       return { ...state, isLoading: true, error: '' };
-
     case ADD_ACTIVITY_COMPLETE:
       return {
         ...state,
@@ -32,10 +46,8 @@ export default function(state = initialState, action) {
         isLoading: false,
         error: ''
       };
-
     case ADD_ACTIVITY_FAIL:
       return { ...state, isLoading: false, error: action.payload };
-
     case EDIT_ACTIVITY:
       return {
         ...state,
@@ -43,28 +55,24 @@ export default function(state = initialState, action) {
         error: '',
         activeEdit: action.payload
       };
-
     case UPDATE_ACTIVITY:
       return { ...state, isLoading: true, error: '' };
-
     case UPDATE_ACTIVITY_COMPLETE:
       return {
         ...state,
         activities: action.payload,
         isLoading: false,
-        error: ''
+        error: '',
+        activeEdit: {},
+        isEditing: false
       };
-
     case UPDATE_ACTIVITY_FAIL:
       return { ...state, isLoading: false, error: action.payload };
-
     case DELETE_ACTIVITY:
       return { ...state, isLoading: true, error: '' };
-
     case DELETE_ACTIVITY_COMPLETE:
       return {
         ...state,
-        activities: action.payload,
         isLoading: false,
         error: ''
       };

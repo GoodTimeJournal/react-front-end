@@ -6,6 +6,7 @@ const ActivityForm = props => {
     <div className="form-page">
       <form className="activity-form" onSubmit={props.handleSubmit}>
         <input
+          required
           type="text"
           name="name"
           placeholder="Activity"
@@ -13,31 +14,34 @@ const ActivityForm = props => {
           onChange={props.handleChange}
         />
         <input
+          required
           type="number"
           name="enjoymentRating"
-          placeholder="Enjoyment Rating (1-10)"
+          placeholder="Enjoyment Rating (1-5)"
           value={props.enjoymentRating}
           onChange={props.handleChange}
           min="1"
-          max="10"
+          max="5"
         />
         <input
+          required
           type="number"
           name="energyLevel"
-          placeholder="Energy Level (1-10)"
+          placeholder="Energy Level (1-5)"
           value={props.energyLevel}
           onChange={props.handleChange}
           min="1"
-          max="10"
+          max="5"
         />
         <input
+          required
           type="number"
           name="engagement"
-          placeholder="Engagement (1-10)"
+          placeholder="Engagement (1-5)"
           value={props.engagement}
           onChange={props.handleChange}
           min="1"
-          max="10"
+          max="5"
         />
         <button>{props.isEditing ? 'Update Activity' : 'Add Activity'}</button>
       </form>
