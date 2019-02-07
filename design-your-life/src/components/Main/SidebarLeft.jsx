@@ -1,23 +1,28 @@
-import React from "react";
+import React from 'react';
+import moment from 'moment';
 
 const SidebarLeft = props => {
   return (
     <div className="sidebar-fixed">
       <div className="sidebar">
-        <div className="box">
-          <h2>Recent Reflection</h2>
-          {/* <p>{props.reflectionLog[0].journalEntry}</p> */}
-          {/* <p>{props..insights}</p>
-          <p>{latestLog.surprises}</p>
-          <p>{latestLog.trends}</p>
-          <p>`Created on: ${latestLog.timestamp}`</p> */}
+        <div className="box recent-reflections">
+          <div className="title-date">
+            <h5 className="recent-reflection">Recent Reflection</h5>
+            <h5 className="date">{props.timestamp}</h5>
+          </div>
+          <p>{props.recentReflection}</p>
         </div>
         <div className="box">
-          <h5>overview</h5>
+          <div className="title-date">
+            <h5 className="recent-reflection">Weekly Overview</h5>
+          </div>
+          <p>activity / reflection data here</p>
         </div>
         <hr />
         <div className="box calendar">
-          <h5>calendar</h5>
+          <div className="title-date">
+            <h5 className="recent-reflection">Calendar Goes Here</h5>
+          </div>
         </div>
       </div>
     </div>

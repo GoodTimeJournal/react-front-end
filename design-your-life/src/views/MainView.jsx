@@ -56,7 +56,20 @@ class MainView extends Component {
   render() {
     let mappedActivities;
     let mappedReflections;
+    let recentReflection;
+    let timestamp;
 
+    // Recent Reflection Card Logic
+    // if (this.props.reflections !== undefined) {
+    //   recentReflection = this.props.reflections[
+    //     this.props.reflections.length - 1
+    //   ].journalEntry;
+    //   timestamp = moment(
+    //     this.props.reflections[this.props.reflections.length - 1].timestamp
+    //   ).format('M/D');
+    // }
+
+    // Map Reflections Logic
     if (Array.isArray(this.props.reflections)) {
       mappedReflections = this.props.reflections.map(reflection => (
         <ReflectionCard
@@ -69,6 +82,8 @@ class MainView extends Component {
         />
       ));
     }
+
+    // Map Activities Logic
     if (Array.isArray(this.props.activities)) {
       mappedActivities = this.props.activities.map(activity => (
         <ActivityCard
@@ -86,6 +101,8 @@ class MainView extends Component {
         />
       ));
     }
+
+    // Filter Activities Logic
     let filteredActivities;
     if (Array.isArray(this.props.activities)) {
       if (mappedActivities.length !== 0) {
@@ -114,7 +131,8 @@ class MainView extends Component {
           });
       }
     }
-    // console.log(filteredActivities);
+
+    // Combine Feed Logic
     let combineActivitiesAndReflections;
     if (mappedActivities === undefined || mappedReflections === undefined) {
       setTimeout(() => {
@@ -140,7 +158,7 @@ class MainView extends Component {
     ) : (
       <>
         <div className="home-display">
-          <SidebarLeft reflections={this.props.reflectionLog} />
+          <SidebarLeft reflections={this.props.reflections} />
           <div className="feed">
             <SearchBar handleChange={this.handleChange} />
             {this.state.searchInput !== '' || null
