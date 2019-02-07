@@ -13,6 +13,7 @@ import SidebarLeft from "../components/Main/SidebarLeft";
 import SearchBar from "../components/Main/SearchBar";
 import "../styles/Feed.scss";
 import moment from "moment";
+import { AST_Null } from "terser";
 
 const token = localStorage.getItem("token");
 
@@ -46,7 +47,6 @@ class MainView extends Component {
   handleChange = e => {
     e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state.filterText);
   };
 
   render() {
@@ -68,29 +68,35 @@ class MainView extends Component {
         />
       ));
     }
-    console.log(mappedActivities);
-    // let filteredActivities;
-    // if (Array.isArray(this.props.activities)) {
-    //   filteredActivities = mappedActivities
-    //     .filter(activity => {
-    //       return activity.name.includes(this.state.searchInput.toLowerCase());
-    //     })
-    //     .map(activity => (
-    //       <ActivityCard
-    //         key={activity.id}
-    //         id={activity.id}
-    //         name={activity.name}
-    //         enjoymentRating={activity.enjoymentRating}
-    //         energyLevel={activity.energyLevel}
-    //         engagement={activity.engagement}
-    //         timestamp={moment(activity.timestamp).format("M/D")}
-    //         editActivity={this.editActivity}
-    //         deleteActivity={this.deleteActivity}
-    //         expandCardMenu={this.expandCardMenu}
-    //         isExpanded={this.state.isExpanded}
-    //       />
-    //     ));
-    // }
+    let filteredActivities;
+    if (Array.isArray(this.props.activities)) {
+      if (mappedActivities.length !== 0) {
+        filteredActivities = mappedActivities
+          .filter(activity => {
+            return activity.props.name
+              .toLowerCase()
+              .includes(this.state.searchInput.toLowerCase());
+          })
+          .map(activity => {
+            console.log(activity);
+            return (
+              <ActivityCard
+                key={activity.props.id}
+                id={activity.props.id}
+                name={activity.props.name}
+                enjoymentRating={activity.props.enjoymentRating}
+                energyLevel={activity.props.energyLevel}
+                engagement={activity.props.engagement}
+                timestamp={moment(activity.props.timestamp).format("M/D")}
+                editActivity={this.editActivity}
+                deleteActivity={this.deleteActivity}
+                expandCardMenu={this.expandCardMenu}
+                isExpanded={this.state.isExpanded}
+              />
+            );
+          });
+      }
+    }
     // console.log(filteredActivities);
 
     return this.props.isLoading ? (
@@ -109,7 +115,9 @@ class MainView extends Component {
           <SidebarLeft reflections={this.props.reflectionLog} />
           <div className="feed">
             <SearchBar handleChange={this.handleChange} />
-            {mappedActivities}
+            {this.state.searchInput !== "" || null
+              ? filteredActivities
+              : mappedActivities}
           </div>
         </div>
         <ActionButtons history={this.props.history} />
