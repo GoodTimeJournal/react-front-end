@@ -5,7 +5,7 @@ const SearchBar = props => {
     <input
       className="search-input"
       type="text"
-      placeholder="Filter Activity / Reflection Feed"
+      placeholder="Filter Activities"
       name="searchInput"
       value={props.searchInput}
       onChange={e => props.handleChange(e)}

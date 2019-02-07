@@ -56,18 +56,25 @@ class MainView extends Component {
   render() {
     let mappedActivities;
     let mappedReflections;
-    let recentReflection;
+
     let timestamp;
 
     // Recent Reflection Card Logic
-    // if (this.props.reflections !== undefined) {
-    //   recentReflection = this.props.reflections[
-    //     this.props.reflections.length - 1
-    //   ].journalEntry;
-    //   timestamp = moment(
-    //     this.props.reflections[this.props.reflections.length - 1].timestamp
-    //   ).format('M/D');
-    // }
+    let getRecentReflection = () => {
+      let reflection;
+      if (this.props.reflections.length !== 0) {
+        reflection = this.props.reflections[this.props.reflections.length - 1]
+          .journalEntry;
+      }
+      return reflection;
+    };
+
+    // timestamp = moment(
+    //   this.props.reflections[this.props.reflections.length - 1].timestamp
+    // ).format('M/D');
+
+    let recentReflection = getRecentReflection();
+    console.log(recentReflection);
 
     // Map Reflections Logic
     if (Array.isArray(this.props.reflections)) {
@@ -76,7 +83,8 @@ class MainView extends Component {
           key={reflection.id}
           id={reflection.id}
           journalEntry={reflection.journalEntry}
-          timestamp={moment(reflection.timestamp).format('M/D')}
+          timestamp={moment(reflection.timestamp).format('LLL')}
+          sortedTimestamp={moment(reflection.timestamp).format('LT')}
           // editReflection={this.editReflection}
           // deleteReflection={this.deleteReflection}
         />
@@ -93,7 +101,8 @@ class MainView extends Component {
           enjoymentRating={activity.enjoymentRating}
           energyLevel={activity.energyLevel}
           engagement={activity.engagement}
-          timestamp={moment(activity.timestamp).format('M/D')}
+          timestamp={moment(activity.timestamp).format('LLL')}
+          sortedTimestamp={moment(activity.timestamp).format('LT')}
           editActivity={this.editActivity}
           deleteActivity={this.deleteActivity}
           toggleCardMenu={this.toggleCardMenu}
@@ -121,7 +130,8 @@ class MainView extends Component {
                 enjoymentRating={activity.props.enjoymentRating}
                 energyLevel={activity.props.energyLevel}
                 engagement={activity.props.engagement}
-                timestamp={moment(activity.props.timestamp).format('M/D')}
+                timestamp={moment(activity.props.timestamp).format('LLL')}
+                sortedTimestamp={moment(activity.props.timestamp).format('LT')}
                 editActivity={this.editActivity}
                 deleteActivity={this.deleteActivity}
                 expandCardMenu={this.expandCardMenu}
@@ -133,6 +143,7 @@ class MainView extends Component {
     }
 
     // Combine Feed Logic
+
     let combineActivitiesAndReflections;
     if (mappedActivities === undefined || mappedReflections === undefined) {
       setTimeout(() => {
@@ -143,6 +154,11 @@ class MainView extends Component {
         ...mappedActivities,
         ...mappedReflections
       ];
+      combineActivitiesAndReflections.sort((a, b) => {
+        if (a.props.sortedTimestamp < b.props.sortedTimestamp) return 1;
+        if (a.props.sortedTimestamp > b.props.sortedTimestamp) return -1;
+        return 0;
+      });
     }
 
     return this.props.isLoading ? (
@@ -158,7 +174,7 @@ class MainView extends Component {
     ) : (
       <>
         <div className="home-display">
-          <SidebarLeft reflections={this.props.reflections} />
+          <SidebarLeft recentReflection={recentReflection} />
           <div className="feed">
             <SearchBar handleChange={this.handleChange} />
             {this.state.searchInput !== '' || null
