@@ -1,5 +1,5 @@
-import React from 'react';
-import { TextField } from '@material-ui/core';
+import React from "react";
+import { TextField } from "@material-ui/core";
 
 const ReflectionFormThree = props => {
   return (
@@ -29,6 +29,7 @@ const ReflectionFormThree = props => {
           name="trends"
           value={props.trends}
           onChange={props.handleChange}
+          inputProps={{ minLength: 10, maxLength: 150 }}
         />
 
         <div className="reflection-buttons">
