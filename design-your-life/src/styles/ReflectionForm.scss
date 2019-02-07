@@ -3,9 +3,9 @@
   justify-content: center;
   align-items: center;
   margin: 120px auto;
-  // width: 80%;
 
   .reflection-progress {
+
     .active {
       color: black;
     }
@@ -13,6 +13,10 @@
     h3 {
       margin: 50px 0;
       color: lightgrey;
+
+      @media screen and (max-width: 800px) {
+        font-size: 1.6rem;
+      }
     }
   }
 }
@@ -20,8 +24,17 @@
 .reflection-form {
   display: flex;
   flex-direction: column;
-  margin-left: 100px;
-  width: 600px;
+  // margin-left: 100px;
+  margin-left: 5%;
+  max-width: 600px;
+  width: 70%;
+
+  p {
+    @media screen and (max-width: 800px) {
+      font-size: 1.4rem;
+    }
+  }
+
 
   textarea {
     border: none;

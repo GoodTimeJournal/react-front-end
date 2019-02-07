@@ -8,7 +8,9 @@
 .activity-form {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 90%;
+  max-width: 400px;
+  margin: auto;
 
   input {
     border: none;

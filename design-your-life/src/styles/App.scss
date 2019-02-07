@@ -7,18 +7,23 @@
 .home-display {
   display: flex;
   justify-content: space-between;
-  margin-left: calc((100vw / 2) - (300px / 2) - (600px / 2) - 20px);
-  // max-width: 1000px;
-  // margin: auto;
+  margin-left: calc((100vw / 2) - (#{$sidebarWidth} / 2) - (#{$inputMaxWidth} / 2) - 20px); // 100vw/2        sidebar/2     searchbar / 2
+
+  @media screen and (max-width: 1100px) {
+    margin: auto;
+    margin-top: 70px;
+  }
 }
 
 .sidebar-fixed {
   position: relative;
 
+  @media screen and (max-width: 1100px) {
+    display: none;
+  } 
+
   .sidebar {
-    // position: fixed;
-    // left: 5%;
-    width: 300px;
+    width: $sidebarWidth;
     padding-top: 100px;
 
     .box {
@@ -61,8 +66,9 @@
     .calendar {
       height: auto;
       margin-top: 20px;
+      outline: none;
 
-      // border: 1px solid #6868f6;
+      border: 1px solid #6868f6;
     }
   }
 }
