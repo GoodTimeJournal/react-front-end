@@ -1,6 +1,6 @@
-import React from 'react';
-import logo from '../../styles/nav-logo.png';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import logo from "../../styles/nav-logo.png";
+import { NavLink } from "react-router-dom";
 
 const Navigation = props => {
   return (

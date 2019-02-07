@@ -28,7 +28,6 @@ export default function(state = initialState, action) {
     case GET_ACTIVITIES:
       return { ...state, isLoading: true, error: '' };
     case GET_ACTIVITIES_COMPLETE:
-      console.log(action.payload);
       return {
         ...state,
         activities: action.payload,

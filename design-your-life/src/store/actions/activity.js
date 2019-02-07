@@ -31,7 +31,6 @@ export const getActivities = token => dispatch => {
 };
 
 export const addActivity = (token, activity) => dispatch => {
-  console.log(token, activity);
   dispatch({
     type: ADD_ACTIVITY
   });
