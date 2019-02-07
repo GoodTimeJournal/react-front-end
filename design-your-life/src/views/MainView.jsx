@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ActivityCard from '../components/Main/ActivityCard';
 import ReflectionCard from '../components/Main/ReflectionCard';
-import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
 import {
   deleteActivity,
@@ -24,8 +23,8 @@ class MainView extends Component {
   };
 
   componentDidMount = () => {
-    this.props.getActivities(token);
-    this.props.getReflections(token);
+    setTimeout(() => this.props.getActivities(token), 600);
+    setTimeout(() => this.props.getReflections(token), 600);
     this.setState({
       activities: this.props.activities
     });
@@ -164,17 +163,7 @@ class MainView extends Component {
       });
     }
 
-    return this.props.isLoading ? (
-      <div className="loader-div">
-        <Loader
-          className="loader"
-          type="TailSpin"
-          color="black"
-          height={80}
-          width={80}
-        />
-      </div>
-    ) : (
+    return (
       <>
         <div className="home-display">
           <SidebarLeft
@@ -185,6 +174,8 @@ class MainView extends Component {
             <SearchBar handleChange={this.handleChange} />
             {this.state.searchInput !== '' || null
               ? filteredActivities
+              : this.props.isLoading
+              ? null
               : combineActivitiesAndReflections}
           </div>
         </div>
@@ -196,7 +187,7 @@ class MainView extends Component {
 
 const mapStateToProps = state => {
   return {
-    isLoading: state.user.isLoading,
+    isLoading: state.activity.isLoading,
     activeEdit: state.activity.activeEdit,
     activities: state.activity.activities,
     reflections: state.reflection.reflections
