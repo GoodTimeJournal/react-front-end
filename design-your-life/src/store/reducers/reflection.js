@@ -1,5 +1,8 @@
 // import CONSTANT_VARIABLE from actions
 import {
+  GET_REFLECTIONS,
+  GET_REFLECTIONS_COMPLETE,
+  GET_REFLECTIONS_FAIL,
   ADD_REFLECTION,
   ADD_REFLECTION_COMPLETE,
   ADD_REFLECTION_FAIL,
@@ -13,12 +16,27 @@ import {
 
 const initialState = {
   reflections: [],
+  activeEdit: {},
   isLoading: false,
-  error: ''
+  error: '',
+  isEditing: false
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case GET_REFLECTIONS:
+      return { ...state, isLoading: true, error: '' };
+    case GET_REFLECTIONS_COMPLETE:
+      console.log(action.payload);
+      return {
+        ...state,
+        reflections: action.payload,
+        isLoading: false,
+        error: ''
+      };
+    case GET_REFLECTIONS_FAIL:
+      return { ...state, isLoading: false, error: action.payload };
+
     case ADD_REFLECTION:
       return { ...state, isLoading: true, error: '' };
 

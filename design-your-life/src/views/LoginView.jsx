@@ -9,6 +9,8 @@ class LoginView extends Component {
   state = {
     isNewUser: false,
     user: {
+      name: '',
+      password: '',
       username: '',
       password: ''
     }

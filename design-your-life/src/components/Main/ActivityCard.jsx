@@ -19,8 +19,8 @@ const ActivityCard = props => {
       </div>
       <div className="edit-icon">
         <i
-          className="fas fa-ellipsis-h"
-          // onClick={() => props.expandCardMenu(props.id)}
+          className={props.isExpanded ? 'fas fa-times' : 'fas fa-ellipsis-h'}
+          onClick={() => props.toggleCardMenu(props.id)}
         />
       </div>
       <div
@@ -31,8 +31,14 @@ const ActivityCard = props => {
         <button className="edit" onClick={() => props.editActivity(props.id)}>
           Edit
         </button>
-        <button className="delete">Delete</button>
+        <button
+          className="delete"
+          onClick={() => props.deleteActivity(props.id)}
+        >
+          Delete
+        </button>
       </div>
+      <div className="container" />
     </div>
   );
 };
