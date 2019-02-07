@@ -1,28 +1,54 @@
-import React from "react";
-import Calendar from "react-calendar";
-import ReactChartkick, { LineChart, PieChart } from "react-chartkick";
-import Chart from "chart.js";
+import React from 'react';
+import Calendar from 'react-calendar';
+import ReactChartkick, { LineChart, PieChart } from 'react-chartkick';
+import Chart from 'chart.js';
+import moment from 'moment';
 ReactChartkick.addAdapter(Chart);
 
 const SidebarLeft = props => {
+  let today = moment().format('dddd');
   let data = [
-    { name: "Workout", data: { "2017-01-01": 3, "2017-01-02": 4 } },
-    { name: "Call parents", data: { "2017-01-01": 5, "2017-01-02": 3 } }
+    {
+      name: 'Workout',
+      data: {
+        '01': 3,
+        '02': 4,
+        '03': 3,
+        '04': 4,
+        '05': 4,
+        '06': 4,
+        '07': 3
+      }
+    },
+    {
+      name: 'Journal',
+      data: {
+        '01': 2,
+        '02': 4,
+        '03': 2,
+        '04': 4,
+        '05': 5,
+        '06': 4,
+        '07': 5
+      }
+    }
   ];
 
   return (
     <div className="sidebar-fixed">
       <div className="sidebar">
-        <div className="box">
-          <h2>Recent Reflection</h2>
-          {/* <p>{props.reflectionLog[0].journalEntry}</p> */}
-          {/* <p>{props..insights}</p>
-          <p>{latestLog.surprises}</p>
-          <p>{latestLog.trends}</p>
-          <p>`Created on: ${latestLog.timestamp}`</p> */}
+        <div className="box recent-reflections">
+          <div className="title-date">
+            <h5 className="recent-reflection">Recent Reflection</h5>
+            <h5 className="date">{props.timestamp}</h5>
+          </div>
+          <p>{props.recentReflection}</p>
         </div>
         <div className="box chart">
-          <LineChart data={data} />
+          <div className="title-date">
+            <h5 className="recent-reflection">Weekly Overview</h5>
+          </div>
+          <LineChart data={data} height={170} />
         </div>
         <hr />
         <div className="box calendar">

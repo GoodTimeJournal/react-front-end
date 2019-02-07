@@ -1,8 +1,8 @@
-@import "./libs/reset";
-@import "./libs/global";
-@import "./libs/variables";
-@import "./libs/mixins";
-@import "./Navigation";
+@import './libs/reset';
+@import './libs/global';
+@import './libs/variables';
+@import './libs/mixins';
+@import './Navigation';
 
 .home-display {
   display: flex;
@@ -22,21 +22,29 @@
     padding-top: 100px;
 
     .box {
-      height: 150px;
+      height: 180px;
       background: white;
       border: 1px solid #6868f6;
       border-radius: 3px;
-      box-shadow: 0px 9px 20px -9px rgba(104, 104, 246, 0.65);
+      box-shadow: 0px 9px 20px -9px rgba(104, 104, 246, 0.45);
       margin-bottom: 20px;
 
+      .title-date {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 5px;
+        text-transform: uppercase;
+      }
+
       h5 {
-        font-weight: 700;
-        font-size: 14px;
-        padding: 15px;
+        font-weight: 600;
+        font-size: 1.3rem;
+        margin: 15px 5px 10px 5px;
       }
 
       p {
-        padding: 15px;
+        padding: 0 10px;
         font-size: 14px;
       }
     }
@@ -45,11 +53,16 @@
       width: 180px;
     }
 
+    .chart {
+      height: 220px;
+      padding: 10px;
+    }
+
     .calendar {
       height: auto;
       margin-top: 20px;
-      box-shadow: 0px 9px 20px -9px rgba(104, 104, 246, 0.65);
-      border: 1px solid #6868f6;
+
+      // border: 1px solid #6868f6;
     }
   }
 }
