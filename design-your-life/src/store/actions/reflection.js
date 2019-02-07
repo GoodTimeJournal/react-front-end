@@ -32,12 +32,14 @@ export const getReflections = token => dispatch => {
     .catch(err => console.log(err));
 };
 
-export const addReflection = reflection => dispatch => {
+export const addReflection = (token, reflection) => dispatch => {
   dispatch({
     type: ADD_REFLECTION
   });
   axios
-    .post(`http://localhost:5000/api/user/reflection`, reflection)
+    .post(`${baseURL}/reflections`, reflection, {
+      headers: { Authorization: token }
+    })
     .then(res =>
       dispatch({
         type: ADD_REFLECTION_COMPLETE,

@@ -5,13 +5,13 @@ const ReflectionFormSubmit = props => {
   return (
     <div className="reflection-form-page">
       <div className="reflection-progress">
-        <h3 className="active">Question 1</h3>
-        <h3 className="active">Question 2</h3>
-        <h3 className="active">Question 3</h3>
+        <h3 className="active">Insights</h3>
+        <h3 className="active">Surprises</h3>
+        <h3 className="active">Trends</h3>
         <h3 className="active">Summary</h3>
       </div>
 
-      <form className="reflection-form" onSubmit={props.addReflection}>
+      <form className="reflection-form" onSubmit={props.handleSubmit}>
         <p>
           Ipsum enim consequat veniam magna cupidatat duis mollit esse do eu id
           cillum consectetur cillum.
@@ -26,8 +26,8 @@ const ReflectionFormSubmit = props => {
           variant="outlined"
           rows="12"
           rowsMax="5"
-          name="summary"
-          value={props.summary}
+          name="journalEntry"
+          value={props.journalEntry}
           onChange={props.handleChange}
         />
         <div className="reflection-buttons">

@@ -5,18 +5,33 @@ import ReflectionFormTwo from '../components/Main/ReflectionFormTwo';
 import ReflectionFormThree from '../components/Main/ReflectionFormThree';
 import ReflectionFormSubmit from '../components/Main/ReflectionFormSubmit';
 import '../styles/ReflectionForm.scss';
+import moment from 'moment';
 
 import { addReflection } from '../store/actions/reflection';
 
+const token = localStorage.getItem('token');
 class ReflectionFormView extends Component {
   state = {
     page: 1,
     reflection: {
-      q1: '',
-      q2: '',
-      q3: '',
-      summary: ''
+      insights: '',
+      surprises: '',
+      trends: '',
+      journalEntry: '',
+      fk: '',
+      week: ''
     }
+  };
+
+  componentDidMount = () => {
+    this.setState({
+      ...this.state,
+      reflection: {
+        ...this.props.activeEdit,
+        fk: parseInt(localStorage.getItem('id')),
+        week: moment().format()
+      }
+    });
   };
 
   handleChange = e => {
@@ -36,10 +51,12 @@ class ReflectionFormView extends Component {
     this.setState(prevState => ({ page: prevState.page - 1 }));
   };
 
-  addReflection = e => {
+  handleSubmit = e => {
     e.preventDefault();
-    this.props.addReflection(this.state.reflection);
-    this.props.history.push('/');
+    this.props.isEditing // isEditing coming from Redux store
+      ? this.props.addReflection(this.state.reflection)
+      : this.props.addReflection(token, this.state.reflection);
+    setTimeout((this.props.history.push('/'), 1000));
   };
 
   render() {
@@ -50,14 +67,14 @@ class ReflectionFormView extends Component {
             handleChange={this.handleChange}
             nextStep={this.nextStep}
             previousStep={this.previousStep}
-            q2={this.state.reflection.q2}
+            surprises={this.state.reflection.surprises}
           />
         );
       case 3:
         return (
           <ReflectionFormThree
             handleChange={this.handleChange}
-            q3={this.state.reflection.q3}
+            trends={this.state.reflection.trends}
             nextStep={this.nextStep}
             previousStep={this.previousStep}
           />
@@ -66,8 +83,8 @@ class ReflectionFormView extends Component {
         return (
           <ReflectionFormSubmit
             handleChange={this.handleChange}
-            addReflection={this.addReflection}
-            summary={this.state.reflection.summary}
+            handleSubmit={this.handleSubmit}
+            journalEntry={this.state.reflection.journalEntry}
             previousStep={this.previousStep}
           />
         );
@@ -76,18 +93,18 @@ class ReflectionFormView extends Component {
           <ReflectionFormOne
             handleChange={this.handleChange}
             nextStep={this.nextStep}
-            q1={this.state.reflection.q1}
+            insights={this.state.reflection.insights}
           />
         );
     }
   }
 }
 
-// const mapStateToProps = state => {
-//   // need state to props?
-// };
+const mapStateToProps = state => {
+  return { isEditing: state.reflection.isEditing };
+};
 
 export default connect(
-  null,
+  mapStateToProps,
   { addReflection }
 )(ReflectionFormView);

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import ActivityCard from '../components/Main/ActivityCard';
+import ReflectionCard from '../components/Main/ReflectionCard';
 import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
 import {
   deleteActivity,
   editActivity,
   getActivities
+
 
 } from "../store/actions/activity";
 import { getReflections } from "../store/actions/reflection";
@@ -39,14 +41,15 @@ class MainView extends Component {
 
   deleteActivity = id => {
     this.props.deleteActivity(token, id);
-    setTimeout(() => this.props.getActivities(token), 1000);
+    setTimeout(() => this.props.getActivities(token), 100);
   };
 
   editActivity = id => {
     const selected = this.props.activities.find(activity => activity.id === id);
     this.props.history.push('/activity');
-    this.props.editActivity(selected);
+    setTimeout(() => this.props.editActivity(selected), 2000);
   };
+
   handleChange = e => {
     e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
@@ -54,10 +57,20 @@ class MainView extends Component {
 
   render() {
     let mappedActivities;
-    // let mappedReflections;
+    let mappedReflections;
 
-    // const renderThis = [...mappedActivities, ...mappedReflections].sort('bydate');
-
+    if (Array.isArray(this.props.reflections)) {
+      mappedReflections = this.props.reflections.map(reflection => (
+        <ReflectionCard
+          key={reflection.id}
+          id={reflection.id}
+          journalEntry={reflection.journalEntry}
+          timestamp={moment(reflection.timestamp).format('M/D')}
+          // editReflection={this.editReflection}
+          // deleteReflection={this.deleteReflection}
+        />
+      ));
+    }
     if (Array.isArray(this.props.activities)) {
       mappedActivities = this.props.activities.map(activity => (
         <ActivityCard
@@ -85,7 +98,6 @@ class MainView extends Component {
               .includes(this.state.searchInput.toLowerCase());
           })
           .map(activity => {
-            console.log(activity);
             return (
               <ActivityCard
                 key={activity.props.id}
@@ -105,6 +117,17 @@ class MainView extends Component {
       }
     }
     // console.log(filteredActivities);
+    let combineActivitiesAndReflections;
+    if (mappedActivities === undefined || mappedReflections === undefined) {
+      setTimeout(() => {
+        return null;
+      }, 1000);
+    } else if (mappedActivities.length > 0 || mappedReflections.length > 0) {
+      combineActivitiesAndReflections = [
+        ...mappedActivities,
+        ...mappedReflections
+      ];
+    }
 
     return this.props.isLoading ? (
       <div className="loader-div">
@@ -124,7 +147,7 @@ class MainView extends Component {
             <SearchBar handleChange={this.handleChange} />
             {this.state.searchInput !== '' || null
               ? filteredActivities
-              : mappedActivities}
+              : combineActivitiesAndReflections}
           </div>
         </div>
         <ActionButtons history={this.props.history} />
@@ -137,7 +160,8 @@ const mapStateToProps = state => {
   return {
     isLoading: state.user.isLoading,
     activeEdit: state.activity.activeEdit,
-    activities: state.activity.activities
+    activities: state.activity.activities,
+    reflections: state.reflection.reflections
   };
 };
 
