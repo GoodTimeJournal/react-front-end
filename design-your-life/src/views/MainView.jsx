@@ -6,14 +6,14 @@ import {
   deleteActivity,
   editActivity,
   getActivities
-} from '../store/actions/activity';
-import { getReflections } from '../store/actions/reflection';
-import ActionButtons from '../components/Main/ActionButtons';
-import SidebarLeft from '../components/Main/SidebarLeft';
-import SearchBar from '../components/Main/SearchBar';
-import '../styles/Feed.scss';
-import moment from 'moment';
-import { AST_Null } from 'terser';
+
+} from "../store/actions/activity";
+import { getReflections } from "../store/actions/reflection";
+import ActionButtons from "../components/Main/ActionButtons";
+import SidebarLeft from "../components/Main/SidebarLeft";
+import SearchBar from "../components/Main/SearchBar";
+import "../styles/Feed.scss";
+import moment from "moment";
 
 const token = localStorage.getItem('token');
 

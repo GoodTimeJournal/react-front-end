@@ -1,7 +1,7 @@
-import React from 'react';
-import styles from 'styled-components';
-import Logo from '../../styles/nav-logo.png';
-import Loader from 'react-loader-spinner';
+import React from "react";
+import styles from "styled-components";
+import Logo from "../../styles/nav-logo.png";
+import Loader from "react-loader-spinner";
 // import GoogleSignIn from '../../styles/btn_google_signin_dark_normal_web@2x.png';
 
 const Login = props => {
@@ -16,6 +16,7 @@ const Login = props => {
           <p>or</p>
           <hr />
         </SeperateContent> */}
+
         <LoginInputStyles
           placeholder="Username"
           onChange={props.handleChange}
@@ -33,11 +34,13 @@ const Login = props => {
           minLength="6"
           type="password"
         />
-        <LoginButton>
+        <LoginButton
+          onClick={props.error === "fail" ? props.displayError : null}
+        >
           {props.isLoading ? (
             <Loader type="TailSpin" color="white" height={18} width={18} />
           ) : (
-            'Login'
+            "Login"
           )}
         </LoginButton>
         <br />
