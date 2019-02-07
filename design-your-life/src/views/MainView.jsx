@@ -26,9 +26,12 @@ class MainView extends Component {
   componentDidMount = () => {
     this.props.getActivities(token);
     this.props.getReflections(token);
+    this.setState({
+      activities: this.props.activities
+    });
   };
 
-  expandCardMenu = id => {
+  toggleCardMenu = id => {
     this.setState(prevState => ({
       isExpanded: !prevState.isExpanded
     }));
@@ -51,6 +54,10 @@ class MainView extends Component {
 
   render() {
     let mappedActivities;
+    // let mappedReflections;
+
+    // const renderThis = [...mappedActivities, ...mappedReflections].sort('bydate');
+
     if (Array.isArray(this.props.activities)) {
       mappedActivities = this.props.activities.map(activity => (
         <ActivityCard
@@ -63,7 +70,7 @@ class MainView extends Component {
           timestamp={moment(activity.timestamp).format("M/D")}
           editActivity={this.editActivity}
           deleteActivity={this.deleteActivity}
-          expandCardMenu={this.expandCardMenu}
+          toggleCardMenu={this.toggleCardMenu}
           isExpanded={this.state.isExpanded}
         />
       ));
