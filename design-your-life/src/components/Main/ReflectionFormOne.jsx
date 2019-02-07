@@ -12,10 +12,9 @@ const ReflectionFormOne = props => {
       </div>
 
       <form className="reflection-form" onSubmit={props.nextStep}>
-        <p>
-          Ipsum enim consequat veniam magna cupidatat duis mollit esse do eu id
-          cillum consectetur cillum.
-        </p>
+        <p>What have you learned this week?</p>
+        <p>Did you have any "aha!" moments?</p>
+        <p>Write a few sentences about any insights you've gained from your activity log this week.</p>
 
         <TextField
           onChange={props.handleChange}
