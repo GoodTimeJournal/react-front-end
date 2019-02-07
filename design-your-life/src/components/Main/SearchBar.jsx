@@ -1,13 +1,16 @@
-import React from 'react';
+import React from "react";
 
-const SearchBar = () => {
+const SearchBar = props => {
   return (
     <input
       className="search-input"
       type="text"
-      placeholder="Filter Activity / Reflection Feed"
+      placeholder="Filter Activities"
+      name="searchInput"
+      value={props.searchInput}
+      onChange={e => props.handleChange(e)}
     />
   );
 };
-
+//test
 export default SearchBar;

@@ -5,38 +5,43 @@
 }
 
 .feed {
-  position: absolute;
-  right: 5%;
+  overflow-y: scroll;
+  height: calc(100vh - 100px);
+  margin-left: 30px;
   margin-top: 100px;
+  width: 100%;
 
   .search-input {
     width: 600px;
     text-align: center;
     border: none;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid #6868f6;
     background: #fafafa;
     padding: 5px;
     font-size: 1.6rem;
     font-weight: 500;
+    // margin: auto;
+    display: block;
 
     &:focus {
       outline: none;
     }
   }
 
-  .activity-card {
+  .card {
     width: 600px;
-    height: 180px;
+    height: 200px;
     margin: 20px 0;
-    border: 1px solid #2b3039;
-    border-radius: 3px;
-    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid #6868f6;
+    border-radius: 8px;
+    box-shadow: 0px 9px 20px -9px rgba(104, 104, 246, 0.45);
     background: white;
     position: relative;
+    // margin: auto;
 
     &:after {
       content: '';
-      background-color: #2b303942;
+      background-color: #6868f6;
       position: absolute;
       width: 1px;
       height: 22px;
@@ -51,6 +56,21 @@
       margin: 25px 35px 15px 35px;
       padding-bottom: 10px;
       border-bottom: 1px solid lightgray;
+
+      .date {
+        margin-top: -15px;
+        padding: 15px 10px;
+        font-size: 1.5rem;
+        font-weight: 300;
+      }
+    }
+
+    .reflection-summary {
+      margin: 0 20px;
+      p {
+        font-size: 1.4rem;
+        font-weight: 500;
+      }
     }
 
     .ratings {

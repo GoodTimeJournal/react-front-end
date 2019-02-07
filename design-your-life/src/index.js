@@ -5,12 +5,15 @@ import { BrowserRouter as Router, withRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 
+
 const AppWithRouter = withRouter(App);
+
+
 
 const app = (
   <Provider store={store}>
     <Router>
-      <AppWithRouter />
+        <AppWithRouter />
     </Router>
   </Provider>
 );
