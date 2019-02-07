@@ -15,7 +15,7 @@
     width: 600px;
     text-align: center;
     border: none;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid #6868f6;
     background: #fafafa;
     padding: 5px;
     font-size: 1.6rem;
@@ -32,16 +32,16 @@
     width: 600px;
     height: 180px;
     margin: 20px 0;
-    border: 1px solid #2b3039;
-    border-radius: 3px;
-    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid #6868f6;
+    border-radius: 8px;
+    box-shadow: 0px 9px 20px -9px rgba(104, 104, 246, 0.65);
     background: white;
     position: relative;
     // margin: auto;
 
     &:after {
-      content: '';
-      background-color: #2b303942;
+      content: "";
+      background-color: #6868f6;
       position: absolute;
       width: 1px;
       height: 22px;
