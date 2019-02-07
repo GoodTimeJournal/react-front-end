@@ -1,6 +1,15 @@
 import React from "react";
+import Calendar from "react-calendar";
+import ReactChartkick, { LineChart, PieChart } from "react-chartkick";
+import Chart from "chart.js";
+ReactChartkick.addAdapter(Chart);
 
 const SidebarLeft = props => {
+  let data = [
+    { name: "Workout", data: { "2017-01-01": 3, "2017-01-02": 4 } },
+    { name: "Call parents", data: { "2017-01-01": 5, "2017-01-02": 3 } }
+  ];
+
   return (
     <div className="sidebar-fixed">
       <div className="sidebar">
@@ -12,12 +21,12 @@ const SidebarLeft = props => {
           <p>{latestLog.trends}</p>
           <p>`Created on: ${latestLog.timestamp}`</p> */}
         </div>
-        <div className="box">
-          <h5>overview</h5>
+        <div className="box chart">
+          <LineChart data={data} />
         </div>
         <hr />
         <div className="box calendar">
-          <h5>calendar</h5>
+          <Calendar />
         </div>
       </div>
     </div>
