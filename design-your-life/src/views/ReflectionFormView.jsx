@@ -41,6 +41,11 @@ class ReflectionFormView extends Component {
     });
   };
 
+  navigateHome = e => {
+    e.preventDefault();
+    this.props.history.push('/');
+  };
+
   nextStep = e => {
     e.preventDefault();
     this.setState(prevState => ({ page: prevState.page + 1 }));
@@ -94,6 +99,7 @@ class ReflectionFormView extends Component {
             handleChange={this.handleChange}
             nextStep={this.nextStep}
             insights={this.state.reflection.insights}
+            navigateHome={this.navigateHome}
           />
         );
     }

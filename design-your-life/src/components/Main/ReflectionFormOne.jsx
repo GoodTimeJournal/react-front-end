@@ -32,6 +32,7 @@ const ReflectionFormOne = props => {
           value={props.insights}
         />
         <div className="reflection-buttons">
+          <button onClick={props.navigateHome}>Return Home</button>
           <button>Next Question</button>
         </div>
       </form>
