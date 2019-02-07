@@ -7,15 +7,13 @@ import {
   deleteActivity,
   editActivity,
   getActivities
-
-
-} from "../store/actions/activity";
-import { getReflections } from "../store/actions/reflection";
-import ActionButtons from "../components/Main/ActionButtons";
-import SidebarLeft from "../components/Main/SidebarLeft";
-import SearchBar from "../components/Main/SearchBar";
-import "../styles/Feed.scss";
-import moment from "moment";
+} from '../store/actions/activity';
+import { getReflections } from '../store/actions/reflection';
+import ActionButtons from '../components/Main/ActionButtons';
+import SidebarLeft from '../components/Main/SidebarLeft';
+import SearchBar from '../components/Main/SearchBar';
+import '../styles/Feed.scss';
+import moment from 'moment';
 
 const token = localStorage.getItem('token');
 
@@ -41,13 +39,13 @@ class MainView extends Component {
 
   deleteActivity = id => {
     this.props.deleteActivity(token, id);
-    setTimeout(() => this.props.getActivities(token), 100);
+    setTimeout(() => this.props.getActivities(token), 300);
   };
 
   editActivity = id => {
     const selected = this.props.activities.find(activity => activity.id === id);
     this.props.history.push('/activity');
-    setTimeout(() => this.props.editActivity(selected), 2000);
+    this.props.editActivity(selected);
   };
 
   handleChange = e => {
