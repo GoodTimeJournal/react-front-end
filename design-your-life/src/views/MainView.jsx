@@ -1,11 +1,12 @@
-import React, { Component } from "react";
-import ActivityCard from "../components/Main/ActivityCard";
-import Loader from "react-loader-spinner";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import ActivityCard from '../components/Main/ActivityCard';
+import Loader from 'react-loader-spinner';
+import { connect } from 'react-redux';
 import {
   deleteActivity,
   editActivity,
   getActivities
+
 } from "../store/actions/activity";
 import { getReflections } from "../store/actions/reflection";
 import ActionButtons from "../components/Main/ActionButtons";
@@ -14,12 +15,12 @@ import SearchBar from "../components/Main/SearchBar";
 import "../styles/Feed.scss";
 import moment from "moment";
 
-const token = localStorage.getItem("token");
+const token = localStorage.getItem('token');
 
 class MainView extends Component {
   state = {
     isExpanded: false,
-    searchInput: ""
+    searchInput: ''
   };
 
   componentDidMount = () => {
@@ -43,8 +44,8 @@ class MainView extends Component {
 
   editActivity = id => {
     const selected = this.props.activities.find(activity => activity.id === id);
-    this.props.history.push("/activity");
-    setTimeout(() => this.props.editActivity(selected), 2000);
+    this.props.history.push('/activity');
+    this.props.editActivity(selected);
   };
   handleChange = e => {
     e.preventDefault();
@@ -66,7 +67,7 @@ class MainView extends Component {
           enjoymentRating={activity.enjoymentRating}
           energyLevel={activity.energyLevel}
           engagement={activity.engagement}
-          timestamp={moment(activity.timestamp).format("M/D")}
+          timestamp={moment(activity.timestamp).format('M/D')}
           editActivity={this.editActivity}
           deleteActivity={this.deleteActivity}
           toggleCardMenu={this.toggleCardMenu}
@@ -93,7 +94,7 @@ class MainView extends Component {
                 enjoymentRating={activity.props.enjoymentRating}
                 energyLevel={activity.props.energyLevel}
                 engagement={activity.props.engagement}
-                timestamp={moment(activity.props.timestamp).format("M/D")}
+                timestamp={moment(activity.props.timestamp).format('M/D')}
                 editActivity={this.editActivity}
                 deleteActivity={this.deleteActivity}
                 expandCardMenu={this.expandCardMenu}
@@ -121,7 +122,7 @@ class MainView extends Component {
           <SidebarLeft reflections={this.props.reflectionLog} />
           <div className="feed">
             <SearchBar handleChange={this.handleChange} />
-            {this.state.searchInput !== "" || null
+            {this.state.searchInput !== '' || null
               ? filteredActivities
               : mappedActivities}
           </div>
