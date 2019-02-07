@@ -12,7 +12,7 @@ const initialState = {
   user: {},
   isLoading: false,
   error: '',
-  loggedIn: true
+  loggedIn: false
 };
 
 export default (state = initialState, action) => {
@@ -33,8 +33,8 @@ export default (state = initialState, action) => {
     case LOGIN_USER_FAIL:
       return { ...state, isLoading: false, error: 'fail' };
     case LOG_OUT:
-      localStorage.clear()
-      return { ...state, loggedIn: false, token: ''  };
+      localStorage.clear();
+      return { ...state, loggedIn: false, token: '' };
     case REGISTER_USER:
       return { ...state, isLoading: true, error: '' };
     case REGISTER_USER_COMPLETE:
