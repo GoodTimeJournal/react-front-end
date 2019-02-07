@@ -12,6 +12,9 @@ import ActionButtons from '../components/Main/ActionButtons';
 import SidebarLeft from '../components/Main/SidebarLeft';
 import SearchBar from '../components/Main/SearchBar';
 import '../styles/Feed.scss';
+import moment from 'moment';
+
+const token = localStorage.getItem('token');
 
 class MainView extends Component {
   state = {
@@ -19,33 +22,36 @@ class MainView extends Component {
   };
 
   componentDidMount = () => {
-    const token = localStorage.getItem('token');
     this.props.getActivities(token);
     this.props.getReflections(token);
+    this.setState({
+      activities: this.props.activities
+    });
   };
 
-  expandCardMenu = id => {
+  toggleCardMenu = id => {
     this.setState(prevState => ({
       isExpanded: !prevState.isExpanded
     }));
   };
 
   deleteActivity = id => {
-    const token = localStorage.getItem('token');
     this.props.deleteActivity(token, id);
+    setTimeout(() => this.props.getActivities(token), 100);
   };
 
   editActivity = id => {
-    const selected = this.props.activityLog.find(
-      activity => activity.id === id
-    );
+    const selected = this.props.activities.find(activity => activity.id === id);
     this.props.history.push('/activity');
-    this.props.editActivity(selected);
+    setTimeout(() => this.props.editActivity(selected), 2000);
   };
 
   render() {
-    console.log(this.props.activities);
     let mappedActivities;
+    // let mappedReflections;
+
+    // const renderThis = [...mappedActivities, ...mappedReflections].sort('bydate');
+
     if (Array.isArray(this.props.activities)) {
       mappedActivities = this.props.activities.map(activity => (
         <ActivityCard
@@ -55,10 +61,10 @@ class MainView extends Component {
           enjoymentRating={activity.enjoymentRating}
           energyLevel={activity.energyLevel}
           engagement={activity.engagement}
-          timestamp={activity.timestamp}
+          timestamp={moment(activity.timestamp).format('M/D')}
           editActivity={this.editActivity}
           deleteActivity={this.deleteActivity}
-          expandCardMenu={this.expandCardMenu}
+          toggleCardMenu={this.toggleCardMenu}
           isExpanded={this.state.isExpanded}
         />
       ));

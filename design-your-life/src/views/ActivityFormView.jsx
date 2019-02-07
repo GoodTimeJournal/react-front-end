@@ -18,7 +18,7 @@ class ActivityFormView extends Component {
     this.setState({
       ...this.state,
       activity: {
-        ...this.state.activity,
+        ...this.props.activeEdit,
         fk: parseInt(localStorage.getItem('id'))
       }
     });
@@ -47,14 +47,12 @@ class ActivityFormView extends Component {
     const token = localStorage.getItem('token');
     e.preventDefault();
     this.props.isEditing // isEditing coming from Redux store
-      ? this.props.updateActivity(this.state.activity)
+      ? this.props.updateActivity(token, this.state.activity)
       : this.props.addActivity(token, this.state.activity);
-
-    this.props.history.push('/');
+    setTimeout((this.props.history.push('/'), 2000));
   };
 
   render() {
-    console.log(this.state.activity);
     return (
       <ActivityForm
         name={this.state.activity.name}
