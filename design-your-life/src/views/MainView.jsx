@@ -1,24 +1,25 @@
-import React, { Component } from 'react';
-import ActivityCard from '../components/Main/ActivityCard';
-import Loader from 'react-loader-spinner';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import ActivityCard from "../components/Main/ActivityCard";
+import Loader from "react-loader-spinner";
+import { connect } from "react-redux";
 import {
   deleteActivity,
   editActivity,
   getActivities
-} from '../store/actions/activity';
-import { getReflections } from '../store/actions/reflection';
-import ActionButtons from '../components/Main/ActionButtons';
-import SidebarLeft from '../components/Main/SidebarLeft';
-import SearchBar from '../components/Main/SearchBar';
-import '../styles/Feed.scss';
-import moment from 'moment';
+} from "../store/actions/activity";
+import { getReflections } from "../store/actions/reflection";
+import ActionButtons from "../components/Main/ActionButtons";
+import SidebarLeft from "../components/Main/SidebarLeft";
+import SearchBar from "../components/Main/SearchBar";
+import "../styles/Feed.scss";
+import moment from "moment";
 
-const token = localStorage.getItem('token');
+const token = localStorage.getItem("token");
 
 class MainView extends Component {
   state = {
-    isExpanded: false
+    isExpanded: false,
+    searchInput: ""
   };
 
   componentDidMount = () => {
@@ -34,13 +35,18 @@ class MainView extends Component {
 
   deleteActivity = id => {
     this.props.deleteActivity(token, id);
-    setTimeout(() => this.props.getActivities(token), 100);
+    setTimeout(() => this.props.getActivities(token), 1000);
   };
 
   editActivity = id => {
     const selected = this.props.activities.find(activity => activity.id === id);
-    this.props.history.push('/activity');
+    this.props.history.push("/activity");
     setTimeout(() => this.props.editActivity(selected), 2000);
+  };
+  handleChange = e => {
+    e.preventDefault();
+    this.setState({ [e.target.name]: e.target.value });
+    console.log(this.state.filterText);
   };
 
   render() {
@@ -54,7 +60,7 @@ class MainView extends Component {
           enjoymentRating={activity.enjoymentRating}
           energyLevel={activity.energyLevel}
           engagement={activity.engagement}
-          timestamp={moment(activity.timestamp).format('M/D')}
+          timestamp={moment(activity.timestamp).format("M/D")}
           editActivity={this.editActivity}
           deleteActivity={this.deleteActivity}
           expandCardMenu={this.expandCardMenu}
@@ -62,6 +68,30 @@ class MainView extends Component {
         />
       ));
     }
+    console.log(mappedActivities);
+    // let filteredActivities;
+    // if (Array.isArray(this.props.activities)) {
+    //   filteredActivities = mappedActivities
+    //     .filter(activity => {
+    //       return activity.name.includes(this.state.searchInput.toLowerCase());
+    //     })
+    //     .map(activity => (
+    //       <ActivityCard
+    //         key={activity.id}
+    //         id={activity.id}
+    //         name={activity.name}
+    //         enjoymentRating={activity.enjoymentRating}
+    //         energyLevel={activity.energyLevel}
+    //         engagement={activity.engagement}
+    //         timestamp={moment(activity.timestamp).format("M/D")}
+    //         editActivity={this.editActivity}
+    //         deleteActivity={this.deleteActivity}
+    //         expandCardMenu={this.expandCardMenu}
+    //         isExpanded={this.state.isExpanded}
+    //       />
+    //     ));
+    // }
+    // console.log(filteredActivities);
 
     return this.props.isLoading ? (
       <div className="loader-div">
@@ -78,7 +108,7 @@ class MainView extends Component {
         <div className="home-display">
           <SidebarLeft reflections={this.props.reflectionLog} />
           <div className="feed">
-            <SearchBar />
+            <SearchBar handleChange={this.handleChange} />
             {mappedActivities}
           </div>
         </div>
