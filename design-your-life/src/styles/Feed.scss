@@ -28,7 +28,7 @@
     }
   }
 
-  .activity-card {
+  .card {
     width: 600px;
     height: 180px;
     margin: 20px 0;
@@ -40,7 +40,7 @@
     // margin: auto;
 
     &:after {
-      content: "";
+      content: '';
       background-color: #6868f6;
       position: absolute;
       width: 1px;

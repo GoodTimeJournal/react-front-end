@@ -2,7 +2,7 @@ import React from 'react';
 
 const ActivityCard = props => {
   return (
-    <div className="activity-card">
+    <div className="card">
       <div className="title-date">
         <h4 className="title">{props.name}</h4>
         <h4>{props.timestamp}</h4>
