@@ -12,10 +12,8 @@ const ReflectionFormSubmit = props => {
       </div>
 
       <form className="reflection-form" onSubmit={props.handleSubmit}>
-        <p>
-          Ipsum enim consequat veniam magna cupidatat duis mollit esse do eu id
-          cillum consectetur cillum.
-        </p>
+        <p>What are the most important things you've noticed this week?</p>
+        <p>Feel free to write out any concluding thoughts here. Good luck next week!</p>
         <TextField
           id="outlined-textarea"
           // hover color to match theme
