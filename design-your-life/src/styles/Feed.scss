@@ -30,7 +30,7 @@
 
   .card {
     width: 600px;
-    height: 180px;
+    height: 200px;
     margin: 20px 0;
     border: 1px solid #6868f6;
     border-radius: 8px;
@@ -56,6 +56,24 @@
       margin: 25px 35px 15px 35px;
       padding-bottom: 10px;
       border-bottom: 1px solid lightgray;
+
+      .date {
+        margin-top: -15px;
+        padding: 15px 10px;
+        font-size: 1.5rem;
+        font-weight: 300;
+        border: 1px solid grey;
+        border-radius: 50%;
+      }
+    }
+
+    .reflection-summary {
+      display: flex;
+      justify-content: space-around;
+      p {
+        font-size: 1.4rem;
+        font-weight: 500;
+      }
     }
 
     .ratings {
