@@ -15,7 +15,7 @@
     width: 600px;
     text-align: center;
     border: none;
-    border-bottom: 1px solid #6868f6;
+    border-bottom: 1px solid #1e9df7;
     background: #fafafa;
     padding: 5px;
     font-size: 1.6rem;
@@ -32,16 +32,17 @@
     width: 600px;
     height: 200px;
     margin: 20px 0;
-    border: 1px solid #6868f6;
+    border: 1px solid #1e9df7;
     border-radius: 8px;
-    box-shadow: 0px 9px 20px -9px rgba(104, 104, 246, 0.45);
+    // box-shadow: 0px 9px 20px -9px #1e9df7(104, 104, 246, 0.45);
+    box-shadow: 0px 9px 20px -9px #1e9df7(104, 104, 246, 0.45);
     background: white;
     position: relative;
     // margin: auto;
 
     &:after {
       content: '';
-      background-color: #6868f6;
+      background-color: #1e9df7;
       position: absolute;
       width: 1px;
       height: 22px;
@@ -120,7 +121,7 @@
     display: none;
   }
 
-  .card-buttons-on-hover {
+  .card-buttons-on-hover {    
     width: 598px;
     height: 178px;
     background: white;

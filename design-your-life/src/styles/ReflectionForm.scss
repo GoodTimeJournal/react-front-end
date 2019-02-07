@@ -21,7 +21,8 @@
   display: flex;
   flex-direction: column;
   margin-left: 100px;
-  width: 600px;
+  width: 600px; 
+  
 
   textarea {
     border: none;
@@ -34,7 +35,7 @@
     line-height: 1.4;
 
     &:focus {
-      outline: none;
+      outline: none;      
     }
   }
 
