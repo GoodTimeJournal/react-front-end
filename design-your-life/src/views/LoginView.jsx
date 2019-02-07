@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Login from '../components/Login/Login';
-import Register from '../components/Login/Register';
-import { connect } from 'react-redux';
-import { registerUser, loginUser } from '../store/actions/user';
+import Login from "../components/Login/Login";
+import Register from "../components/Login/Register";
+import { connect } from "react-redux";
+import { registerUser, loginUser } from "../store/actions/user";
 
 class LoginView extends Component {
   state = {
     isNewUser: false,
     user: {
-      name: '',
-      password: '',
-      username: '',
-      password: ''
+      name: "",
+      email: "",
+      username: "",
+      password: ""
     }
   };
 

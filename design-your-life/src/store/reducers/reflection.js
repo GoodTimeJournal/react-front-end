@@ -27,7 +27,6 @@ export default function(state = initialState, action) {
     case GET_REFLECTIONS:
       return { ...state, isLoading: true, error: '' };
     case GET_REFLECTIONS_COMPLETE:
-      console.log(action.payload);
       return {
         ...state,
         reflections: action.payload,
