@@ -13,7 +13,6 @@ import SidebarLeft from "../components/Main/SidebarLeft";
 import SearchBar from "../components/Main/SearchBar";
 import "../styles/Feed.scss";
 import moment from "moment";
-import { AST_Null } from "terser";
 
 const token = localStorage.getItem("token");
 

@@ -4,6 +4,7 @@ import Login from "../components/Login/Login";
 import Register from "../components/Login/Register";
 import { connect } from "react-redux";
 import { registerUser, loginUser } from "../store/actions/user";
+import styles from "styled-components";
 
 class LoginView extends Component {
   state = {
@@ -13,8 +14,12 @@ class LoginView extends Component {
       email: "",
       username: "",
       password: ""
-    }
+    },
+    error: ""
   };
+  componentDidMount() {
+    this.setState({ error: this.props.error });
+  }
 
   switchView = e => {
     e.preventDefault();
@@ -51,20 +56,42 @@ class LoginView extends Component {
         switchView={this.switchView}
         registerUser={this.registerUser}
       />
+    ) : this.props.error === "fail" ? (
+      <>
+        <ErrorContainer>
+          <ErrorMessage>Login Failed, invalid Username</ErrorMessage>
+        </ErrorContainer>
+
+        <Login
+          switchView={this.switchView}
+          loginUser={this.loginUser}
+          handleChange={this.handleChange}
+          isLoading={this.props.isLoading}
+          displayError={this.displayError}
+          error={this.state.error}
+          displaySuccess={this.displaySuccess}
+        />
+      </>
     ) : (
-      <Login
-        switchView={this.switchView}
-        loginUser={this.loginUser}
-        handleChange={this.handleChange}
-        isLoading={this.props.isLoading}
-      />
+      <>
+        <Login
+          switchView={this.switchView}
+          loginUser={this.loginUser}
+          handleChange={this.handleChange}
+          isLoading={this.props.isLoading}
+          displayError={this.displayError}
+          error={this.state.error}
+          displaySuccess={this.displaySuccess}
+        />
+      </>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    isLoading: state.user.isLoading
+    isLoading: state.user.isLoading,
+    error: state.user.error
   };
 };
 
@@ -72,3 +99,16 @@ export default connect(
   mapStateToProps,
   { registerUser, loginUser }
 )(LoginView);
+
+const ErrorContainer = styles.div`
+position: absolute;
+  z-index: 10;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  background-color: red;
+  color: white;
+`;
+const ErrorMessage = styles.p`
+
+`;

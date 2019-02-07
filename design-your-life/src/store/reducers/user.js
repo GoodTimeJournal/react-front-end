@@ -30,7 +30,7 @@ export default (state = initialState, action) => {
         error: ''
       };
     case LOGIN_USER_FAIL:
-      return { ...state, isLoading: false, error: action.payload };
+      return { ...state, isLoading: false, error: 'fail' };
     case LOG_OUT:
       return { ...state, loggedIn: false, token: '' };
     case REGISTER_USER:
