@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ActivityCard from '../components/Main/ActivityCard';
+import ReflectionCard from '../components/Main/ReflectionCard';
 import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
 import {
@@ -39,7 +40,7 @@ class MainView extends Component {
 
   deleteActivity = id => {
     this.props.deleteActivity(token, id);
-    setTimeout(() => this.props.getActivities(token), 1000);
+    setTimeout(() => this.props.getActivities(token), 100);
   };
 
   editActivity = id => {
@@ -54,12 +55,21 @@ class MainView extends Component {
   };
 
   render() {
-    console.log('reflections', this.props.reflections);
     let mappedActivities;
-    // let mappedReflections;
+    let mappedReflections;
 
-    // const renderThis = [...mappedActivities, ...mappedReflections].sort('bydate');
-
+    if (Array.isArray(this.props.reflections)) {
+      mappedReflections = this.props.reflections.map(reflection => (
+        <ReflectionCard
+          key={reflection.id}
+          id={reflection.id}
+          journalEntry={reflection.journalEntry}
+          timestamp={moment(reflection.timestamp).format('M/D')}
+          // editReflection={this.editReflection}
+          // deleteReflection={this.deleteReflection}
+        />
+      ));
+    }
     if (Array.isArray(this.props.activities)) {
       mappedActivities = this.props.activities.map(activity => (
         <ActivityCard
@@ -106,6 +116,17 @@ class MainView extends Component {
       }
     }
     // console.log(filteredActivities);
+    let combineActivitiesAndReflections;
+    if (mappedActivities === undefined || mappedReflections === undefined) {
+      setTimeout(() => {
+        return null;
+      }, 1000);
+    } else if (mappedActivities.length > 0 || mappedReflections.length > 0) {
+      combineActivitiesAndReflections = [
+        ...mappedActivities,
+        ...mappedReflections
+      ];
+    }
 
     return this.props.isLoading ? (
       <div className="loader-div">
@@ -125,7 +146,7 @@ class MainView extends Component {
             <SearchBar handleChange={this.handleChange} />
             {this.state.searchInput !== '' || null
               ? filteredActivities
-              : mappedActivities}
+              : combineActivitiesAndReflections}
           </div>
         </div>
         <ActionButtons history={this.props.history} />

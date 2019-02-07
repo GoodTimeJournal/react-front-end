@@ -60,7 +60,6 @@ class ReflectionFormView extends Component {
   };
 
   render() {
-    console.log(this.state.reflection);
     switch (this.state.page) {
       case 2:
         return (
