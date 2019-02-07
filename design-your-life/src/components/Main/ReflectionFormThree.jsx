@@ -5,9 +5,9 @@ const ReflectionFormThree = props => {
   return (
     <div className="reflection-form-page">
       <div className="reflection-progress">
-        <h3 className="active">Question 1</h3>
-        <h3 className="active">Question 2</h3>
-        <h3 className="active">Question 3</h3>
+        <h3 className="active">Insights</h3>
+        <h3 className="active">Surprises</h3>
+        <h3 className="active">Trends</h3>
         <h3>Summary</h3>
       </div>
 
@@ -26,8 +26,8 @@ const ReflectionFormThree = props => {
           variant="outlined"
           rows="12"
           rowsMax="50"
-          name="q3"
-          value={props.q3}
+          name="trends"
+          value={props.trends}
           onChange={props.handleChange}
         />
 
