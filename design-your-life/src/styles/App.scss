@@ -24,9 +24,9 @@
     .box {
       height: 180px;
       background: white;
-      border: 1px solid #7c7c7c;
+      border: 1px solid #6868f6;
       border-radius: 3px;
-      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+      box-shadow: 0px 9px 20px -9px rgba(104, 104, 246, 0.45);
       margin-bottom: 20px;
 
       .title-date {
@@ -53,9 +53,16 @@
       width: 180px;
     }
 
+    .chart {
+      height: 220px;
+      padding: 10px;
+    }
+
     .calendar {
-      height: 200px;
+      height: auto;
       margin-top: 20px;
+
+      // border: 1px solid #6868f6;
     }
   }
 }

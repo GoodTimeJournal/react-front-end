@@ -1,7 +1,39 @@
 import React from 'react';
+import Calendar from 'react-calendar';
+import ReactChartkick, { LineChart, PieChart } from 'react-chartkick';
+import Chart from 'chart.js';
 import moment from 'moment';
+ReactChartkick.addAdapter(Chart);
 
 const SidebarLeft = props => {
+  let today = moment().format('dddd');
+  let data = [
+    {
+      name: 'Workout',
+      data: {
+        '01': 3,
+        '02': 4,
+        '03': 3,
+        '04': 4,
+        '05': 4,
+        '06': 4,
+        '07': 3
+      }
+    },
+    {
+      name: 'Journal',
+      data: {
+        '01': 2,
+        '02': 4,
+        '03': 2,
+        '04': 4,
+        '05': 5,
+        '06': 4,
+        '07': 5
+      }
+    }
+  ];
+
   return (
     <div className="sidebar-fixed">
       <div className="sidebar">
@@ -12,17 +44,15 @@ const SidebarLeft = props => {
           </div>
           <p>{props.recentReflection}</p>
         </div>
-        <div className="box">
+        <div className="box chart">
           <div className="title-date">
             <h5 className="recent-reflection">Weekly Overview</h5>
           </div>
-          <p>activity / reflection data here</p>
+          <LineChart data={data} height={170} />
         </div>
         <hr />
         <div className="box calendar">
-          <div className="title-date">
-            <h5 className="recent-reflection">Calendar Goes Here</h5>
-          </div>
+          <Calendar />
         </div>
       </div>
     </div>
