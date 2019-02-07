@@ -1,12 +1,10 @@
 import React from 'react';
 import Calendar from 'react-calendar';
-import ReactChartkick, { LineChart, PieChart } from 'react-chartkick';
+import ReactChartkick, { LineChart } from 'react-chartkick';
 import Chart from 'chart.js';
-import moment from 'moment';
 ReactChartkick.addAdapter(Chart);
 
 const SidebarLeft = props => {
-  let today = moment().format('dddd');
   let data = [
     {
       name: 'Workout',
