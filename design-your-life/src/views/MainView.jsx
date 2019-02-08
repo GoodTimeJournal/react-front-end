@@ -23,8 +23,8 @@ class MainView extends Component {
   };
 
   componentDidMount = () => {
-    setTimeout(() => this.props.getActivities(token), 400);
-    setTimeout(() => this.props.getReflections(token), 400);
+    setTimeout(() => this.props.getActivities(token), 600);
+    this.props.getReflections(token);
     this.setState({
       activities: this.props.activities
     });
@@ -32,12 +32,12 @@ class MainView extends Component {
 
   deleteActivity = id => {
     this.props.deleteActivity(token, id);
-    setTimeout(() => this.props.getActivities(token), 300);
+    setTimeout(() => this.props.getActivities(token), 400);
   };
 
   deleteReflection = id => {
     this.props.deleteReflection(token, id);
-    setTimeout(() => this.props.getReflections(token), 300);
+    setTimeout(() => this.props.getReflections(token), 400);
   };
 
   editActivity = id => {
@@ -167,6 +167,7 @@ class MainView extends Component {
             {this.state.searchInput !== '' || null
               ? filteredActivities
               : combineActivitiesAndReflections}
+            {console.log(combineActivitiesAndReflections)}
           </div>
         </div>
         <ActionButtons history={this.props.history} />
