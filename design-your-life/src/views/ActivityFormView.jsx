@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import ActivityForm from "../components/Main/ActivityForm";
-import { connect } from "react-redux";
-import { addActivity, updateActivity } from "../store/actions/activity";
+import React, { Component } from 'react';
+import ActivityForm from '../components/Main/ActivityForm';
+import { connect } from 'react-redux';
+import { addActivity, updateActivity } from '../store/actions/activity';
 
 class ActivityFormView extends Component {
   state = {
     activity: {
-      name: "",
-      fk: "",
-      enjoymentRating: "",
-      energyLevel: "",
-      engagement: ""
+      name: '',
+      fk: '',
+      enjoymentRating: '',
+      energyLevel: '',
+      engagement: ''
     }
   };
 
@@ -19,13 +19,13 @@ class ActivityFormView extends Component {
       ...this.state,
       activity: {
         ...this.props.activeEdit,
-        fk: parseInt(localStorage.getItem("id"))
+        fk: parseInt(localStorage.getItem('id'))
       }
     });
   };
 
   handleChange = e => {
-    if (isNaN(e.target.value) || e.target.value === "") {
+    if (isNaN(e.target.value) || e.target.value === '') {
       this.setState({
         ...this.state,
         activity: {
@@ -44,12 +44,12 @@ class ActivityFormView extends Component {
   };
 
   handleSubmit = e => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     e.preventDefault();
     this.props.isEditing // isEditing coming from Redux store
       ? this.props.updateActivity(token, this.state.activity)
       : this.props.addActivity(token, this.state.activity);
-    setTimeout((this.props.history.push("/"), 2000));
+    this.props.history.push('/');
   };
 
   render() {

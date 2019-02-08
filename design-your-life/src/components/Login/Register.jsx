@@ -1,8 +1,8 @@
-import React from 'react';
-import styles from 'styled-components';
-import Logo from '../../styles/nav-logo.png';
-import TextField from '@material-ui/core/TextField';
-import Loader from 'react-loader-spinner';
+import React from "react";
+import styles from "styled-components";
+import Logo from "../../styles/nav-logo.png";
+import TextField from "@material-ui/core/TextField";
+import Loader from "react-loader-spinner";
 
 const Register = props => {
   return (
@@ -10,53 +10,61 @@ const Register = props => {
       <LoginMenuStyles autoComplete="false" onSubmit={props.registerUser}>
         <LogoImage src={Logo} />
         <TextField
+          minLength="4"
+          maxLength="24"
           fullWidth
           label="Full Name"
           placeholder="Full Name"
-          // onChange={props.handleChange}
+          onChange={props.handleChange}
           name="fullname"
           type="text"
-          // value={props.currentName}
+          value={props.currentName}
+          inputProps={{ minLength: 4, maxLength: 30 }}
           required
-          minLength="2"
         />
         <TextField
+          minLength="6"
+          maxLength="24"
           fullWidth
           label="Email"
           placeholder="Email"
-          // onChange={props.handleChange}
+          onChange={props.handleChange}
           name="email"
-          // value={props.currentUsername}
+          value={props.currentUsername}
+          inputProps={{ minLength: 4, maxLength: 30 }}
           required
-          minLength="4"
         />
         <TextField
+          minLength="6"
+          maxLength="24"
           fullWidth
           label="Username"
           placeholder="Username"
           onChange={props.handleChange}
           name="username"
           value={props.currentUsername}
+          inputProps={{ minLength: 4, maxLength: 30 }}
           required
-          minLength="4"
         />
         <TextField
+          minLength="4"
+          maxLength="24"
           fullWidth
           label="Password"
           placeholder="Password"
           onChange={props.handleChange}
           name="password"
           value={props.currentPassword}
+          inputProps={{ minLength: 6, maxLength: 30 }}
           required
-          minLength="6"
           type="password"
         />
 
-        <LoginButton>
+        <LoginButton type="submit">
           {props.isLoading ? (
             <Loader type="TailSpin" color="white" height={18} width={18} />
           ) : (
-            'Create Account'
+            "Create Account"
           )}
         </LoginButton>
         <LoginPageText>

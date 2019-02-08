@@ -81,11 +81,22 @@ export const updateReflection = reflection => dispatch => {
     );
 };
 
-export const deleteReflection = id => dispatch => {
-  axios.delete(`http://localhost:5000/api/user/reflection/${id}`).then(res =>
-    dispatch({
-      type: DELETE_REFLECTION,
-      payload: res.data
+export const deleteReflection = (token, id) => dispatch => {
+  dispatch({ type: DELETE_REFLECTION });
+  axios
+    .delete(`${baseURL}/reflections/${id}`, {
+      headers: { Authorization: token }
     })
-  );
+    .then(res =>
+      dispatch({
+        type: DELETE_REFLECTION_COMPLETE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: DELETE_REFLECTION_FAIL,
+        payload: err
+      })
+    );
 };

@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import ActivityCard from '../components/Main/ActivityCard';
 import ReflectionCard from '../components/Main/ReflectionCard';
-import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
 import {
 	deleteActivity,
 	editActivity,
 	getActivities
 } from '../store/actions/activity';
-import { getReflections } from '../store/actions/reflection';
+import { getReflections, deleteReflection } from '../store/actions/reflection';
 import ActionButtons from '../components/Main/ActionButtons';
 import SidebarLeft from '../components/Main/SidebarLeft';
 import SearchBar from '../components/Main/SearchBar';
@@ -40,6 +39,11 @@ class MainView extends Component {
 	deleteActivity = id => {
 		this.props.deleteActivity(token, id);
 		setTimeout(() => this.props.getActivities(token), 300);
+	};
+
+	deleteReflection = id => {
+		this.props.deleteReflection(token, id);
+		setTimeout(() => this.props.getReflections(token), 300);
 	};
 
 	editActivity = id => {
@@ -89,7 +93,7 @@ class MainView extends Component {
 					timestamp={moment(reflection.timestamp).format('LLL')}
 					sortedTimestamp={moment(reflection.timestamp).format('LT')}
 					// editReflection={this.editReflection}
-					// deleteReflection={this.deleteReflection}
+					deleteReflection={this.deleteReflection}
 				/>
 			));
 		}
@@ -164,17 +168,7 @@ class MainView extends Component {
 			});
 		}
 
-		return this.props.isLoading ? (
-			<div className="loader-div">
-				<Loader
-					className="loader"
-					type="TailSpin"
-					color="black"
-					height={80}
-					width={80}
-				/>
-			</div>
-		) : (
+		return (
 			<>
 				<div className="home-display">
 					<SidebarLeft
@@ -196,7 +190,7 @@ class MainView extends Component {
 
 const mapStateToProps = state => {
 	return {
-		isLoading: state.user.isLoading,
+		isLoading: state.activity.isLoading,
 		activeEdit: state.activity.activeEdit,
 		activities: state.activity.activities,
 		reflections: state.reflection.reflections
@@ -205,5 +199,11 @@ const mapStateToProps = state => {
 
 export default connect(
 	mapStateToProps,
-	{ deleteActivity, editActivity, getActivities, getReflections }
+	{
+		deleteActivity,
+		editActivity,
+		getActivities,
+		getReflections,
+		deleteReflection
+	}
 )(MainView);

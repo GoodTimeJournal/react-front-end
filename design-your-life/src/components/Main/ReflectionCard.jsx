@@ -9,6 +9,11 @@ const ReflectionCard = props => {
       </div>
       <div className="reflection-summary">
         <p>{props.journalEntry}</p>
+        <button
+          onClick={() => props.deleteReflection(props.id)}
+        >
+          Delete
+        </button>
       </div>
     </div>
   );
