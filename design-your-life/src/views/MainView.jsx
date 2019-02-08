@@ -3,9 +3,9 @@ import ActivityCard from '../components/Main/ActivityCard';
 import ReflectionCard from '../components/Main/ReflectionCard';
 import { connect } from 'react-redux';
 import {
-  deleteActivity,
-  editActivity,
-  getActivities
+	deleteActivity,
+	editActivity,
+	getActivities
 } from '../store/actions/activity';
 import { getReflections, deleteReflection } from '../store/actions/reflection';
 import ActionButtons from '../components/Main/ActionButtons';
@@ -168,17 +168,7 @@ class MainView extends Component {
 			});
 		}
 
-		return this.props.isLoading ? (
-			<div className="loader-div">
-				<Loader
-					className="loader"
-					type="TailSpin"
-					color="black"
-					height={80}
-					width={80}
-				/>
-			</div>
-		) : (
+		return (
 			<>
 				<div className="home-display">
 					<SidebarLeft
@@ -196,20 +186,24 @@ class MainView extends Component {
 			</>
 		);
 	}
-
 }
 
 const mapStateToProps = state => {
-  return {
-    isLoading: state.activity.isLoading,
-    activeEdit: state.activity.activeEdit,
-    activities: state.activity.activities,
-    reflections: state.reflection.reflections
-  };
+	return {
+		isLoading: state.activity.isLoading,
+		activeEdit: state.activity.activeEdit,
+		activities: state.activity.activities,
+		reflections: state.reflection.reflections
+	};
 };
 
 export default connect(
 	mapStateToProps,
-	{ deleteActivity, editActivity, getActivities, getReflections, deleteReflection }
-
+	{
+		deleteActivity,
+		editActivity,
+		getActivities,
+		getReflections,
+		deleteReflection
+	}
 )(MainView);
