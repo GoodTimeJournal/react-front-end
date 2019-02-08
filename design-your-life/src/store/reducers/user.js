@@ -31,7 +31,12 @@ export default (state = initialState, action) => {
         error: ''
       };
     case LOGIN_USER_FAIL:
-      return { ...state, isLoading: false, error: 'fail' };
+      return { state: {
+        user: {},
+        isLoading: false,
+        error: '',
+        loggedIn: true
+      }, isLoading: false, error: 'fail' };
     case LOG_OUT:
       localStorage.clear();
       return { ...state, loggedIn: false, token: '' };

@@ -24,6 +24,7 @@ const Login = props => {
           value={props.username}
           required
           minLength="4"
+          maxLength="24"
         />
         <LoginInputStyles
           placeholder="Password"
@@ -33,6 +34,7 @@ const Login = props => {
           required
           minLength="6"
           type="password"
+          maxLength="24"
         />
         <LoginButton
           onClick={props.error === "fail" ? props.displayError : null}
