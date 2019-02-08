@@ -6,9 +6,10 @@
 
 .home-display {
   display: flex;
+  position: relative;
   justify-content: space-between;
   margin-left: calc(
-    (100vw / 2) - (#{$sidebarWidth} / 2) - (#{$inputMaxWidth} / 2) - 20px
+    (100vw / 2) - (300px / 2) - (600px / 2) - 20px
   ); // 100vw/2        sidebar/2     searchbar / 2
 
   @media screen and (max-width: 1100px) {
@@ -25,7 +26,8 @@
   }
 
   .sidebar {
-    width: $sidebarWidth;
+    position: fixed;
+    width: 300px;
     margin-top: 130px;
 
     .box {

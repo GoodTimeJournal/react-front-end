@@ -53,9 +53,9 @@ const SidebarLeft = props => {
         <div className="box calendar">
           <Calendar />
         </div>
+        <SmallText>About Us • Support • Privacy • Press</SmallText>
+        <SmallText>© 2019 Good Time Journal</SmallText>
       </div>
-      <SmallText>About Us • Support • Privacy • Press</SmallText>
-      <SmallText>© 2019 Good Time Journal</SmallText>
     </div>
   );
 };
@@ -65,5 +65,5 @@ export default SidebarLeft;
 const SmallText = styles.p`
   color: #8F8F8F;
   font-size: 13px;
-  padding: 0 5px 5px 5px;
+  // padding: 0 5px 5px 5px;
 `;
