@@ -24,16 +24,10 @@ class MainView extends Component {
 
   componentDidMount = () => {
     setTimeout(() => this.props.getActivities(token), 400);
-    this.props.getReflections(token);
+    setTimeout(() => this.props.getReflections(token), 400);
     this.setState({
       activities: this.props.activities
     });
-  };
-
-  toggleCardMenu = id => {
-    this.setState(prevState => ({
-      isExpanded: !prevState.isExpanded
-    }));
   };
 
   deleteActivity = id => {
@@ -64,7 +58,6 @@ class MainView extends Component {
     let timestamp;
 
     // Recent Reflection Card Logic
-    // console.log(this.props.reflections);
 
     if (
       Array.isArray(this.props.reflections) &&
@@ -77,11 +70,6 @@ class MainView extends Component {
         this.props.reflections[this.props.reflections.length - 1].timestamp
       ).format('M/D');
     }
-
-    // let recentReflection =
-    //   this.props.reflections.length === 0
-    //     ? this.props.reflections[this.props.reflections.length - 1].journalEntry
-    //     : 'working';
 
     // Map Reflections Logic
     if (Array.isArray(this.props.reflections)) {
@@ -112,7 +100,6 @@ class MainView extends Component {
           sortedTimestamp={moment(activity.timestamp).format('LT')}
           editActivity={this.editActivity}
           deleteActivity={this.deleteActivity}
-          toggleCardMenu={this.toggleCardMenu}
           isExpanded={this.state.isExpanded}
         />
       ));
