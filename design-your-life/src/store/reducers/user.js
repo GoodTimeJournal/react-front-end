@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
     case LOGIN_USER_COMPLETE:
       localStorage.setItem('token', action.payload.token);
       localStorage.setItem('id', action.payload.userId);
-      window.location.reload(true);
+      // window.location.reload(true);
       return {
         ...state,
         user: action.payload,
