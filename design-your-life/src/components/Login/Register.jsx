@@ -1,8 +1,8 @@
-import React from "react";
-import styles from "styled-components";
-import Logo from "../../styles/nav-logo.png";
-import TextField from "@material-ui/core/TextField";
-import Loader from "react-loader-spinner";
+import React from 'react';
+import styles from 'styled-components';
+import Logo from '../../styles/nav-logo.png';
+import TextField from '@material-ui/core/TextField';
+import Loader from 'react-loader-spinner';
 
 const Register = props => {
   return (
@@ -14,7 +14,6 @@ const Register = props => {
           maxLength="24"
           fullWidth
           label="Full Name"
-          placeholder="Full Name"
           onChange={props.handleChange}
           name="fullname"
           type="text"
@@ -27,7 +26,6 @@ const Register = props => {
           maxLength="24"
           fullWidth
           label="Email"
-          placeholder="Email"
           onChange={props.handleChange}
           name="email"
           value={props.currentUsername}
@@ -39,7 +37,6 @@ const Register = props => {
           maxLength="24"
           fullWidth
           label="Username"
-          placeholder="Username"
           onChange={props.handleChange}
           name="username"
           value={props.currentUsername}
@@ -51,7 +48,6 @@ const Register = props => {
           maxLength="24"
           fullWidth
           label="Password"
-          placeholder="Password"
           onChange={props.handleChange}
           name="password"
           value={props.currentPassword}
@@ -64,7 +60,7 @@ const Register = props => {
           {props.isLoading ? (
             <Loader type="TailSpin" color="white" height={18} width={18} />
           ) : (
-            "Create Account"
+            'Create Account'
           )}
         </LoginButton>
         <LoginPageText>
@@ -103,6 +99,10 @@ const LoginMenuStyles = styles.form`
   background: #FFFFFF;
   padding: 10px 0;
   padding: 0 40px;
+  
+  label {
+    font-size: 1.3rem;
+  }
   
 `;
 

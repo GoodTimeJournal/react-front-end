@@ -2,6 +2,7 @@ import React from 'react';
 import Calendar from 'react-calendar';
 import ReactChartkick, { LineChart } from 'react-chartkick';
 import Chart from 'chart.js';
+import styles from 'styled-components';
 ReactChartkick.addAdapter(Chart);
 
 const SidebarLeft = props => {
@@ -44,7 +45,7 @@ const SidebarLeft = props => {
         </div>
         <div className="box chart">
           <div className="title-date">
-            <h5 className="recent-reflection">Weekly Overview</h5>
+            <h5 className="recent-reflection">Recent Activities</h5>
           </div>
           <LineChart data={data} height={170} />
         </div>
@@ -52,9 +53,17 @@ const SidebarLeft = props => {
         <div className="box calendar">
           <Calendar />
         </div>
+        <SmallText>About Us • Support • Privacy • Press</SmallText>
+        <SmallText>© 2019 Good Time Journal</SmallText>
       </div>
     </div>
   );
 };
 
 export default SidebarLeft;
+
+const SmallText = styles.p`
+  color: #8F8F8F;
+  font-size: 13px;
+  // padding: 0 5px 5px 5px;
+`;

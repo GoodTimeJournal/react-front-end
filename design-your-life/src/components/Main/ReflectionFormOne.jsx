@@ -1,5 +1,5 @@
-import React from "react";
-import { TextField, Button } from "@material-ui/core";
+import React from 'react';
+import { TextField } from '@material-ui/core';
 
 const ReflectionFormOne = props => {
   return (
@@ -14,7 +14,10 @@ const ReflectionFormOne = props => {
       <form className="reflection-form" onSubmit={props.nextStep}>
         <p>What have you learned this week?</p>
         <p>Did you have any "aha!" moments?</p>
-        <p>Write a few sentences about any insights you've gained from your activity log this week.</p>
+        <p>
+          Write a few sentences about any insights you've gained from your
+          activity log this week.
+        </p>
 
         <TextField
           onChange={props.handleChange}
@@ -27,8 +30,8 @@ const ReflectionFormOne = props => {
           variant="outlined"
           rows="12"
           rowsMax="50"
-          inputProps={{ minLength: 10, maxLength: 150 }}
-          minLength="10"
+          inputProps={{ minLength: 1, maxLength: 150 }}
+          minLength="1"
           maxLength="150"
           name="insights"
           value={props.insights}

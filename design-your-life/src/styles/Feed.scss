@@ -1,24 +1,22 @@
-
 @import './libs/variables';
 
 .feed {
-  overflow-y: scroll;
   min-height: calc(100vh - 70px);
-  margin-left: 30px;
+  margin-left: 350px;
   margin-top: 70px;
   padding-top: 30px;
   width: 100%;
 
   @media screen and (max-width: 1100px) {
     margin: auto;
-  } 
+  }
 
   .search-input {
-    max-width: $inputMaxWidth;
+    max-width: 600px;
     width: 90%;
     text-align: center;
     border: none;
-    border-bottom: 1px solid #6868f6;
+    border-bottom: 1px solid #1e9df7;
     background: #fafafa;
     padding: 5px;
     font-size: 1.6rem;
@@ -44,16 +42,17 @@
     max-width: 600px;
     height: 200px;
     margin: 20px 0;
-    border: 1px solid #6868f6;
+    border: 1px solid #1e9df7;
     border-radius: 8px;
-    box-shadow: 0px 9px 20px -9px rgba(104, 104, 246, 0.45);
+    // box-shadow: 0px 9px 20px -9px #1e9df7(104, 104, 246, 0.45);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
     background: white;
     position: relative;
     width: 90%;
 
     @media screen and (max-width: 1100px) {
-      margin: auto;
-    } 
+      margin: 20px auto;
+    }
 
     .react-calendar {
       border: none;
@@ -61,7 +60,7 @@
 
     &:after {
       content: '';
-      background-color: #6868f6;
+      background-color: #1e9df7;
       position: absolute;
       width: 1px;
       height: 22px;
@@ -91,6 +90,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      height: 70px;
       p {
         font-size: 1.4rem;
         font-weight: 500;
@@ -137,7 +137,6 @@
         cursor: pointer;
       }
     }
-
   }
 
   // action card button styles start here
@@ -170,5 +169,7 @@
         outline: none;
       }
     }
+  }
+  .reflection-buttons {
   }
 }

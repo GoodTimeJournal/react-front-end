@@ -1,5 +1,5 @@
-import React from "react";
-import { TextField } from "@material-ui/core";
+import React from 'react';
+import { TextField } from '@material-ui/core';
 
 const ReflectionFormSubmit = props => {
   return (
@@ -13,7 +13,10 @@ const ReflectionFormSubmit = props => {
 
       <form className="reflection-form" onSubmit={props.handleSubmit}>
         <p>What are the most important things you've noticed this week?</p>
-        <p>Feel free to write out any concluding thoughts here. Good luck next week!</p>
+        <p>
+          Feel free to write out any concluding thoughts here. Good luck next
+          week!
+        </p>
         <TextField
           id="outlined-textarea"
           // hover color to match theme
@@ -27,7 +30,7 @@ const ReflectionFormSubmit = props => {
           name="journalEntry"
           value={props.journalEntry}
           onChange={props.handleChange}
-          inputProps={{ minLength: 10, maxLength: 150 }}
+          inputProps={{ minLength: 1, maxLength: 150 }}
         />
         <div className="reflection-buttons">
           <button onClick={props.previousStep}>Previous Step</button>
