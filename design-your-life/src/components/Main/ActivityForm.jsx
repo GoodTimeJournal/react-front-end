@@ -1,5 +1,5 @@
-import React from "react";
-import "../../styles/ActivityForm.scss";
+import React from 'react';
+import '../../styles/ActivityForm.scss';
 
 const ActivityForm = props => {
   return (
@@ -12,37 +12,40 @@ const ActivityForm = props => {
           placeholder="Activity"
           value={props.name}
           onChange={props.handleChange}
-          minLength="5"
-          maxLength="75"
+          minLength="1"
+          maxLength="50"
         />
         <input
           required
-          type="text"
+          type="number"
           name="enjoymentRating"
           placeholder="Enjoyment Rating (1-5)"
           value={props.enjoymentRating}
           onChange={props.handleChange}
-          pattern="[1-5]"
+          min="1"
+          max="5"
         />
         <input
           required
-          type="text"
+          type="number"
           name="energyLevel"
           placeholder="Energy Level (1-5)"
           value={props.energyLevel}
           onChange={props.handleChange}
-          pattern="[1-5]"
+          min="1"
+          max="5"
         />
         <input
           required
-          type="text"
+          type="number"
           name="engagement"
           placeholder="Engagement (1-5)"
           value={props.engagement}
           onChange={props.handleChange}
-          pattern="[1-5]"
+          min="1"
+          max="5"
         />
-        <button>{props.isEditing ? "Update Activity" : "Add Activity"}</button>
+        <button>{props.isEditing ? 'Update Activity' : 'Add Activity'}</button>
       </form>
     </div>
   );

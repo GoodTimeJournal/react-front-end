@@ -5,76 +5,75 @@
 @import './Navigation';
 
 .home-display {
-	display: flex;
-	justify-content: space-between;
-	margin-left: calc(
-		(100vw / 2) - (#{$sidebarWidth} / 2) - (#{$inputMaxWidth} / 2) - 20px
-	); // 100vw/2        sidebar/2     searchbar / 2
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  margin-left: calc(
+    (100vw / 2) - (300px / 2) - (600px / 2) - 20px
+  ); // 100vw/2        sidebar/2     searchbar / 2
 
-	@media screen and (max-width: 1100px) {
-		margin: auto;
-		margin-top: 70px;
-	}
+  @media screen and (max-width: 1100px) {
+    margin: auto;
+    margin-top: 70px;
+  }
 }
 
 .sidebar-fixed {
-	position: relative;
+  position: relative;
 
-	@media screen and (max-width: 1100px) {
-		display: none;
-	}
+  @media screen and (max-width: 1100px) {
+    display: none;
+  }
 
-	.sidebar {
-		width: $sidebarWidth;
-		padding-top: 100px;
+  .sidebar {
+    position: fixed;
+    width: 300px;
+    margin-top: 130px;
 
-		.box {
-			height: 180px;
-			background: white;
-			border: 2px solid #1e9df7;
-			border-radius: 3px;
-			box-shadow: 0px 9px 20px -9px #1e9df7(104, 104, 246, 0.45);
-			margin-bottom: 20px;
+    .box {
+      height: 180px;
+      background: white;
+      border: 2px solid #1e9df7;
+      border-radius: 3px;
+      box-shadow: 0px 9px 20px -9px #1e9df7(104, 104, 246, 0.35);
+      margin-bottom: 20px;
+      padding: 5px;
 
-			.title-date {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				margin: 0 5px;
-				text-transform: uppercase;
-			}
+      .title-date {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 5px;
+        text-transform: uppercase;
+      }
 
-			h5 {
-				font-weight: 600;
-				font-size: 1.3rem;
-				margin: 15px 5px 10px 5px;
-			}
+      h5 {
+        font-weight: 600;
+        font-size: 1.3rem;
+        margin: 15px 5px 10px 5px;
+      }
 
-			p {
-				padding: 0 10px;
-				font-size: 14px;
-			}
-		}
+      p {
+        padding: 0 10px;
+        font-size: 14px;
+      }
+    }
 
-		hr {
-			width: 180px;
-			border: 0;
-			border-top: 2px solid #aaefc8;
-		}
+    hr {
+      width: 180px;
+      border: 0;
+      border-top: 2px solid #aaefc8;
+    }
 
-		.chart {
-			height: 220px;
-			padding: 10px;
-		}
+    .chart {
+      height: 220px;
+      padding: 10px;
+    }
 
-		.calendar {
-			height: auto;
-			margin-top: 20px;
-			.react-calendar {
-				border: 1px solid #1e9df7;
-			}
-
-			border: 1px solid #6868f6;
-		}
-	}
+    .calendar {
+      height: auto;
+      margin-top: 20px;
+      padding: 5px;
+    }
+  }
 }

@@ -11,7 +11,7 @@ nav {
   top: 0;
   z-index: 2;
   width: 100%;
-  box-shadow: 0px 21px 17px -24px rgba(130, 217, 218, 0.81);
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
 
   .loader {
     margin-left: 20px;
@@ -35,11 +35,11 @@ nav {
 
     i {
       margin: 0 15px;
-      color: #aaefc8;
+      color: #457be9;
       font-size: 2.6rem;
 
       &:hover {
-        color: #5987e5;
+        color: #80efef;
         cursor: pointer;
       }
     }
