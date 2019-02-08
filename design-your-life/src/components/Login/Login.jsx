@@ -1,7 +1,7 @@
-import React from "react";
-import styles from "styled-components";
-import Logo from "../../styles/nav-logo.png";
-import Loader from "react-loader-spinner";
+import React from 'react';
+import styles from 'styled-components';
+import Logo from '../../styles/nav-logo.png';
+import Loader from 'react-loader-spinner';
 // import GoogleSignIn from '../../styles/btn_google_signin_dark_normal_web@2x.png';
 
 const Login = props => {
@@ -37,12 +37,12 @@ const Login = props => {
           maxLength="24"
         />
         <LoginButton
-          onClick={props.error === "fail" ? props.displayError : null}
+          onClick={props.error === 'fail' ? props.displayError : null}
         >
           {props.isLoading ? (
             <Loader type="TailSpin" color="white" height={18} width={18} />
           ) : (
-            "Login"
+            'Login'
           )}
         </LoginButton>
         <br />
@@ -101,7 +101,7 @@ const LoginButton = styles.button`
   color: white;
   font-weight: 700;
   font-size: 14px;
-  background: #4e6d79;
+  background: rgba(30, 157, 247, 1);
   &:hover {
     cursor: pointer;
   }
