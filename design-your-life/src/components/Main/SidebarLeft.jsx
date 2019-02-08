@@ -2,6 +2,7 @@ import React from 'react';
 import Calendar from 'react-calendar';
 import ReactChartkick, { LineChart } from 'react-chartkick';
 import Chart from 'chart.js';
+import styles from 'styled-components';
 ReactChartkick.addAdapter(Chart);
 
 const SidebarLeft = props => {
@@ -53,8 +54,16 @@ const SidebarLeft = props => {
           <Calendar />
         </div>
       </div>
+      <SmallText>About Us • Support • Privacy • Press</SmallText>
+      <SmallText>© 2019 Good Time Journal</SmallText>
     </div>
   );
 };
 
 export default SidebarLeft;
+
+const SmallText = styles.p`
+  color: #8F8F8F;
+  font-size: 13px;
+  padding: 0 5px 5px 5px;
+`;
