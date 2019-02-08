@@ -10,10 +10,10 @@ const ActivityForm = props => {
           minLength="1"
           maxLength="30"
           fullWidth
+          fontSize="20"
           label="Activity"
-          value={props.currentName}
+          style={{ fontSize: '20px' }}
           inputProps={{ minLength: 1, maxLength: 30 }}
-          inputStyle={{ fontSize: '50px' }}
           required
           type="text"
           name="name"
