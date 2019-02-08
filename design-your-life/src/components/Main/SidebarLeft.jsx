@@ -45,7 +45,7 @@ const SidebarLeft = props => {
         </div>
         <div className="box chart">
           <div className="title-date">
-            <h5 className="recent-reflection">Weekly Overview</h5>
+            <h5 className="recent-reflection">Recent Activities</h5>
           </div>
           <LineChart data={data} height={170} />
         </div>

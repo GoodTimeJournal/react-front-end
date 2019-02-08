@@ -17,30 +17,33 @@ const ActivityForm = props => {
         />
         <input
           required
-          type="text"
+          type="number"
           name="enjoymentRating"
           placeholder="Enjoyment Rating (1-5)"
           value={props.enjoymentRating}
           onChange={props.handleChange}
-          pattern="[1-5]"
+          min="1"
+          max="5"
         />
         <input
           required
-          type="text"
+          type="number"
           name="energyLevel"
           placeholder="Energy Level (1-5)"
           value={props.energyLevel}
           onChange={props.handleChange}
-          pattern="[1-5]"
+          min="1"
+          max="5"
         />
         <input
           required
-          type="text"
+          type="number"
           name="engagement"
           placeholder="Engagement (1-5)"
           value={props.engagement}
           onChange={props.handleChange}
-          pattern="[1-5]"
+          min="1"
+          max="5"
         />
         <button>{props.isEditing ? 'Update Activity' : 'Add Activity'}</button>
       </form>
