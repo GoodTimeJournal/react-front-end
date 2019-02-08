@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ActivityCard from '../components/Main/ActivityCard';
 import ReflectionCard from '../components/Main/ReflectionCard';
-import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
 import {
   deleteActivity,
@@ -197,11 +196,12 @@ class MainView extends Component {
 			</>
 		);
 	}
+
 }
 
 const mapStateToProps = state => {
   return {
-    isLoading: state.user.isLoading,
+    isLoading: state.activity.isLoading,
     activeEdit: state.activity.activeEdit,
     activities: state.activity.activities,
     reflections: state.reflection.reflections

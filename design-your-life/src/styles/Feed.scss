@@ -1,10 +1,5 @@
-@import './libs/variables';
 
-.loader-div {
-  display: flex;
-  justify-content: center;
-  margin-top: 45%;
-}
+@import './libs/variables';
 
 .feed {
   overflow-y: scroll;
@@ -146,20 +141,9 @@
   }
 
   // action card button styles start here
-  .hide-card-button {
-    display: none;
-  }
-
-  .card-buttons-on-hover {
-    width: 598px;
-    height: 178px;
-    background: white;
+  .card-buttons {
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    z-index: 1;
+    justify-content: center;
 
     .delete:hover {
       background: #e75449;
@@ -176,12 +160,11 @@
     button {
       font-size: 1.5rem;
       font-weight: 600;
-      padding: 10px 0;
+      margin: 0 10px;
+      padding: 6px 0;
       background: white;
       border-radius: 3px;
-      width: 200px;
-      opacity: 1;
-      z-index: 2;
+      width: 100px;
 
       &:focus {
         outline: none;
