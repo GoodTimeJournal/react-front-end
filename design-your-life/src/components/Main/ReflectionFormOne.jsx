@@ -30,8 +30,8 @@ const ReflectionFormOne = props => {
           variant="outlined"
           rows="12"
           rowsMax="50"
-          inputProps={{ minLength: 10, maxLength: 150 }}
-          minLength="10"
+          inputProps={{ minLength: 1, maxLength: 150 }}
+          minLength="1"
           maxLength="150"
           name="insights"
           value={props.insights}
