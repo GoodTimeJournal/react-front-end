@@ -23,7 +23,7 @@ class MainView extends Component {
   };
 
   componentDidMount = () => {
-    setTimeout(() => this.props.getActivities(token), 300);
+    setTimeout(() => this.props.getActivities(token), 400);
     this.props.getReflections(token);
     this.setState({
       activities: this.props.activities
