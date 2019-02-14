@@ -41,7 +41,7 @@ export const addActivity = (token, activity) => dispatch => {
     .then(res =>
       dispatch({
         type: ADD_ACTIVITY_COMPLETE,
-        payload: res.data
+        payload: activity
       })
     )
     .catch(err =>
@@ -87,12 +87,12 @@ export const deleteActivity = (token, id) => dispatch => {
     .delete(`${baseURL}/activities/${id}`, {
       headers: { Authorization: token }
     })
-    .then(res =>
+    .then(res => {
       dispatch({
         type: DELETE_ACTIVITY_COMPLETE,
-        payload: res.data
-      })
-    )
+        payload: id
+      });
+    })
     .catch(err =>
       dispatch({
         type: DELETE_ACTIVITY_FAIL,

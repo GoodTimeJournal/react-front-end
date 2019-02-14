@@ -12,7 +12,7 @@ const initialState = {
   user: {},
   isLoading: false,
   error: '',
-  loggedIn: false
+  loggedIn: true
 };
 
 export default (state = initialState, action) => {
@@ -31,12 +31,16 @@ export default (state = initialState, action) => {
         error: ''
       };
     case LOGIN_USER_FAIL:
-      return { state: {
-        user: {},
+      return {
+        state: {
+          user: {},
+          isLoading: false,
+          error: '',
+          loggedIn: true
+        },
         isLoading: false,
-        error: '',
-        loggedIn: true
-      }, isLoading: false, error: 'fail' };
+        error: 'fail'
+      };
     case LOG_OUT:
       localStorage.clear();
       return { ...state, loggedIn: false, token: '' };

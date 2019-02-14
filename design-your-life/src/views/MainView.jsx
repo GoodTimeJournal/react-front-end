@@ -9,13 +9,12 @@ import {
 } from '../store/actions/activity';
 import { getReflections, deleteReflection } from '../store/actions/reflection';
 import ActionButtons from '../components/Main/ActionButtons';
-import SidebarLeft from '../components/Main/SidebarLeft';
 import SearchBar from '../components/Main/SearchBar';
 import '../styles/Feed.scss';
 import moment from 'moment';
 
 const token = localStorage.getItem('token');
-
+// let stopTimeout;
 class MainView extends Component {
   state = {
     isExpanded: false,
@@ -23,16 +22,14 @@ class MainView extends Component {
   };
 
   componentDidMount = () => {
-    setTimeout(() => this.props.getActivities(token), 600);
-    this.props.getReflections(token);
-    this.setState({
-      activities: this.props.activities
-    });
+    // this.props.getActivities(token);
+    // this.props.getReflections(token);
+    // console.log('**** mounted **** ');
   };
 
   deleteActivity = id => {
     this.props.deleteActivity(token, id);
-    setTimeout(() => this.props.getActivities(token), 400);
+    // this.props.getActivities(token);
   };
 
   deleteReflection = id => {
@@ -52,24 +49,9 @@ class MainView extends Component {
   };
 
   render() {
+    console.log('rendered', this.props.activities);
     let mappedActivities;
     let mappedReflections;
-    let recentReflection;
-    let timestamp;
-
-    // Recent Reflection Card Logic
-
-    if (
-      Array.isArray(this.props.reflections) &&
-      this.props.reflections.length > 0
-    ) {
-      recentReflection = this.props.reflections[
-        this.props.reflections.length - 1
-      ].journalEntry;
-      timestamp = moment(
-        this.props.reflections[this.props.reflections.length - 1].timestamp
-      ).format('M/D');
-    }
 
     // Map Reflections Logic
     if (Array.isArray(this.props.reflections)) {
@@ -137,7 +119,6 @@ class MainView extends Component {
     }
 
     // Combine Feed Logic
-
     let combineActivitiesAndReflections;
     if (mappedActivities === undefined || mappedReflections === undefined) {
       setTimeout(() => {
@@ -158,16 +139,11 @@ class MainView extends Component {
     return (
       <>
         <div className="home-display">
-          <SidebarLeft
-            recentReflection={recentReflection}
-            timestamp={timestamp}
-          />
           <div className="feed">
             <SearchBar handleChange={this.handleChange} />
             {this.state.searchInput !== '' || null
               ? filteredActivities
               : combineActivitiesAndReflections}
-            {console.log(combineActivitiesAndReflections)}
           </div>
         </div>
         <ActionButtons history={this.props.history} />
