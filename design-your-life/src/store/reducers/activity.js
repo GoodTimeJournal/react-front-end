@@ -20,7 +20,8 @@ const initialState = {
   activeEdit: {},
   isLoading: false,
   error: '',
-  isEditing: false
+  isEditing: false,
+  activitiesReceived: false
 };
 
 export default function(state = initialState, action) {
@@ -32,7 +33,8 @@ export default function(state = initialState, action) {
         ...state,
         activities: action.payload,
         isLoading: false,
-        error: ''
+        error: '',
+        activitiesReceived: true
       };
     case GET_ACTIVITIES_FAIL:
       return { ...state, isLoading: false, error: action.payload };
@@ -41,7 +43,7 @@ export default function(state = initialState, action) {
     case ADD_ACTIVITY_COMPLETE:
       return {
         ...state,
-        activities: action.payload,
+        activities: [...state.activities.push(action.payload)],
         isLoading: false,
         error: ''
       };
@@ -59,7 +61,6 @@ export default function(state = initialState, action) {
     case UPDATE_ACTIVITY_COMPLETE:
       return {
         ...state,
-        activities: action.payload,
         isLoading: false,
         error: '',
         activeEdit: {},
@@ -73,7 +74,10 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        error: ''
+        error: '',
+        activities: [
+          ...state.activities.filter(activity => activity.id !== action.payload)
+        ]
       };
     case DELETE_ACTIVITY_FAIL:
       return { ...state, isLoading: false, error: action.payload };
