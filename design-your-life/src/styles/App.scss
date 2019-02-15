@@ -4,6 +4,9 @@
 @import './libs/mixins';
 @import './Navigation';
 
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
 .home-display {
   display: flex;
   position: relative;
