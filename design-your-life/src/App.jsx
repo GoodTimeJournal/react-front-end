@@ -9,6 +9,7 @@ import { Route } from 'react-router';
 import { connect } from 'react-redux';
 import { logout } from './store/actions/user';
 
+import Welcome from './components/Welcome/welcome';
 import Reflections from './components/Reflections/reflections';
 import Activities from './components/Activities/activities';
 
@@ -33,6 +34,7 @@ class App extends Component {
             />
           )}
         />
+        <Route path="/welcome" render={props => <Welcome {...props} />} />
         <Route path="/activity" render={props => <Activities {...props} />} />
         <Route
           path="/reflection"
