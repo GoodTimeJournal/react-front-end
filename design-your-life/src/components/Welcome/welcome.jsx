@@ -9,7 +9,7 @@ const welcome = props => {
         <DashboardLeft>
           <DashboardCenterContent>
             <h1>Welcome</h1>
-            <h3>This is the Design Your Life - Good Time Journal.</h3>
+            <h3>This is Design Your Life - Good Time Journal.</h3>
             <p>
               Our mission is to provide people with a platform to{' '}
               <strong>design</strong>, <strong>track</strong>, and{' '}
