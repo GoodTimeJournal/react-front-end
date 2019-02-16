@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import NavigationView from './views/NavigationView';
 import './styles/App.scss';
 import MainView from './views/MainView';
-import ActivityFormView from './views/ActivityFormView';
+// import ActivityFormView from './views/ActivityFormView';
 import LoginView from './views/LoginView';
-import ReflectionFormView from './views/ReflectionFormView';
+// import ReflectionFormView from './views/ReflectionFormView';
 import { Route } from 'react-router';
 import { connect } from 'react-redux';
 import { logout } from './store/actions/user';
+
+import Welcome from './components/Welcome/welcome';
+import Reflections from './components/Reflections/reflections';
+import Activities from './components/Activities/activities';
 
 class App extends Component {
   logout = () => {
@@ -30,13 +34,11 @@ class App extends Component {
             />
           )}
         />
-        <Route
-          path="/activity"
-          render={props => <ActivityFormView {...props} />}
-        />
+        <Route path="/welcome" render={props => <Welcome {...props} />} />
+        <Route path="/activity" render={props => <Activities {...props} />} />
         <Route
           path="/reflection"
-          render={props => <ReflectionFormView {...props} />}
+          render={props => <Reflections {...props} />}
         />
       </>
     ) : (
@@ -48,7 +50,7 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     loggedIn: state.user.loggedIn,
-    isLoading: state.activity.isLoading
+    isLoading: state.activity.isLoading,
   };
 };
 
