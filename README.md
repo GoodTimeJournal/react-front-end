@@ -3,23 +3,19 @@
 
 **Mission**: "To provide people with a platform to design, track and reflect on their actions to improve their lives”.
 
-
-
 Based off of Stanford's 'Design-Your-Life' Course, this project is the culmination of 8 Engineers collaborating during a one week sprint challenge to develop a full-stack web application.
 
 ## Features
-1. User Authentication
+1. Full User Authentication
 2. Users can Create, Read, Update, and Delete data(CRUD)
 3. State management with Redux 
-4. 
 
 ## Technologies used
 ### Front-End
-  * React
+  * React & React Router
   * Redux
   * Scss
-  * //Add in the calander framework if used 
-  * //Add in the graphing framework if used
+  * Styled-Components
 ### Back-End
   1. Node.js
   2. Postgres
