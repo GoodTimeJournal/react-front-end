@@ -40,9 +40,18 @@ export const addActivity = (token, activity) => dispatch => {
     })
     .then(res =>
       dispatch({
-        type: ADD_ACTIVITY_COMPLETE,
-        payload: activity
+        type: ADD_ACTIVITY_COMPLETE
       })
+    )
+    .then(() =>
+      axios
+        .get(`${baseURL}/activities`, { headers: { Authorization: token } })
+        .then(res =>
+          dispatch({
+            type: GET_ACTIVITIES_COMPLETE,
+            payload: res.data
+          })
+        )
     )
     .catch(err =>
       dispatch({

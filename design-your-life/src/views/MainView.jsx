@@ -14,7 +14,6 @@ import '../styles/Feed.scss';
 import moment from 'moment';
 
 const token = localStorage.getItem('token');
-// let stopTimeout;
 class MainView extends Component {
   state = {
     isExpanded: false,
@@ -22,19 +21,16 @@ class MainView extends Component {
   };
 
   componentDidMount = () => {
-    // this.props.getActivities(token);
-    // this.props.getReflections(token);
-    // console.log('**** mounted **** ');
+    this.props.getActivities(token);
+    this.props.getReflections(token);
   };
 
   deleteActivity = id => {
     this.props.deleteActivity(token, id);
-    // this.props.getActivities(token);
   };
 
   deleteReflection = id => {
     this.props.deleteReflection(token, id);
-    setTimeout(() => this.props.getReflections(token), 400);
   };
 
   editActivity = id => {
@@ -61,7 +57,7 @@ class MainView extends Component {
           id={reflection.id}
           journalEntry={reflection.journalEntry}
           timestamp={moment(reflection.timestamp).format('LLL')}
-          sortedTimestamp={moment(reflection.timestamp).format('LT')}
+          // sortedTimestamp={moment(reflection.timestamp).format('LT')}
           // editReflection={this.editReflection}
           deleteReflection={this.deleteReflection}
         />
@@ -70,21 +66,23 @@ class MainView extends Component {
 
     // Map Activities Logic
     if (Array.isArray(this.props.activities)) {
-      mappedActivities = this.props.activities.map(activity => (
-        <ActivityCard
-          key={activity.id}
-          id={activity.id}
-          name={activity.name}
-          enjoymentRating={activity.enjoymentRating}
-          energyLevel={activity.energyLevel}
-          engagement={activity.engagement}
-          timestamp={moment(activity.timestamp).format('LLL')}
-          sortedTimestamp={moment(activity.timestamp).format('LT')}
-          editActivity={this.editActivity}
-          deleteActivity={this.deleteActivity}
-          isExpanded={this.state.isExpanded}
-        />
-      ));
+      mappedActivities = this.props.activities
+        .map(activity => (
+          <ActivityCard
+            key={activity.id}
+            id={activity.id}
+            name={activity.name}
+            enjoymentRating={activity.enjoymentRating}
+            energyLevel={activity.energyLevel}
+            engagement={activity.engagement}
+            timestamp={moment(activity.timestamp).format('LLL')}
+            // sortedTimestamp={moment(activity.timestamp).format('LT')}
+            editActivity={this.editActivity}
+            deleteActivity={this.deleteActivity}
+            isExpanded={this.state.isExpanded}
+          />
+        ))
+        .reverse();
     }
 
     // Filter Activities Logic
@@ -107,7 +105,7 @@ class MainView extends Component {
                 energyLevel={activity.props.energyLevel}
                 engagement={activity.props.engagement}
                 timestamp={moment(activity.props.timestamp).format('LLL')}
-                sortedTimestamp={moment(activity.props.timestamp).format('LT')}
+                // sortedTimestamp={moment(activity.props.timestamp).format('LT')}
                 editActivity={this.editActivity}
                 deleteActivity={this.deleteActivity}
                 expandCardMenu={this.expandCardMenu}

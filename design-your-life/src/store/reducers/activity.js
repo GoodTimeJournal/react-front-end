@@ -43,7 +43,7 @@ export default function(state = initialState, action) {
     case ADD_ACTIVITY_COMPLETE:
       return {
         ...state,
-        activities: [...state.activities.push(action.payload)],
+        // activities: [...state.activities.push(action.payload)],
         isLoading: false,
         error: ''
       };

@@ -40,7 +40,6 @@ export default function(state = initialState, action) {
     case ADD_REFLECTION_COMPLETE:
       return {
         ...state,
-        reflections: action.payload,
         isLoading: false,
         error: ''
       };
@@ -51,7 +50,6 @@ export default function(state = initialState, action) {
     case UPDATE_REFLECTION_COMPLETE:
       return {
         ...state,
-        activities: action.payload,
         isLoading: false,
         error: ''
       };
@@ -63,7 +61,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        error: ''
+        error: '',
+        reflections: [
+          ...state.reflections.filter(
+            reflection => reflection.id !== action.payload
+          )
+        ]
       };
     case DELETE_REFLECTION_FAIL:
       return { ...state, isLoading: false, error: action.payload };
