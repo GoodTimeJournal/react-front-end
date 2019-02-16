@@ -61,7 +61,7 @@ class ReflectionFormView extends Component {
     this.props.isEditing // isEditing coming from Redux store
       ? this.props.addReflection(this.state.reflection)
       : this.props.addReflection(token, this.state.reflection);
-    setTimeout((this.props.history.push('/'), 1000));
+    this.props.history.push('/');
   };
 
   render() {

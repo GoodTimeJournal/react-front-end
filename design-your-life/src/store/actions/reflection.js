@@ -42,9 +42,18 @@ export const addReflection = (token, reflection) => dispatch => {
     })
     .then(res =>
       dispatch({
-        type: ADD_REFLECTION_COMPLETE,
-        payload: res.data
+        type: ADD_REFLECTION_COMPLETE
       })
+    )
+    .then(() =>
+      axios
+        .get(`${baseURL}/reflections`, { headers: { Authorization: token } })
+        .then(res =>
+          dispatch({
+            type: GET_REFLECTIONS_COMPLETE,
+            payload: res.data
+          })
+        )
     )
     .catch(err =>
       dispatch({
@@ -90,7 +99,7 @@ export const deleteReflection = (token, id) => dispatch => {
     .then(res =>
       dispatch({
         type: DELETE_REFLECTION_COMPLETE,
-        payload: res.data
+        payload: id
       })
     )
     .catch(err =>
