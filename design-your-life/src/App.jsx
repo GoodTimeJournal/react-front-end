@@ -11,7 +11,7 @@ import { logout } from './store/actions/user';
 
 import Welcome from './components/Welcome/welcome';
 import Reflections from './components/Reflections/reflections';
-import Activities from './components/Activities/activities';
+import Activities from './views/ActivityView';
 
 class App extends Component {
   logout = () => {
