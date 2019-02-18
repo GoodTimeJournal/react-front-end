@@ -1,38 +1,43 @@
 import React, { Component } from 'react';
+
+//REDUX
+import { connect } from 'react-redux';
+import {
+  deleteActivity,
+  editActivity,
+  getActivities,
+} from '../store/actions/activity';
+
+//Activity Import
 import Activities from '../components/Activities/activities';
 
+// STYLING
 //Carousel import
 import Slider from 'react-slick';
-
 import styled from 'styled-components';
-
 //Modal imports
 import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 
-export default class ActivityView extends Component {
+const token = localStorage.getItem('token');
+
+class ActivityView extends Component {
   constructor(props) {
     super(props);
     this.state = {
       open: false,
-      activities: [
-        {
-          title: 'Run',
-          activity: 2,
-          energy: 2,
-          engagement: 5,
-        },
-        {
-          title: 'Run',
-          activity: 2,
-          energy: 2,
-          engagement: 5,
-        },
-      ],
+      activities: [],
     };
   }
 
+  componentDidMount = () => {
+    this.props.getActivities(token);
+  };
+
+  // Check if activities exist
+
+  // Modal Functions
   handleOpen = () => {
     this.setState({ open: true });
   };
@@ -41,9 +46,15 @@ export default class ActivityView extends Component {
     this.setState({ open: false });
   };
 
-  mapThroughActivities = activities =>
-    activities.map(activity => <Activities activity={activity} />);
+  mapThroughActivities = activities => {
+    let mappedActivities = activities.map(activity => (
+      <Activities activity={activity} />
+    ));
+    return mappedActivities;
+  };
+
   render() {
+    console.log(this.props);
     const { classes } = this.props;
     return (
       <MainContainer>
@@ -79,13 +90,30 @@ export default class ActivityView extends Component {
             ) : null}
           </AddButtonContainer>
           <ActivityContainer>
-            {this.mapThroughActivities(this.state.activities)}
+            {this.mapThroughActivities(this.props.activities)}
           </ActivityContainer>
         </ContentContainer>
       </MainContainer>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    isLoading: state.activity.isLoading,
+    activeEdit: state.activity.activeEdit,
+    activities: state.activity.activities,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {
+    deleteActivity,
+    editActivity,
+    getActivities,
+  }
+)(ActivityView);
 
 const MainContainer = styled.div`
   max-width: 100%;

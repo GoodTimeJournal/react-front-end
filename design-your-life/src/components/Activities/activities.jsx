@@ -1,15 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
+import moment from 'moment';
 
 const activities = props => {
   return (
     <ActivityStyling>
       <i className="fas fa-running" />
-      <h3>{props.activity.title}</h3>
-      <h5>Posted 5 minutes ago</h5>
-      <p>{props.activity.activity}</p>
-      <p>{props.activity.energy}</p>
+      <h3>{props.activity.name}</h3>
+      <h5>
+        Posted{' '}
+        {moment(props.activity.timestamp)
+          .startOf('day')
+          .fromNow()}
+      </h5>
       <p>{props.activity.engagement}</p>
+      <p>{props.activity.energyLevel}</p>
+      <p>{props.activity.enjoymentRating}</p>
     </ActivityStyling>
   );
 };
