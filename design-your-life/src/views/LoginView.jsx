@@ -1,21 +1,21 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import Login from "../components/Login/Login";
-import Register from "../components/Login/Register";
-import { connect } from "react-redux";
-import { registerUser, loginUser } from "../store/actions/user";
-import styles from "styled-components";
+import Login from '../components/Login/Login';
+import Register from '../components/Login/Register';
+import { connect } from 'react-redux';
+import { registerUser, loginUser } from '../store/actions/user';
+import styles from 'styled-components';
 
 class LoginView extends Component {
   state = {
     isNewUser: false,
     user: {
-      name: "",
-      email: "",
-      username: "",
-      password: ""
+      name: '',
+      email: '',
+      username: '',
+      password: '',
     },
-    error: ""
+    error: '',
   };
   componentDidMount() {
     this.setState({ error: this.props.error });
@@ -24,7 +24,7 @@ class LoginView extends Component {
   switchView = e => {
     e.preventDefault();
     this.setState(prevState => ({
-      isNewUser: !prevState.isNewUser
+      isNewUser: !prevState.isNewUser,
     }));
   };
 
@@ -32,7 +32,7 @@ class LoginView extends Component {
     e.preventDefault();
     this.props.registerUser(this.state.user);
     this.setState({
-      isNewUser: false
+      isNewUser: false,
     });
   };
 
@@ -45,7 +45,7 @@ class LoginView extends Component {
     e.preventDefault();
     this.setState({
       ...this.state,
-      user: { ...this.state.user, [e.target.name]: e.target.value }
+      user: { ...this.state.user, [e.target.name]: e.target.value },
     });
   };
 
@@ -56,7 +56,7 @@ class LoginView extends Component {
         switchView={this.switchView}
         registerUser={this.registerUser}
       />
-    ) : this.props.error === "fail" ? (
+    ) : this.props.error === 'fail' ? (
       <>
         <ErrorContainer>
           <ErrorMessage>Login Failed, invalid Username</ErrorMessage>
@@ -91,7 +91,7 @@ class LoginView extends Component {
 const mapStateToProps = state => {
   return {
     isLoading: state.user.isLoading,
-    error: state.user.error
+    error: state.user.error,
   };
 };
 
