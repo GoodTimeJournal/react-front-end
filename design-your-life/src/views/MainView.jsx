@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import {
   deleteActivity,
   editActivity,
-  getActivities
+  getActivities,
 } from '../store/actions/activity';
 import { getReflections, deleteReflection } from '../store/actions/reflection';
 import ActionButtons from '../components/Main/ActionButtons';
@@ -17,7 +17,7 @@ const token = localStorage.getItem('token');
 class MainView extends Component {
   state = {
     isExpanded: false,
-    searchInput: ''
+    searchInput: '',
   };
 
   componentDidMount = () => {
@@ -125,7 +125,7 @@ class MainView extends Component {
     } else if (mappedActivities.length > 0 || mappedReflections.length > 0) {
       combineActivitiesAndReflections = [
         ...mappedActivities,
-        ...mappedReflections
+        ...mappedReflections,
       ];
       combineActivitiesAndReflections.sort((a, b) => {
         if (a.props.sortedTimestamp < b.props.sortedTimestamp) return 1;
@@ -155,7 +155,7 @@ const mapStateToProps = state => {
     isLoading: state.activity.isLoading,
     activeEdit: state.activity.activeEdit,
     activities: state.activity.activities,
-    reflections: state.reflection.reflections
+    reflections: state.reflection.reflections,
   };
 };
 
@@ -166,6 +166,7 @@ export default connect(
     editActivity,
     getActivities,
     getReflections,
-    deleteReflection
+    deleteReflection,
   }
 )(MainView);
+//test
