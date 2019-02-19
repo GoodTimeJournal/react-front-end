@@ -6,19 +6,19 @@ import {
   deleteActivity,
   editActivity,
   getActivities,
+  addActivity,
 } from '../store/actions/activity';
 
 //Activity Import
 import Activities from '../components/Activities/activities';
+import ActivityForm from '../components/Main/ActivityForm';
 
 // STYLING
 //Carousel import
 import Slider from 'react-slick';
 import styled from 'styled-components';
-//Modal imports
-import Typography from '@material-ui/core/Typography';
-import Modal from '@material-ui/core/Modal';
-import Button from '@material-ui/core/Button';
+
+import ReactModal from 'react-modal';
 
 const token = localStorage.getItem('token');
 
@@ -26,24 +26,67 @@ class ActivityView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
+      showModal: false,
       activities: [],
+      activity: {
+        name: '',
+        fk: '',
+        enjoymentRating: '',
+        energyLevel: '',
+        engagement: '',
+      },
     };
+
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
   componentDidMount = () => {
     this.props.getActivities(token);
+    this.setState({
+      ...this.state,
+      activity: {
+        ...this.props.activeEdit,
+        fk: parseInt(localStorage.getItem('id')),
+      },
+    });
   };
-
-  // Check if activities exist
 
   // Modal Functions
-  handleOpen = () => {
-    this.setState({ open: true });
+  handleOpenModal() {
+    this.setState({ showModal: true });
+  }
+
+  handleCloseModal() {
+    this.setState({ showModal: false });
+  }
+  // Form Functions
+  handleChange = e => {
+    if (isNaN(e.target.value) || e.target.value === '') {
+      this.setState({
+        ...this.state,
+        activity: {
+          ...this.state.activity,
+          [e.target.name]: e.target.value,
+        },
+      });
+    } else
+      this.setState({
+        ...this.state,
+        activity: {
+          ...this.state.activity,
+          [e.target.name]: parseInt(e.target.value),
+        },
+      });
   };
 
-  handleClose = () => {
-    this.setState({ open: false });
+  handleSubmit = e => {
+    const token = localStorage.getItem('token');
+    e.preventDefault();
+    this.props.isEditing // isEditing coming from Redux store
+      ? this.props.updateActivity(token, this.state.activity)
+      : this.props.addActivity(token, this.state.activity);
+    this.handleCloseModal();
   };
 
   mapThroughActivities = activities => {
@@ -54,39 +97,40 @@ class ActivityView extends Component {
   };
 
   render() {
-    const { classes } = this.props;
     return (
       <MainContainer>
         <Slider {...carouselSettings}>{displayCarouselImages()}</Slider>
         <ContentContainer>
           <h2>Activities</h2>
           <AddButtonContainer>
-            <AddActivityButton onClick={this.handleOpen}>
+            <AddActivityButton onClick={this.handleOpenModal}>
               Add Activity
             </AddActivityButton>
-            {this.state.isModalOpened ? (
-              <div>
-                <Modal
-                  aria-labelledby="simple-modal-title"
-                  aria-describedby="simple-modal-description"
-                  open={this.state.open}
-                  onClose={this.handleClose}
-                >
-                  <div style={getModalStyle()} className={classes.paper}>
-                    <Typography variant="h6" id="modal-title">
-                      Text in a modal
-                    </Typography>
-                    <Typography
-                      variant="subtitle1"
-                      id="simple-modal-description"
-                    >
-                      Duis mollis, est non commodo luctus, nisi erat porttitor
-                      ligula.
-                    </Typography>
-                  </div>
-                </Modal>
-              </div>
-            ) : null}
+            <ReactModal
+              isOpen={this.state.showModal}
+              contentLabel="Minimal Modal Example"
+              style={{
+                content: {
+                  color: 'lightsteelblue',
+                  height: '300px',
+                  marginTop: `250px`,
+                },
+              }}
+            >
+              <IconContainer>
+                <i class="fas fa-times" onClick={this.handleCloseModal} />
+              </IconContainer>
+              <ActivityForm
+                name={this.state.activity.name}
+                enjoymentRating={this.state.activity.enjoymentRating}
+                energyLevel={this.state.activity.energyLevel}
+                engagement={this.state.activity.engagement}
+                timestamp={this.state.activity.timestamp}
+                handleChange={this.handleChange}
+                handleSubmit={this.handleSubmit}
+                isEditing={this.props.isEditing}
+              />
+            </ReactModal>
           </AddButtonContainer>
           <ActivityContainer>
             {this.mapThroughActivities(this.props.activities)}
@@ -102,12 +146,14 @@ const mapStateToProps = state => {
     isLoading: state.activity.isLoading,
     activeEdit: state.activity.activeEdit,
     activities: state.activity.activities,
+    isEditing: state.activity.isEditing,
   };
 };
 
 export default connect(
   mapStateToProps,
   {
+    addActivity,
     deleteActivity,
     editActivity,
     getActivities,
@@ -174,6 +220,13 @@ const ActivityContainer = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   max-width: 750px;
+`;
+const IconContainer = styled.div`
+  text-align: right;
+  i {
+    font-size: 24px;
+    cursor: pointer;
+  }
 `;
 
 //Settings for carousel
