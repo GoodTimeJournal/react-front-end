@@ -89,9 +89,23 @@ class ActivityView extends Component {
     this.handleCloseModal();
   };
 
+  deleteActivity = id => {
+    this.props.deleteActivity(token, id);
+  };
+
+  editActivity = id => {
+    const selected = this.props.activities.find(activity => activity.id === id);
+    this.props.history.push('/activity');
+    this.props.editActivity(selected);
+  };
+
   mapThroughActivities = activities => {
     let mappedActivities = activities.map(activity => (
-      <Activities activity={activity} />
+      <Activities
+        activity={activity}
+        editActivity={this.editActivity}
+        deleteActivity={this.deleteActivity}
+      />
     ));
     return mappedActivities;
   };

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
+import { Button } from '@material-ui/core';
 
 const activities = props => {
   return (
@@ -10,12 +11,15 @@ const activities = props => {
       <h5>
         Posted{' '}
         {moment(props.activity.timestamp)
-          .startOf('day')
+          .startOf('hours')
           .fromNow()}
       </h5>
-      <p>{props.activity.engagement}</p>
-      <p>{props.activity.energyLevel}</p>
-      <p>{props.activity.enjoymentRating}</p>
+      <p>Engagement: {props.activity.engagement}</p>
+      <p>Energy Level: {props.activity.energyLevel}</p>
+      <p>Enjoyment Rating: {props.activity.enjoymentRating}</p>
+      <Button onClick={() => props.deleteActivity(props.activity.id)}>
+        Delete Activity
+      </Button>
     </ActivityStyling>
   );
 };
