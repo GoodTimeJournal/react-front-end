@@ -24,13 +24,20 @@ const Navigation = props => {
         </div>
       </div>
       <PrimaryNav>
+        <NavLink exact to="/">
+          <p>Welcome</p>
+        </NavLink>
         <NavLink to="/activities">
           <p>Activities</p>
         </NavLink>
         <NavLink to="/reflections">
           <p>Reflections</p>
         </NavLink>
-        <a href="https://goodtimejournal.netlify.com/" target="_blank">
+        <a
+          href="https://goodtimejournal.netlify.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <p>About</p>
         </a>
         <i

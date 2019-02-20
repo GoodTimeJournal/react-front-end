@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const reflections = props => {
-  console.log(props);
   return (
     <>
       <ReflectionBlock>
@@ -43,14 +42,14 @@ const ReflectionBlock = styled.div`
     border-top: 1px solid #d3d3d3;
   }
 
-  :nth-child(even) {
+  :nth-child(odd) {
     flex-direction: row-reverse;
   }
 
   @media (max-width: 800px) {
     flex-direction: column-reverse;
     height: 100%;
-    :nth-child(even) {
+    :nth-child(odd) {
       flex-direction: column-reverse;
     }
   }
