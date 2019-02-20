@@ -30,7 +30,11 @@ const Navigation = props => {
         <NavLink to="/reflections">
           <p>Reflections</p>
         </NavLink>
-        <a href="https://goodtimejournal.netlify.com/" target="_blank">
+        <a
+          href="https://goodtimejournal.netlify.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <p>About</p>
         </a>
         <i

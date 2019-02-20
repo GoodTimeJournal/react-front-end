@@ -15,8 +15,8 @@ import ActivityForm from '../components/Main/ActivityForm';
 
 // STYLING
 //Carousel import
-import Slider from 'react-slick';
 import styled from 'styled-components';
+import Carousel from '../components/Carousel/Carousel';
 
 import ReactModal from 'react-modal';
 
@@ -36,9 +36,6 @@ class ActivityView extends Component {
         engagement: ''
       }
     };
-
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
   componentDidMount = () => {
@@ -53,13 +50,13 @@ class ActivityView extends Component {
   };
 
   // Modal Functions
-  handleOpenModal() {
+  handleOpenModal = () => {
     this.setState({ showModal: true });
-  }
+  };
 
-  handleCloseModal() {
+  handleCloseModal = () => {
     this.setState({ showModal: false });
-  }
+  };
   // Form Functions
   handleChange = e => {
     if (isNaN(e.target.value) || e.target.value === '') {
@@ -113,7 +110,7 @@ class ActivityView extends Component {
   render() {
     return (
       <MainContainer>
-        <Slider {...carouselSettings}>{displayCarouselImages()}</Slider>
+        <Carousel />
         <ContentContainer>
           <h2>Activities</h2>
           <AddButtonContainer>
@@ -178,20 +175,6 @@ const MainContainer = styled.div`
   width: 100%;
 `;
 
-//Carousel Styling
-const CarouselImageContainer = styled.div`
-  margin: 0 auto;
-  display: flex;
-  margin-top: 72px;
-  max-width: 100%;
-`;
-
-const CarouselImage = styled.img`
-  max-width: 100%;
-  height: auto;
-  min-height: 200px;
-`;
-
 //Activity Styling
 const ContentContainer = styled.div`
   padding: 3rem 10rem;
@@ -242,33 +225,6 @@ const IconContainer = styled.div`
     cursor: pointer;
   }
 `;
-
-//Settings for carousel
-let carouselSettings = {
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  autoplay: true
-};
-
-//Maps through images and returns a component for each image.
-const displayCarouselImages = () =>
-  carouselImages.map(image => {
-    return (
-      <CarouselImageContainer>
-        <CarouselImage src={image} />
-      </CarouselImageContainer>
-    );
-  });
-
-//Images - Resolution size: 1440x300
-let carouselImages = [
-  'https://images.unsplash.com/photo-1548161126-7b079975fa76?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1440&h=300&fit=crop&ixid=eyJhcHBfaWQiOjF9',
-  'https://images.unsplash.com/photo-1547843697-11484584526e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1440&h=300&fit=crop&ixid=eyJhcHBfaWQiOjF9',
-  'https://images.unsplash.com/photo-1547958600-915c8a5131de?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1440&h=300&fit=crop&ixid=eyJhcHBfaWQiOjF9',
-  'https://images.unsplash.com/photo-1549138159-22f90358cea0?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1440&h=300&fit=crop&ixid=eyJhcHBfaWQiOjF9'
-];
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;

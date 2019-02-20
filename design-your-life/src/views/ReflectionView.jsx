@@ -3,14 +3,11 @@ import Reflections from '../components/Reflections/reflections';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { getReflections, deleteReflection } from '../store/actions/reflection';
+import Carousel from '../components/Carousel/Carousel';
 
 const token = localStorage.getItem('token');
 
 class ReflectionView extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.props.getReflections(token);
   }
@@ -22,11 +19,13 @@ class ReflectionView extends Component {
         insights={reflection.insights}
         trends={reflection.trends}
         surprises={reflection.surprises}
+        key={reflection.timestamp}
       />
     ));
     return (
       <ReflectionContainer>
-        <h1>Reflections</h1>
+        <Carousel />
+        <h2>Reflections</h2>
         {mappedReflections}
       </ReflectionContainer>
     );
@@ -51,8 +50,10 @@ const ReflectionContainer = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  h1 {
+  h2 {
+    padding: 3rem 0;
+    font-weight: lighter;
+    font-size: 3.4rem;
     text-align: center;
-    margin: 100px 0 30px 0;
   }
 `;
