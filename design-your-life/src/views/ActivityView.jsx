@@ -132,7 +132,7 @@ class ActivityView extends Component {
               }}
             >
               <IconContainer>
-                <i class="fas fa-times" onClick={this.handleCloseModal} />
+                <i className="fas fa-times" onClick={this.handleCloseModal} />
               </IconContainer>
               <ActivityForm
                 name={this.state.activity.name}

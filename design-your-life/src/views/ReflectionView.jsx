@@ -15,19 +15,17 @@ class ReflectionView extends Component {
     this.props.getReflections(token);
   }
   render() {
-    console.log(this.props);
-    return (
-      <ReflectionContainer>
-        <Reflections />
-      </ReflectionContainer>
-    );
+    const mappedReflections = this.props.reflections.map(reflection => (
+      <Reflections timestamp={reflection.timestamp} journalEntry={reflection.journalEntry} insights={reflection.insights} trends={reflection.trends} surprises={reflection.surprises} />
+    ));
+    return <ReflectionContainer>{mappedReflections}</ReflectionContainer>;
   }
 }
 const mapStateToProps = state => {
   return {
     loggedIn: state.user.loggedIn,
     isLoading: state.activity.isLoading,
-    reflections: state.reflection.reflections,
+    reflections: state.reflection.reflections
   };
 };
 
@@ -36,4 +34,10 @@ export default connect(
   { getReflections, deleteReflection }
 )(ReflectionView);
 
-const ReflectionContainer = styled.div``;
+const ReflectionContainer = styled.div`
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
