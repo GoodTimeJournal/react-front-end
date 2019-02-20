@@ -181,7 +181,7 @@ const MainContainer = styled.div`
 //Carousel Styling
 const CarouselImageContainer = styled.div`
   margin: 0 auto;
-  display: flex
+  display: flex;
   margin-top: 72px;
   max-width: 100%;
 `;

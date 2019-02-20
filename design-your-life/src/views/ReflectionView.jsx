@@ -26,7 +26,7 @@ class ReflectionView extends Component {
     ));
     return (
       <ReflectionContainer>
-        <h1 style={{ textAlign: 'center', marginBottom: 30 }}>Reflections</h1>
+        <h1>Reflections</h1>
         {mappedReflections}
       </ReflectionContainer>
     );
@@ -46,9 +46,13 @@ export default connect(
 )(ReflectionView);
 
 const ReflectionContainer = styled.div`
-  margin-top: 100px;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  h1 {
+    text-align: center;
+    margin: 100px 0 30px 0;
+  }
 `;

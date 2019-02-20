@@ -36,12 +36,34 @@ export default reflections;
 
 const ReflectionBlock = styled.div`
   display: flex;
-  max-height: 330px;
+  height: 400px;
+  border-bottom: 1px solid #d3d3d3;
+
+  :nth-child(2) {
+    border-top: 1px solid #d3d3d3;
+  }
+
+  :nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  @media (max-width: 800px) {
+    flex-direction: column-reverse;
+    height: 100%;
+    :nth-child(even) {
+      flex-direction: column-reverse;
+    }
+  }
 `;
 
 const ReflectionContent = styled.div`
   width: 60%;
-  padding: 10px 20px 0 20px;
+  padding: 60px;
+
+  @media (max-width: 800px) {
+    width: 100%;
+    padding: 30px;
+  }
 
   h4 {
     border-bottom: 1px solid grey;
@@ -61,11 +83,16 @@ const ReflectionContent = styled.div`
 
   p {
     max-width: 700px;
+    line-height: 1.3;
   }
 `;
 
 const ReflectionPhoto = styled.div`
   width: 40%;
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 
   img {
     width: 100%;
