@@ -8,10 +8,10 @@ import LoginView from './views/LoginView';
 import { Route } from 'react-router';
 import { connect } from 'react-redux';
 import { logout } from './store/actions/user';
-
+// Views
 import Welcome from './components/Welcome/welcome';
-import Reflections from './components/Reflections/reflections';
-import Activities from './components/Activities/activities';
+import Reflections from './views/ReflectionView';
+import Activities from './views/ActivityView';
 
 class App extends Component {
   logout = () => {
@@ -25,7 +25,7 @@ class App extends Component {
         <NavigationView logout={this.logout} isLoading={this.props.isLoading} />
         <Route
           exact
-          path="/"
+          path="/mainview"
           render={props => (
             <MainView
               {...props}
@@ -34,7 +34,7 @@ class App extends Component {
             />
           )}
         />
-        <Route path="/welcome" render={props => <Welcome {...props} />} />
+        <Route exact path="/" render={props => <Welcome {...props} />} />
         <Route path="/activity" render={props => <Activities {...props} />} />
         <Route
           path="/reflection"
