@@ -16,11 +16,13 @@ const welcome = props => {
               <strong>reflect</strong> on their actions to improve their lives
             </p>
             <DashboardButtonContainer>
-              <DashboardButton onClick={() => props.history.push('/activity')}>
+              <DashboardButton
+                onClick={() => props.history.push('/activities')}
+              >
                 Activities
               </DashboardButton>
               <DashboardButton
-                onClick={() => props.history.push('/reflection')}
+                onClick={() => props.history.push('/reflections')}
               >
                 Reflections
               </DashboardButton>

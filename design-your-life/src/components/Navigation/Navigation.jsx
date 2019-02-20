@@ -2,6 +2,7 @@ import React from 'react';
 import logo from '../../styles/nav-logo.png';
 import { NavLink } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
+import styled from 'styled-components';
 
 const Navigation = props => {
   return (
@@ -22,15 +23,45 @@ const Navigation = props => {
           ) : null}
         </div>
       </div>
-      <div className="primary-nav">
+      <PrimaryNav>
+        <NavLink to="/activities">
+          <p>Activities</p>
+        </NavLink>
+        <NavLink to="/reflections">
+          <p>Reflections</p>
+        </NavLink>
+        <a href="https://goodtimejournal.netlify.com/" target="_blank">
+          <p>About</p>
+        </a>
         <i
           onClick={props.logout}
           className="fas fa-sign-out-alt"
           title="Logout"
         />
-      </div>
+      </PrimaryNav>
     </nav>
   );
 };
 
 export default Navigation;
+
+const PrimaryNav = styled.div`
+  display: flex;
+  margin-top: 10px;
+
+  a {
+    text-decoration: none;
+    color: #333333;
+    margin: 0 15px;
+    font-weight: 700;
+
+    p {
+      letter-spacing: 0.75px;
+    }
+  }
+
+  i {
+    font-size: 25px;
+    margin: 0 20px;
+  }
+`;

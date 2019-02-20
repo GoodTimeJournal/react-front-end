@@ -35,9 +35,9 @@ class App extends Component {
           )}
         />
         <Route exact path="/" render={props => <Welcome {...props} />} />
-        <Route path="/activity" render={props => <Activities {...props} />} />
+        <Route path="/activities" render={props => <Activities {...props} />} />
         <Route
-          path="/reflection"
+          path="/reflections"
           render={props => <Reflections {...props} />}
         />
       </>
@@ -50,7 +50,7 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     loggedIn: state.user.loggedIn,
-    isLoading: state.activity.isLoading,
+    isLoading: state.activity.isLoading
   };
 };
 
