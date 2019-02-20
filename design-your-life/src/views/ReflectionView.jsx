@@ -16,9 +16,20 @@ class ReflectionView extends Component {
   }
   render() {
     const mappedReflections = this.props.reflections.map(reflection => (
-      <Reflections timestamp={reflection.timestamp} journalEntry={reflection.journalEntry} insights={reflection.insights} trends={reflection.trends} surprises={reflection.surprises} />
+      <Reflections
+        timestamp={reflection.timestamp}
+        journalEntry={reflection.journalEntry}
+        insights={reflection.insights}
+        trends={reflection.trends}
+        surprises={reflection.surprises}
+      />
     ));
-    return <ReflectionContainer>{mappedReflections}</ReflectionContainer>;
+    return (
+      <ReflectionContainer>
+        <h1 style={{ textAlign: 'center', marginBottom: 30 }}>Reflections</h1>
+        {mappedReflections}
+      </ReflectionContainer>
+    );
   }
 }
 const mapStateToProps = state => {

@@ -5,18 +5,21 @@ const reflections = props => {
   console.log(props);
   return (
     <>
-      <h1 style={{ textAlign: 'center', marginBottom: 30 }}>Reflections</h1>
       <ReflectionBlock>
         <ReflectionContent>
           <h4 className="date">{props.timestamp}</h4>
-          <h5>Journal Entry</h5>
-          <p>{props.journalEntry}</p>
-          <h5>Surprises</h5>
-          <p>{props.surprises}</p>
-          <h5>Trends</h5>
-          <p>{props.trends}</p>
-          <h5>Insights</h5>
-          <p>{props.insights}</p>
+          <p>
+            <span>Summary:</span> {props.journalEntry}
+          </p>
+          <p>
+            <span>Surprises:</span> {props.surprises}
+          </p>
+          <p>
+            <span>Trends:</span> {props.trends}
+          </p>
+          <p>
+            <span>Insights:</span> {props.insights}
+          </p>
         </ReflectionContent>
         <ReflectionPhoto>
           <img
@@ -33,18 +36,31 @@ export default reflections;
 
 const ReflectionBlock = styled.div`
   display: flex;
-  max-height: 20%;
+  max-height: 330px;
 `;
 
 const ReflectionContent = styled.div`
   width: 60%;
-  padding: 30px;
-  overflow-y: auto;
+  padding: 10px 20px 0 20px;
 
-  .date {
+  h4 {
     border-bottom: 1px solid grey;
     text-align: right;
-    margin-bottom: 5px;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+  }
+
+  h5 {
+    font-size: 1.6rem;
+    font-weight: 700px;
+  }
+
+  span {
+    font-weight: 700;
+  }
+
+  p {
+    max-width: 700px;
   }
 `;
 
