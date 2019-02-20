@@ -6,7 +6,7 @@ import {
   deleteActivity,
   editActivity,
   getActivities,
-  addActivity,
+  addActivity
 } from '../store/actions/activity';
 
 //Activity Import
@@ -33,8 +33,8 @@ class ActivityView extends Component {
         fk: '',
         enjoymentRating: '',
         energyLevel: '',
-        engagement: '',
-      },
+        engagement: ''
+      }
     };
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -47,8 +47,8 @@ class ActivityView extends Component {
       ...this.state,
       activity: {
         ...this.props.activeEdit,
-        fk: parseInt(localStorage.getItem('id')),
-      },
+        fk: parseInt(localStorage.getItem('id'))
+      }
     });
   };
 
@@ -67,16 +67,16 @@ class ActivityView extends Component {
         ...this.state,
         activity: {
           ...this.state.activity,
-          [e.target.name]: e.target.value,
-        },
+          [e.target.name]: e.target.value
+        }
       });
     } else
       this.setState({
         ...this.state,
         activity: {
           ...this.state.activity,
-          [e.target.name]: parseInt(e.target.value),
-        },
+          [e.target.name]: parseInt(e.target.value)
+        }
       });
   };
 
@@ -127,8 +127,8 @@ class ActivityView extends Component {
                 content: {
                   color: 'lightsteelblue',
                   height: '300px',
-                  marginTop: `250px`,
-                },
+                  marginTop: `250px`
+                }
               }}
             >
               <IconContainer>
@@ -160,7 +160,7 @@ const mapStateToProps = state => {
     isLoading: state.activity.isLoading,
     activeEdit: state.activity.activeEdit,
     activities: state.activity.activities,
-    isEditing: state.activity.isEditing,
+    isEditing: state.activity.isEditing
   };
 };
 
@@ -170,7 +170,7 @@ export default connect(
     addActivity,
     deleteActivity,
     editActivity,
-    getActivities,
+    getActivities
   }
 )(ActivityView);
 
@@ -249,7 +249,7 @@ let carouselSettings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
-  autoplay: true,
+  autoplay: true
 };
 
 //Maps through images and returns a component for each image.
@@ -267,7 +267,7 @@ let carouselImages = [
   'https://images.unsplash.com/photo-1548161126-7b079975fa76?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1440&h=300&fit=crop&ixid=eyJhcHBfaWQiOjF9',
   'https://images.unsplash.com/photo-1547843697-11484584526e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1440&h=300&fit=crop&ixid=eyJhcHBfaWQiOjF9',
   'https://images.unsplash.com/photo-1547958600-915c8a5131de?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1440&h=300&fit=crop&ixid=eyJhcHBfaWQiOjF9',
-  'https://images.unsplash.com/photo-1549138159-22f90358cea0?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1440&h=300&fit=crop&ixid=eyJhcHBfaWQiOjF9',
+  'https://images.unsplash.com/photo-1549138159-22f90358cea0?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1440&h=300&fit=crop&ixid=eyJhcHBfaWQiOjF9'
 ];
 
 function rand() {
@@ -281,7 +281,7 @@ function getModalStyle() {
   return {
     top: `${top}%`,
     left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
+    transform: `translate(-${top}%, -${left}%)`
   };
 }
 
@@ -292,6 +292,6 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 4,
-    outline: 'none',
-  },
+    outline: 'none'
+  }
 });
