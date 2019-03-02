@@ -20,8 +20,6 @@ import Carousel from '../components/Carousel/Carousel';
 
 import ReactModal from 'react-modal';
 
-const token = localStorage.getItem('token');
-
 class ActivityView extends Component {
   constructor(props) {
     super(props);
@@ -39,6 +37,7 @@ class ActivityView extends Component {
   }
 
   componentDidMount = () => {
+    const token = localStorage.getItem('token');
     this.props.getActivities(token);
     this.setState({
       ...this.state,
@@ -87,6 +86,7 @@ class ActivityView extends Component {
   };
 
   deleteActivity = id => {
+    const token = localStorage.getItem('token');
     this.props.deleteActivity(token, id);
   };
 
