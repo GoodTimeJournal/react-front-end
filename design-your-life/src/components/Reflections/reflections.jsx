@@ -1,12 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import moment from 'moment';
 
 const reflections = props => {
   return (
     <>
       <ReflectionBlock>
         <ReflectionContent>
-          <h4 className="date">{props.timestamp}</h4>
+          <h5 className="date">
+            {moment(props.timestamp)
+              .startOf('hours')
+              .fromNow()}
+          </h5>
+
           <p>
             <span>Summary:</span> {props.journalEntry}
           </p>
@@ -64,15 +70,11 @@ const ReflectionContent = styled.div`
     padding: 30px;
   }
 
-  h4 {
+  h5 {
     border-bottom: 1px solid grey;
     text-align: right;
     padding-bottom: 10px;
     margin-bottom: 15px;
-  }
-
-  h5 {
-    font-size: 1.6rem;
     font-weight: 700px;
   }
 

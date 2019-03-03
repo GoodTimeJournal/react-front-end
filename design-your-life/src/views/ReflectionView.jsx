@@ -7,8 +7,6 @@ import { getReflections, deleteReflection } from '../store/actions/reflection';
 import Carousel from '../components/Carousel/Carousel';
 import ReactModal from 'react-modal';
 
-const token = localStorage.getItem('token');
-
 class ReflectionView extends Component {
   state = {
     showModal: false,
@@ -16,20 +14,32 @@ class ReflectionView extends Component {
   };
 
   componentDidMount() {
-    this.props.getReflections(token);
+    this.props.getReflections(localStorage.getItem('token'));
   }
 
+  // Modal Functions
+  handleOpenModal = () => {
+    this.setState({ showModal: true });
+  };
+
+  handleCloseModal = () => {
+    this.setState({ showModal: false });
+  };
+
   render() {
-    const mappedReflections = this.props.reflections.map(reflection => (
-      <Reflections
-        timestamp={reflection.timestamp}
-        journalEntry={reflection.journalEntry}
-        insights={reflection.insights}
-        trends={reflection.trends}
-        surprises={reflection.surprises}
-        key={reflection.timestamp}
-      />
-    ));
+    const mappedReflections = this.props.reflections
+      .map(reflection => (
+        <Reflections
+          timestamp={reflection.timestamp}
+          journalEntry={reflection.journalEntry}
+          insights={reflection.insights}
+          trends={reflection.trends}
+          surprises={reflection.surprises}
+          key={reflection.timestamp}
+        />
+      ))
+      .reverse();
+
     return (
       <ReflectionContainer>
         <Carousel />
@@ -43,21 +53,18 @@ class ReflectionView extends Component {
             contentLabel="Minimal Modal Example"
             style={{
               content: {
-                color: 'lightsteelblue',
-                height: '300px',
-                marginTop: `250px`
+                height: '650px',
+                width: '950px',
+                margin: '200px auto'
               }
             }}
           >
+            <IconContainer>
+              <i className="fas fa-times" onClick={this.handleCloseModal} />
+            </IconContainer>
             <ReflectionFormView
-            // name={this.state.activity.name}
-            // enjoymentRating={this.state.activity.enjoymentRating}
-            // energyLevel={this.state.activity.energyLevel}
-            // engagement={this.state.activity.engagement}
-            // timestamp={this.state.activity.timestamp}
-            // handleChange={this.handleChange}
-            // handleSubmit={this.handleSubmit}
-            // isEditing={this.props.isEditing}
+              handleCloseModal={this.handleCloseModal}
+              // isEditing={this.props.isEditing}
             />
           </ReactModal>
         </AddButtonContainer>
@@ -116,5 +123,13 @@ const AddReflectionButton = styled.a`
   :hover {
     border-color: #9932cc;
     color: #9932cc;
+  }
+`;
+
+const IconContainer = styled.div`
+  text-align: right;
+  i {
+    font-size: 24px;
+    cursor: pointer;
   }
 `;

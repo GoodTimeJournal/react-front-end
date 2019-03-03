@@ -1,68 +1,67 @@
 .reflection-form-page {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 120px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto;
 
-	.reflection-progress {
-		.active {
-			color: black;
-		}
+  .reflection-progress {
+    .active {
+      color: black;
+    }
 
-		h3 {
-			margin: 50px 0;
-			color: lightgrey;
+    h3 {
+      margin: 50px 0;
+      color: lightgrey;
 
-			@media screen and (max-width: 800px) {
-				font-size: 1.6rem;
-			}
-		}
-	}
+      @media screen and (max-width: 800px) {
+        font-size: 1.6rem;
+      }
+    }
+  }
 }
 
 .reflection-form {
-	display: flex;
-	flex-direction: column;
-	// margin-left: 100px;
-	margin-left: 5%;
-	max-width: 600px;
-	width: 70%;
+  display: flex;
+  flex-direction: column;
+  // margin-left: 100px;
+  margin-left: 5%;
+  max-width: 600px;
+  width: 70%;
 
-	p {
-		@media screen and (max-width: 800px) {
-			font-size: 1.4rem;
-		}
-	}
+  p {
+    @media screen and (max-width: 800px) {
+      font-size: 1.4rem;
+    }
+  }
 
-	textarea {
-		border: none;
-		// border: 1px solid grey;
-		background: #fafafa;
-		// margin: 10px 0;
-		// padding: 5px;
-		font-size: 1.6rem;
-		max-height: 400px;
-		line-height: 1.4;
+  textarea {
+    border: none;
+    // border: 1px solid grey;
+    // margin: 10px 0;
+    // padding: 5px;
+    font-size: 1.6rem;
+    max-height: 400px;
+    line-height: 1.4;
 
-		&:focus {
-			outline: none;
-		}
-	}
+    &:focus {
+      outline: none;
+    }
+  }
 
-	button {
-		margin-top: 20px;
-		padding: 10px 0;
-		background: transparent;
-		border-radius: 3px;
-		width: 250px;
+  button {
+    margin-top: 20px;
+    padding: 10px 0;
+    background: transparent;
+    border-radius: 3px;
+    width: 250px;
 
-		&:focus {
-			outline: none;
-		}
-	}
+    &:focus {
+      outline: none;
+    }
+  }
 
-	.reflection-buttons {
-		display: flex;
-		justify-content: space-around;
-	}
+  .reflection-buttons {
+    display: flex;
+    justify-content: space-around;
+  }
 }

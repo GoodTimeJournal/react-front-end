@@ -97,13 +97,16 @@ class ActivityView extends Component {
   };
 
   mapThroughActivities = activities => {
-    let mappedActivities = activities.map(activity => (
-      <Activities
-        activity={activity}
-        editActivity={this.editActivity}
-        deleteActivity={this.deleteActivity}
-      />
-    ));
+    let mappedActivities = activities
+      .map(activity => (
+        <Activities
+          key={activity.id}
+          activity={activity}
+          editActivity={this.editActivity}
+          deleteActivity={this.deleteActivity}
+        />
+      ))
+      .reverse();
     return mappedActivities;
   };
 
@@ -122,7 +125,6 @@ class ActivityView extends Component {
               contentLabel="Minimal Modal Example"
               style={{
                 content: {
-                  color: 'lightsteelblue',
                   height: '320px',
                   width: '400px',
                   margin: `250px auto`
@@ -227,28 +229,28 @@ const IconContainer = styled.div`
   }
 `;
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
+// function rand() {
+//   return Math.round(Math.random() * 20) - 10;
+// }
 
-function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
+// function getModalStyle() {
+//   const top = 50 + rand();
+//   const left = 50 + rand();
 
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`
-  };
-}
+//   return {
+//     top: `${top}%`,
+//     left: `${left}%`,
+//     transform: `translate(-${top}%, -${left}%)`
+//   };
+// }
 
-const styles = theme => ({
-  paper: {
-    position: 'absolute',
-    width: theme.spacing.unit * 50,
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing.unit * 4,
-    outline: 'none'
-  }
-});
+// const styles = theme => ({
+//   paper: {
+//     position: 'absolute',
+//     width: theme.spacing.unit * 50,
+//     backgroundColor: theme.palette.background.paper,
+//     boxShadow: theme.shadows[5],
+//     padding: theme.spacing.unit * 4,
+//     outline: 'none'
+//   }
+// });

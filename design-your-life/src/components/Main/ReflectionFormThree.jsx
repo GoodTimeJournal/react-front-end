@@ -15,8 +15,8 @@ const ReflectionFormThree = props => {
         <p>What trends did you notice this week?</p>
         <p>Which patterns in your behavior and mood have become predictable?</p>
         <p>
-          Write a few sentences about trends you've noticed as you've kept your
-          activity log this week.
+          Write a few sentences about trends you've noticed throughout this
+          week.
         </p>
         <TextField
           id="outlined-textarea"

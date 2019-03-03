@@ -31,6 +31,7 @@ const ActivityStyling = styled.div`
   text-align: center;
   margin-top: 2rem;
   margin-bottom: 1rem;
+  padding-bottom: 2rem;
   border-bottom: 1px solid #dee0e3;
 
   h3 {
