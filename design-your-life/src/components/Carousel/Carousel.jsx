@@ -35,8 +35,8 @@ let carouselSettings = {
 const displayCarouselImages = () =>
   carouselImages.map((image, i) => {
     return (
-      <CarouselImageContainer>
-        <CarouselImage src={image} key={i} />
+      <CarouselImageContainer key={i}>
+        <CarouselImage src={image} />
       </CarouselImageContainer>
     );
   });

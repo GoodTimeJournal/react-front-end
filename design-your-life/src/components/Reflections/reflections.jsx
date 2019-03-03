@@ -1,12 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import moment from 'moment';
 
 const reflections = props => {
   return (
     <>
       <ReflectionBlock>
         <ReflectionContent>
-          <h4 className="date">{props.timestamp}</h4>
+          <h4 className="date">
+            {moment(props.timestamp).format('MMMM Do YYYY, h:mm a')}
+          </h4>
+
           <p>
             <span>Summary:</span> {props.journalEntry}
           </p>
