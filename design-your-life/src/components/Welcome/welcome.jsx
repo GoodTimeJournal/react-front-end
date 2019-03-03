@@ -48,7 +48,7 @@ const DashboardContainer = styled.div`
   flex-direction: row;
   margin: 0 auto;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     flex-direction: column-reverse;
     min-height: 0;
   }
@@ -61,7 +61,7 @@ const DashboardLeft = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     width: 100%;
     margin-top: 6rem;
   }
@@ -88,7 +88,7 @@ const DashboardCenterContent = styled.div`
     font-weight: bold;
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     margin: 0 30px;
   }
 `;
@@ -123,7 +123,7 @@ const DashboardButton = styled.a`
 const DashboardRight = styled.div`
   width: 50%;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     width: 100%;
   }
 `;
@@ -131,9 +131,9 @@ const DashboardRight = styled.div`
 const DashboardImage = styled.img`
   width: 100%;
   height: 100%;
-  max-height: 1000px;
+  /* max-height: 1000px; */
 
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     height: 400px;
   }
 `;
