@@ -16,7 +16,8 @@ import Activities from './views/ActivityView';
 class App extends Component {
   logout = () => {
     this.props.logout();
-    // localStorage.clear();
+    localStorage.clear();
+    this.props.history.push('/');
   };
 
   render() {

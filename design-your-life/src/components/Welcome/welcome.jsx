@@ -47,6 +47,10 @@ const DashboardContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin: 0 auto;
+
+  @media (max-width: 800px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 //Left dashboard styling
@@ -54,7 +58,12 @@ const DashboardLeft = styled.div`
   width: 50%;
   display: flex;
   justify-content: center;
-  align-items; center;
+  align-items: center;
+
+  @media (max-width: 800px) {
+    width: 100%;
+    margin-top: 20px;
+  }
 `;
 
 const DashboardCenterContent = styled.div`
@@ -71,6 +80,7 @@ const DashboardCenterContent = styled.div`
     margin-top: 3rem;
     font-size: 1.8rem;
     margin-bottom: 2rem;
+    max-width: 500px;
   }
   strong {
     font-weight: bold;
@@ -97,6 +107,7 @@ const DashboardButton = styled.a`
   :hover {
     border-color: #9932cc;
     color: #9932cc;
+    cursor: pointer;
   }
 `;
 
@@ -104,9 +115,19 @@ const DashboardButton = styled.a`
 
 const DashboardRight = styled.div`
   width: 50%;
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 `;
 
 const DashboardImage = styled.img`
   width: 100%;
   height: 100%;
+  max-height: 1000px;
+  background-size: cover;
+
+  @media (max-width: 800px) {
+    height: 400px;
+  }
 `;

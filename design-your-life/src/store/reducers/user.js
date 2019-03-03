@@ -36,13 +36,14 @@ export default (state = initialState, action) => {
           user: {},
           isLoading: false,
           error: '',
-          loggedIn: true
+          loggedIn: false
         },
         isLoading: false,
         error: 'fail'
       };
     case LOG_OUT:
       localStorage.clear();
+      // navigate to '/' route
       return { ...state, loggedIn: false, token: '' };
     case REGISTER_USER:
       return { ...state, isLoading: true, error: '' };
