@@ -123,8 +123,9 @@ class ActivityView extends Component {
               style={{
                 content: {
                   color: 'lightsteelblue',
-                  height: '300px',
-                  marginTop: `250px`
+                  height: '320px',
+                  width: '400px',
+                  margin: `250px auto`
                 }
               }}
             >
