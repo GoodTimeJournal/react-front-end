@@ -122,7 +122,6 @@ class ActivityView extends Component {
               contentLabel="Minimal Modal Example"
               style={{
                 content: {
-                  color: 'lightsteelblue',
                   height: '320px',
                   width: '400px',
                   margin: `250px auto`

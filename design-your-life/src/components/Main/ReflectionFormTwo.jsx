@@ -1,5 +1,5 @@
-import React from "react";
-import { TextField } from "@material-ui/core";
+import React from 'react';
+import { TextField } from '@material-ui/core';
 
 const ReflectionFormTwo = props => {
   return (
@@ -13,8 +13,13 @@ const ReflectionFormTwo = props => {
 
       <form className="reflection-form" onSubmit={props.nextStep}>
         <p>What surprised you this week?</p>
-        <p>What differences did you see between your expectations and lived reality?</p>
-        <p>Write a few sentences about any surprises you encountered this week while keeping your activity log.</p>
+        <p>
+          What differences did you see between your expectations and lived
+          reality?
+        </p>
+        <p>
+          Write a few sentences about any surprises you encountered this week.
+        </p>
         <TextField
           id="outlined-textarea"
           // hover color to match theme
