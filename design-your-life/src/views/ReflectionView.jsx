@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Reflections from '../components/Reflections/Reflections';
+import Reflections from '../components/Reflections/reflections';
 import ReflectionFormView from './ReflectionFormView';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
