@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Reflections from '../components/Reflections/reflections';
+import Reflections from '../components/Reflections/Reflections';
 import ReflectionFormView from './ReflectionFormView';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
@@ -26,16 +26,23 @@ class ReflectionView extends Component {
     this.setState({ showModal: false });
   };
 
+  deletedReflection = id => {
+    const token = localStorage.getItem('token');
+    this.props.deleteReflection(token, id);
+  };
+
   render() {
     const mappedReflections = this.props.reflections
       .map(reflection => (
         <Reflections
+          deleteReflection={this.deletedReflection}
           timestamp={reflection.timestamp}
           journalEntry={reflection.journalEntry}
           insights={reflection.insights}
           trends={reflection.trends}
           surprises={reflection.surprises}
           key={reflection.timestamp}
+          id={reflection.id}
         />
       ))
       .reverse();
