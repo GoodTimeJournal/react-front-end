@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
+import { Button } from '@material-ui/core';
 
-const reflections = props => {
+const Reflections = props => {
   return (
     <>
       <ReflectionBlock>
@@ -25,6 +26,11 @@ const reflections = props => {
           <p>
             <span>Insights:</span> {props.insights}
           </p>
+          <Center>
+            <Button onClick={() => props.deleteReflection(props.id)}>
+              Delete Reflection
+            </Button>
+          </Center>
         </ReflectionContent>
         <ReflectionPhoto>
           <img
@@ -37,7 +43,7 @@ const reflections = props => {
   );
 };
 
-export default reflections;
+export default Reflections;
 
 const ReflectionBlock = styled.div`
   display: flex;
@@ -70,7 +76,7 @@ const ReflectionContent = styled.div`
     padding: 30px;
   }
 
-  h5 {
+  .date {
     border-bottom: 1px solid grey;
     text-align: right;
     padding-bottom: 10px;
@@ -99,4 +105,10 @@ const ReflectionPhoto = styled.div`
     width: 100%;
     height: 100%;
   }
+`;
+
+const Center = styled.div`
+  margin-top: 15px;
+  text-align: center;
+  font-weight: lighter;
 `;
