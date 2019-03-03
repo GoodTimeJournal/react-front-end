@@ -24,7 +24,7 @@ const Navigation = props => {
         </div>
       </div>
       <PrimaryNav>
-        <NavLink exact to="/">
+        <NavLink exact to="/" className="hide-on-mobile">
           <p>Welcome</p>
         </NavLink>
         <NavLink to="/activities">
@@ -34,6 +34,7 @@ const Navigation = props => {
           <p>Reflections</p>
         </NavLink>
         <a
+          className="hide-on-mobile"
           href="https://goodtimejournal.netlify.com/"
           target="_blank"
           rel="noopener noreferrer"
@@ -59,7 +60,7 @@ const PrimaryNav = styled.div`
   a {
     text-decoration: none;
     color: #333333;
-    margin: 0 15px;
+    margin: 0 10px;
     font-weight: 700;
 
     p {
@@ -70,5 +71,15 @@ const PrimaryNav = styled.div`
   i {
     font-size: 25px;
     margin: 0 20px;
+
+    @media (max-width: 600px) {
+      margin: 0 5px;
+    }
+  }
+
+  .hide-on-mobile {
+    @media (max-width: 600px) {
+      display: none;
+    }
   }
 `;
