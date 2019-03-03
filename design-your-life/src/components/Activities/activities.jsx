@@ -29,10 +29,17 @@ export default activities;
 const ActivityStyling = styled.div`
   width: 33%;
   text-align: center;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin: 2rem 0 1rem 0;
   padding-bottom: 2rem;
   border-bottom: 1px solid #dee0e3;
+
+  @media (max-width: 800px) {
+    width: 50%;
+  }
+  @media (max-width: 500px) {
+    width: 100%;
+    margin: 2rem auto 1rem auto;
+  }
 
   h3 {
     font-size: 2.8rem;
