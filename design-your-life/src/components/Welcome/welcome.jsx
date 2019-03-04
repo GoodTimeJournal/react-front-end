@@ -43,10 +43,11 @@ export default welcome;
 const DashboardContainer = styled.div`
   margin-top: 72px;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: row;
   margin: 0 auto;
+  overflow-y: hidden;
 
   @media (max-width: 1000px) {
     flex-direction: column-reverse;
@@ -72,6 +73,8 @@ const DashboardCenterContent = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  /* 73px accounts for height of fixed nav bar */
+  margin-top: 73px;
 
   h1 {
     font-weight: lighter;
@@ -102,7 +105,7 @@ const DashboardButton = styled.a`
   margin-right: 2rem;
   display: inline-block;
   line-height: 2.7em;
-  padding: 0 2em 0 2em;
+  padding: 0 2rem 0 2rem;
   border-radius: 14px;
   text-decoration: none;
   font-weight: 600;
@@ -131,7 +134,6 @@ const DashboardRight = styled.div`
 const DashboardImage = styled.img`
   width: 100%;
   height: 100%;
-  /* max-height: 1000px; */
 
   @media (max-width: 1000px) {
     height: 400px;
