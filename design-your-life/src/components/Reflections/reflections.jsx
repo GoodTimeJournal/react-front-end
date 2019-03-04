@@ -48,6 +48,8 @@ export default Reflections;
 const ReflectionBlock = styled.div`
   display: flex;
   height: 400px;
+  max-width: 1300px;
+  margin: 0 auto;
   border-bottom: 1px solid #d3d3d3;
 
   :nth-child(2) {
