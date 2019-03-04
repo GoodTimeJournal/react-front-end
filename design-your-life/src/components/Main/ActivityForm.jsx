@@ -22,33 +22,27 @@ const ActivityForm = props => {
         />
         <TextField
           required
-          type="number"
+          type="text"
           name="enjoymentRating"
           label="Enjoyment Rating (1-5)"
           value={props.enjoymentRating}
           onChange={props.handleChange}
-          min="1"
-          max="5"
         />
         <TextField
           required
-          type="number"
+          type="text"
           name="energyLevel"
           label="Energy Level (1-5)"
           value={props.energyLevel}
           onChange={props.handleChange}
-          min="1"
-          max="5"
         />
         <TextField
           required
-          type="number"
+          type="text"
           name="engagement"
           label="Engagement (1-5)"
           value={props.engagement}
           onChange={props.handleChange}
-          min="1"
-          max="5"
         />
         <button>{props.isEditing ? 'Update Activity' : 'Add Activity'}</button>
       </form>

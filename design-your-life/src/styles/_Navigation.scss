@@ -13,6 +13,15 @@ nav {
   width: 100%;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
 
+  @media (max-width: 600px) {
+    padding: 0 5px;
+  }
+
+  a:hover,
+  i:hover {
+    color: teal;
+    cursor: pointer;
+  }
   .loader {
     margin-left: 20px;
   }
@@ -28,20 +37,10 @@ nav {
 
   .primary-nav {
     display: flex;
+  }
 
-    .active {
-      text-decoration: none;
-    }
-
-    i {
-      margin: 0 15px;
-      color: #457be9;
-      font-size: 2.6rem;
-
-      &:hover {
-        color: #80efef;
-        cursor: pointer;
-      }
-    }
+  .active {
+    text-decoration: none;
+    color: teal;
   }
 }
