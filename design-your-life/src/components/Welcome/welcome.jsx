@@ -43,10 +43,11 @@ export default welcome;
 const DashboardContainer = styled.div`
   margin-top: 72px;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: row;
   margin: 0 auto;
+  overflow-y: hidden;
 
   @media (max-width: 1000px) {
     flex-direction: column-reverse;
@@ -131,7 +132,6 @@ const DashboardRight = styled.div`
 const DashboardImage = styled.img`
   width: 100%;
   height: 100%;
-  /* max-height: 1000px; */
 
   @media (max-width: 1000px) {
     height: 400px;
