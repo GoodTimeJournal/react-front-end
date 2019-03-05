@@ -6,11 +6,13 @@ import { connect } from 'react-redux';
 import { getReflections, deleteReflection } from '../store/actions/reflection';
 import Carousel from '../components/Carousel/Carousel';
 import ReactModal from 'react-modal';
+import Unsplash from 'unsplash-js';
 
 class ReflectionView extends Component {
   state = {
     showModal: false,
-    reflections: []
+    reflections: [],
+    photos: [],
   };
 
   componentDidMount() {
@@ -55,15 +57,16 @@ class ReflectionView extends Component {
           <AddReflectionButton onClick={this.handleOpenModal}>
             Add Reflection
           </AddReflectionButton>
+
           <ReactModal
             isOpen={this.state.showModal}
             contentLabel="Minimal Modal Example"
             style={{
               content: {
-                height: '650px',
-                width: '950px',
-                margin: '200px auto'
-              }
+                height: '80%',
+                width: '80%',
+                margin: '20px auto',
+              },
             }}
           >
             <IconContainer>
@@ -84,7 +87,7 @@ const mapStateToProps = state => {
   return {
     loggedIn: state.user.loggedIn,
     isLoading: state.activity.isLoading,
-    reflections: state.reflection.reflections
+    reflections: state.reflection.reflections,
   };
 };
 
