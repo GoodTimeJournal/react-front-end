@@ -4,6 +4,7 @@ import moment from 'moment';
 import { Button } from '@material-ui/core';
 
 const Reflections = props => {
+  console.log(props);
   return (
     <>
       <ReflectionBlock>
@@ -33,10 +34,7 @@ const Reflections = props => {
           </Center>
         </ReflectionContent>
         <ReflectionPhoto>
-          <img
-            src="https://source.unsplash.com/random/journal"
-            alt=""
-          />
+          <img src="https://source.unsplash.com/random/journal" alt="" />
         </ReflectionPhoto>
       </ReflectionBlock>
     </>
@@ -100,7 +98,7 @@ const ReflectionPhoto = styled.div`
   width: 40%;
 
   @media (max-width: 800px) {
-    width: 100%;
+    display: none;
   }
 
   img {
