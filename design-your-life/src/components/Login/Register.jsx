@@ -15,7 +15,7 @@ const Register = props => {
           fullWidth
           label="Full Name"
           onChange={props.handleChange}
-          name="fullname"
+          name="name"
           type="text"
           value={props.currentName}
           inputProps={{ minLength: 4, maxLength: 30 }}

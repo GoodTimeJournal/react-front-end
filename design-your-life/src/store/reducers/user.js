@@ -5,14 +5,14 @@ import {
   REGISTER_USER,
   REGISTER_USER_COMPLETE,
   REGISTER_USER_FAIL,
-  LOG_OUT
+  LOG_OUT,
 } from '../actions/user';
 
 const initialState = {
   user: {},
   isLoading: false,
   error: '',
-  loggedIn: false
+  loggedIn: false,
 };
 
 export default (state = initialState, action) => {
@@ -28,17 +28,22 @@ export default (state = initialState, action) => {
         user: action.payload,
         isLoading: false,
         loggedIn: true,
-        error: ''
+        error: '',
       };
     case LOGIN_USER_FAIL:
-      return { state: {
-        user: {},
+      return {
+        state: {
+          user: {},
+          isLoading: false,
+          error: '',
+          loggedIn: false,
+        },
         isLoading: false,
-        error: '',
-        loggedIn: true
-      }, isLoading: false, error: 'fail' };
+        error: 'fail',
+      };
     case LOG_OUT:
       localStorage.clear();
+      // navigate to '/' route
       return { ...state, loggedIn: false, token: '' };
     case REGISTER_USER:
       return { ...state, isLoading: true, error: '' };
@@ -47,7 +52,7 @@ export default (state = initialState, action) => {
         ...state,
         user: action.payload,
         isLoading: false,
-        error: ''
+        error: '',
       };
     case REGISTER_USER_FAIL:
       return { ...state, isLoading: false, error: action.payload };

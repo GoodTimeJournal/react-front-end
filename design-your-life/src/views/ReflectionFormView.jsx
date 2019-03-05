@@ -9,7 +9,6 @@ import moment from 'moment';
 
 import { addReflection } from '../store/actions/reflection';
 
-const token = localStorage.getItem('token');
 class ReflectionFormView extends Component {
   state = {
     page: 1,
@@ -41,11 +40,6 @@ class ReflectionFormView extends Component {
     });
   };
 
-  navigateHome = e => {
-    e.preventDefault();
-    this.props.history.push('/');
-  };
-
   nextStep = e => {
     e.preventDefault();
     this.setState(prevState => ({ page: prevState.page + 1 }));
@@ -57,11 +51,12 @@ class ReflectionFormView extends Component {
   };
 
   handleSubmit = e => {
+    const token = localStorage.getItem('token');
     e.preventDefault();
     this.props.isEditing // isEditing coming from Redux store
-      ? this.props.addReflection(this.state.reflection)
+      ? this.props.updateReflection(token, this.state.reflection)
       : this.props.addReflection(token, this.state.reflection);
-    setTimeout((this.props.history.push('/'), 1000));
+    this.props.handleCloseModal();
   };
 
   render() {
