@@ -1,12 +1,13 @@
 # Design Your Life
-
+- [frontend](https://goodtimejournal.netlify.com/)
+- [backend](https://github.com/GoodTimeJournal/backend)
 
 **Mission**: "To provide people with a platform to design, track and reflect on their actions to improve their lives”.
 
 Based off of Stanford's 'Design-Your-Life' Course, this project is the culmination of 8 Engineers collaborating during a one week sprint challenge to develop a full-stack web application.
 
 ## Features
-1. Full User Authentication
+1. Authentication
 2. Users can Create, Read, Update, and Delete data(CRUD)
 3. State management with Redux 
 
