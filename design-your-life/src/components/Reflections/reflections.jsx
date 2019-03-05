@@ -34,7 +34,7 @@ const Reflections = props => {
         </ReflectionContent>
         <ReflectionPhoto>
           <img
-            src="https://images.unsplash.com/photo-1531615018523-12556603349f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=753&q=80"
+            src="https://source.unsplash.com/random/journal"
             alt=""
           />
         </ReflectionPhoto>
