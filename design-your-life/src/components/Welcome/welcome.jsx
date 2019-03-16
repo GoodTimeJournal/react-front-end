@@ -50,7 +50,7 @@ const DashboardContainer = styled.div`
   overflow-y: hidden;
 
   @media (max-width: 1000px) {
-    flex-direction: column-reverse;
+    flex-direction: column;
     min-height: 0;
   }
 `;
@@ -64,7 +64,8 @@ const DashboardLeft = styled.div`
 
   @media (max-width: 1000px) {
     width: 100%;
-    margin-top: 6rem;
+    margin-top: 10rem;
+    text-align: center;
   }
 `;
 
@@ -99,6 +100,10 @@ const DashboardButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin-bottom: 4rem;
+
+  @media (max-width: 1000px) {
+    justify-content: center;
+  }
 `;
 const DashboardButton = styled.a`
   margin-top: 1rem;
@@ -136,6 +141,6 @@ const DashboardImage = styled.img`
   height: 100%;
 
   @media (max-width: 1000px) {
-    height: 400px;
+    display: none;
   }
 `;

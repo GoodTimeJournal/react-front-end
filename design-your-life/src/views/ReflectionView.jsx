@@ -11,7 +11,8 @@ import axios from 'axios';
 class ReflectionView extends Component {
   state = {
     showModal: false,
-    reflections: []
+    reflections: [],
+    photos: []
   };
 
   componentDidMount() {
@@ -63,14 +64,15 @@ class ReflectionView extends Component {
           <AddReflectionButton onClick={this.handleOpenModal}>
             Add Reflection
           </AddReflectionButton>
+
           <ReactModal
             isOpen={this.state.showModal}
             contentLabel="Minimal Modal Example"
             style={{
               content: {
-                height: '650px',
-                width: '950px',
-                margin: '200px auto'
+                height: '80%',
+                width: '80%',
+                margin: '20px auto'
               }
             }}
           >
