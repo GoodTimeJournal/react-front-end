@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { getReflections, deleteReflection } from '../store/actions/reflection';
 import Carousel from '../components/Carousel/Carousel';
 import ReactModal from 'react-modal';
+import axios from 'axios';
 
 class ReflectionView extends Component {
   state = {
@@ -14,7 +15,14 @@ class ReflectionView extends Component {
   };
 
   componentDidMount() {
+    const access = process.env.REACT_APP_UNSPLASH_ACCESS;
     this.props.getReflections(localStorage.getItem('token'));
+    axios
+      .get(
+        `https://api.unsplash.com/photos/random?query=writing&client_id=${access}`
+      )
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err));
   }
 
   // Modal Functions
