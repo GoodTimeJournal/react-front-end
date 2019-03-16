@@ -6,17 +6,24 @@ import { connect } from 'react-redux';
 import { getReflections, deleteReflection } from '../store/actions/reflection';
 import Carousel from '../components/Carousel/Carousel';
 import ReactModal from 'react-modal';
-import Unsplash from 'unsplash-js';
+import axios from 'axios';
 
 class ReflectionView extends Component {
   state = {
     showModal: false,
     reflections: [],
-    photos: [],
+    photos: []
   };
 
   componentDidMount() {
+    const access = process.env.REACT_APP_UNSPLASH_ACCESS;
     this.props.getReflections(localStorage.getItem('token'));
+    axios
+      .get(
+        `https://api.unsplash.com/photos/random?query=writing&client_id=${access}`
+      )
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err));
   }
 
   // Modal Functions
@@ -63,10 +70,10 @@ class ReflectionView extends Component {
             contentLabel="Minimal Modal Example"
             style={{
               content: {
-                height: '80%',
-                width: '80%',
-                margin: '20px auto',
-              },
+                height: '675px',
+                width: '65%',
+                margin: '60px auto'
+              }
             }}
           >
             <IconContainer>
@@ -87,7 +94,7 @@ const mapStateToProps = state => {
   return {
     loggedIn: state.user.loggedIn,
     isLoading: state.activity.isLoading,
-    reflections: state.reflection.reflections,
+    reflections: state.reflection.reflections
   };
 };
 
