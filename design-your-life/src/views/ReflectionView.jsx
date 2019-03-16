@@ -70,9 +70,9 @@ class ReflectionView extends Component {
             contentLabel="Minimal Modal Example"
             style={{
               content: {
-                height: '80%',
-                width: '80%',
-                margin: '20px auto'
+                height: '675px',
+                width: '65%',
+                margin: '60px auto'
               }
             }}
           >

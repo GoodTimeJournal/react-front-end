@@ -6,7 +6,7 @@ import {
   deleteActivity,
   editActivity,
   getActivities,
-  addActivity,
+  addActivity
 } from '../store/actions/activity';
 
 //Activity Import
@@ -31,8 +31,8 @@ class ActivityView extends Component {
         fk: '',
         enjoymentRating: '',
         energyLevel: '',
-        engagement: '',
-      },
+        engagement: ''
+      }
     };
   }
 
@@ -43,8 +43,8 @@ class ActivityView extends Component {
       ...this.state,
       activity: {
         ...this.props.activeEdit,
-        fk: parseInt(localStorage.getItem('id')),
-      },
+        fk: parseInt(localStorage.getItem('id'))
+      }
     });
   };
 
@@ -63,16 +63,16 @@ class ActivityView extends Component {
         ...this.state,
         activity: {
           ...this.state.activity,
-          [e.target.name]: e.target.value,
-        },
+          [e.target.name]: e.target.value
+        }
       });
     } else
       this.setState({
         ...this.state,
         activity: {
           ...this.state.activity,
-          [e.target.name]: parseInt(e.target.value),
-        },
+          [e.target.name]: parseInt(e.target.value)
+        }
       });
   };
 
@@ -83,6 +83,16 @@ class ActivityView extends Component {
       ? this.props.updateActivity(token, this.state.activity)
       : this.props.addActivity(token, this.state.activity);
     this.handleCloseModal();
+
+    this.setState({
+      activity: {
+        name: '',
+        fk: '',
+        enjoymentRating: '',
+        energyLevel: '',
+        engagement: ''
+      }
+    });
   };
 
   deleteActivity = id => {
@@ -127,8 +137,8 @@ class ActivityView extends Component {
                 content: {
                   height: '320px',
                   width: '300px',
-                  margin: `250px auto`,
-                },
+                  margin: `250px auto`
+                }
               }}
             >
               <IconContainer>
@@ -160,7 +170,7 @@ const mapStateToProps = state => {
     isLoading: state.activity.isLoading,
     activeEdit: state.activity.activeEdit,
     activities: state.activity.activities,
-    isEditing: state.activity.isEditing,
+    isEditing: state.activity.isEditing
   };
 };
 
@@ -170,7 +180,7 @@ export default connect(
     addActivity,
     deleteActivity,
     editActivity,
-    getActivities,
+    getActivities
   }
 )(ActivityView);
 
